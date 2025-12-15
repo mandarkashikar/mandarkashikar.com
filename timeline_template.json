@@ -1,0 +1,16 @@
+[
+  {
+    "year": "2024",
+    "content_html": "Launched <a href='https://example.com'>MyCoolProject</a> which gained 10k users.",
+    "modal_title": "MyCoolProject Details",
+    "modal_description": "Here is a longer description of the project. It was built using React and Node.js...",
+    "image_filename": "project_screenshot.jpg"
+  },
+  {
+    "year": "2023",
+    "content_html": "Won the <strong>Best Developer Award</strong> at TechConf.",
+    "modal_title": "Award Ceremony",
+    "modal_description": "I was honored to receive this award among 500 nominees.",
+    "image_filename": "award_photo.png"
+  }
+]

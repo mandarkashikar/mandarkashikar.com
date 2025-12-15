@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mandar | Resume</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="container header-content">
+            <div class="header-left">
+                <h1 class="site-title">Mandar Kashikar</h1>
+            </div>
+            <div class="header-right">
+                <a href="mailto:mandarkashikar1@gmail.com" class="social-icon"><i class="fas fa-envelope"></i></a>
+                <a href="http://linkedin.com/in/mandarkashikar" target="_blank" class="social-icon"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/mandarkashikar" target="_blank" class="social-icon"><i
+                        class="fab fa-github"></i></a>
+                <div class="theme-toggle-container">
+                    <i class="fas fa-sun theme-icon"></i>
+                    <label class="theme-switch" aria-label="Toggle Dark Mode">
+                        <input type="checkbox" id="theme-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                    <i class="fas fa-moon theme-icon"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- About Section -->
+        <section id="about" class="profile-section">
+            <div class="profile-image-container">
+                <img src="profile.jpg" alt="Mandar Kashikar" class="profile-image">
+            </div>
+            <div class="profile-info">
+                <div class="profile-header">
+                    <p class="role">Lead Product Manager | Retail SMBs</p>
+                    <a href="https://drive.google.com/file/d/1pVIH2_JIrzbLMbx5y9ybk6Nkv3vjWYpg/view?usp=sharing"
+                        target="_blank" class="resume-button">Download Resume <i
+                            class="fas fa-external-link-alt"></i></a>
+                </div>
+                <div class="bio">
+                    <p>At Elavon / U.S. Bank, I build Omni-commerce solutions that unify online and in-store selling for
+                        SMBs. My expertise spans payments, web platforms, digital checkout, and cross-functional
+                        delivery.</p>
+                    <p>In my spare time, I help my wife run <a href="https://luxehomescape.com"
+                            target="_blank">LuxeHomescape</a>, an omni-channel art brand. This experience ground my
+                        product thinking in real merchant pain points and operations.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline / News Section -->
+        <section id="timeline" class="news-section">
+            <h2 class="section-heading">News</h2>
+            <ul class="news-list" id="timeline-list">
+                <!-- Timeline items will be populated by script.js -->
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- Simple Modal -->
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 id="modal-title"></h3>
+            <div id="modal-body-content">
+                <p id="modal-description"></p>
+                <img id="modal-image" src="" alt="">
+            </div>
+        </div>
+    </div>
+
+    <script src="timeline_data.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
