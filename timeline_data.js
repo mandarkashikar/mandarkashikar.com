@@ -41,20 +41,16 @@ const timelineData = [
         image: ''
     },
     {
-        id: 'item-2020-1',
-        year: '2020',
-        content: 'Moved into <span class="highlight-link">EY-Parthenon</span>, continuing strategy and analytics work.',
-        title: 'EY-Parthenon',
-        desc: 'Moved into EY-Parthenon, continuing strategy and analytics work for Fortune 500 clients.',
-        image: ''
-    },
-    {
-        id: 'item-2019-2',
-        year: '2019',
-        content: 'Joined <span class="highlight-link">EY</span> as a Senior Consultant in Strategy & Analytics.',
-        title: 'EY Senior Consultant',
-        desc: 'Joined EY as a Senior Consultant in Strategy & Analytics; worked with clients including LabCorp and the Bill & Melinda Gates Foundation.',
-        image: ''
+        id: 'item-2019-2021',
+        year: '2019-2021',
+        content: 'Joined <span class="highlight-link">EY / EY-Parthenon</span> as Senior Consultant - Strategy and Analytics.',
+        title: 'EY / EY-Parthenon',
+        desc: 'Joined EY / EY-Parthenon as Senior Consultant - Strategy and Analytics.',
+        image: '',
+        bullets: [
+            'Conducted topic modelling and sentiment analysis for Bill and Melinda Gates RTO survey.',
+            'Led strategy and analytics work for Fortune 500 clients including LabCorp.'
+        ]
     },
     {
         id: 'item-2019-1',

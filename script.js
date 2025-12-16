@@ -16,9 +16,20 @@ document.addEventListener('DOMContentLoaded', () => {
         li.className = 'news-item';
         li.setAttribute('data-project', item.id);
 
+        let contentHtml = `<span class="content">${item.content}`;
+
+        if (item.bullets && item.bullets.length > 0) {
+            contentHtml += `<ul class="timeline-bullets">`;
+            item.bullets.forEach(bullet => {
+                contentHtml += `<li>${bullet}</li>`;
+            });
+            contentHtml += `</ul>`;
+        }
+        contentHtml += `</span>`;
+
         li.innerHTML = `
             <span class="date">${item.year}</span>
-            <span class="content">${item.content}</span>
+            ${contentHtml}
         `;
 
         timelineList.appendChild(li);
