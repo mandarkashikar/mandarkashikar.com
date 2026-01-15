@@ -57,15 +57,31 @@
                         SMBs. My expertise spans payments, web platforms, digital checkout, and cross-functional
                         delivery.</p>
                     <p>In my spare time, I help my wife run <a href="https://luxehomescape.com"
-                            target="_blank">LuxeHomescape</a>, an omni-channel art brand. This experience ground my
+                            target="_blank">LuxeHomescape</a>, an omni-channel art brand. This experience grounds my
                         product thinking in real merchant pain points and operations.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Timeline / News Section -->
+        <!-- Skills Section -->
+        <section id="top-skills" class="skills-section-top">
+            <h2 class="section-heading">Core Competencies</h2>
+            <div class="skills-container-top">
+                <span class="skill-pill">Product Strategy & Roadmap</span>
+                <span class="skill-pill">Omni-channel Commerce</span>
+                <span class="skill-pill">Payments & POS Systems</span>
+                <span class="skill-pill">SMB Solutions</span>
+                <span class="skill-pill">API Integrations</span>
+                <span class="skill-pill">Cross-functional Leadership</span>
+                <span class="skill-pill">Go-to-Market Strategy</span>
+                <span class="skill-pill">Data Analytics</span>
+                <span class="skill-pill">Agile Methodologies</span>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
         <section id="timeline" class="news-section">
-            <h2 class="section-heading">News</h2>
+            <h2 class="section-heading">Experience</h2>
             <ul class="news-list" id="timeline-list">
                 <!-- Timeline items will be populated by script.js -->
             </ul>
@@ -73,19 +89,45 @@
 
     </main>
 
-    <!-- Simple Modal -->
+    <!-- Deep Dive Modal -->
     <div id="project-modal" class="modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
-            <h3 id="modal-title"></h3>
-            <div id="modal-body-content">
-                <p id="modal-description"></p>
-                <img id="modal-image" src="" alt="">
+
+            <div class="modal-header-sticky">
+                <h2 id="modal-title">Role Title</h2>
+                <div id="modal-subtitle">Company Name | Date</div>
+            </div>
+
+            <div class="modal-body-scroll">
+                <!-- Section: Overview -->
+                <div class="modal-section">
+                    <h3>Overview</h3>
+                    <p id="modal-description">Description goes here...</p>
+                    <ul id="modal-achievements" class="achievements-list"></ul>
+                </div>
+
+                <!-- Section: Key Projects -->
+                <div class="modal-section">
+                    <h3>Key Projects & STAR Stories</h3>
+                    <div id="modal-projects" class="projects-grid">
+                        <!-- Dynamic Project Cards -->
+                    </div>
+                </div>
+
+                <!-- Section: Skills -->
+                <div class="modal-section" class="skills-section">
+                    <h3>Skills & Tools</h3>
+                    <div id="modal-skills" class="skills-chips">
+                        <!-- Dynamic Skills -->
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <script src="timeline_data.js"></script>
+    <script src="timeline_data_rich.js"></script>
     <script src="script.js"></script>
 </body>
 
