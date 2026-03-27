@@ -108,6 +108,32 @@ ul { list-style: none; }
 }
 .logo:hover { text-decoration: none; color: var(--accent); }
 
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.header-nav a {
+  font-size: .82rem;
+  font-weight: 500;
+  color: var(--text-3);
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: color .15s, background .15s;
+}
+
+.header-nav a:hover {
+  color: var(--text-1);
+  background: var(--surface);
+  text-decoration: none;
+}
+
+@media (max-width: 480px) {
+  .header-nav { display: none; }
+}
+
 .header-right {
   display: flex;
   align-items: center;
