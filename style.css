@@ -518,6 +518,11 @@ ul { list-style: none; }
     padding: 36px 0 32px;
   }
 
+  .hero-photo-wrap {
+    width: 80px;
+    align-self: flex-start;
+  }
+
   .hero-photo { width: 80px; height: 80px; }
 
   .hero-name { font-size: 1.5rem; }
