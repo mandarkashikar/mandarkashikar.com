@@ -22,6 +22,42 @@
     applyTheme(next);
   });
 
+  /* ── Mobile menu (logo as trigger) ─────── */
+  const logoBtn = document.getElementById('logo-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  function closeMenu() {
+    if (!mobileMenu) return;
+    mobileMenu.classList.remove('open');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+    logoBtn && logoBtn.setAttribute('aria-expanded', 'false');
+    logoBtn && logoBtn.classList.remove('menu-open');
+  }
+
+  logoBtn && logoBtn.addEventListener('click', e => {
+    // On desktop, logo is a regular home link — only intercept on mobile
+    if (window.innerWidth > 480) return;
+    e.preventDefault();
+    const isOpen = mobileMenu.classList.toggle('open');
+    mobileMenu.setAttribute('aria-hidden', String(!isOpen));
+    logoBtn.setAttribute('aria-expanded', String(isOpen));
+    logoBtn.classList.toggle('menu-open', isOpen);
+  });
+
+  // Close menu when a nav link is tapped
+  mobileMenu && mobileMenu.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Close menu on outside tap
+  document.addEventListener('click', e => {
+    if (mobileMenu && mobileMenu.classList.contains('open')) {
+      if (!mobileMenu.contains(e.target) && !logoBtn.contains(e.target)) {
+        closeMenu();
+      }
+    }
+  });
+
   /* ── Build experience list ─────────────── */
   const list = document.getElementById('exp-list');
 

@@ -16,7 +16,12 @@
   <!-- ───── Header ───── -->
   <header class="site-header">
     <div class="container">
-      <a href="#" class="logo">MK</a>
+      <a href="#" class="logo" id="logo-btn" role="button" aria-expanded="false" aria-label="Menu">MK</a>
+      <nav class="header-nav">
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+      </nav>
       <div class="header-right">
         <a href="mailto:mandarkashikar1@gmail.com" class="nav-icon" title="Email">
           <i class="fas fa-envelope"></i>
@@ -30,6 +35,26 @@
         <button class="nav-icon theme-btn" id="theme-toggle" title="Toggle theme">
           <i class="fas fa-circle-half-stroke"></i>
         </button>
+
+      </div>
+    </div>
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+      <nav class="mobile-nav">
+        <a href="#skills" class="mobile-nav-link">Skills</a>
+        <a href="#experience" class="mobile-nav-link">Experience</a>
+        <a href="#projects" class="mobile-nav-link">Projects</a>
+      </nav>
+      <div class="mobile-nav-icons">
+        <a href="mailto:mandarkashikar1@gmail.com" class="nav-icon" title="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://linkedin.com/in/mandarkashikar" target="_blank" class="nav-icon" title="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com/mandarkashikar" target="_blank" class="nav-icon" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
       </div>
     </div>
   </header>
@@ -62,7 +87,7 @@
       </section>
 
       <!-- Skills -->
-      <section class="section">
+      <section class="section" id="skills">
         <h2 class="section-label">Core Skills</h2>
         <div class="pill-group">
           <span class="pill">Product Strategy &amp; Roadmap</span>
@@ -78,11 +103,69 @@
       </section>
 
       <!-- Experience -->
-      <section class="section">
+      <section class="section" id="experience">
         <h2 class="section-label">Experience</h2>
         <ul class="exp-list" id="exp-list">
           <!-- Populated by script.js from timelineDataRich -->
         </ul>
+      </section>
+
+      <!-- Side Projects -->
+      <section class="section" id="projects">
+        <h2 class="section-label">Side Projects</h2>
+        <div class="project-grid">
+
+          <div class="project-card">
+            <div class="project-card-header">
+              <span class="project-name">Studio Ocea</span>
+              <span class="project-badge project-badge--live">Live</span>
+            </div>
+            <p class="project-desc">Custom artwork brand for modern homes. Co-founded with my wife — handles everything from original prints to commission-based pieces. Keeps my product instincts grounded in real merchant pain.</p>
+            <div class="project-footer">
+              <div class="pill-group">
+                <span class="pill">E-commerce</span>
+                <span class="pill">Small Business</span>
+                <span class="pill">Art</span>
+              </div>
+              <a href="https://studioocea.com" target="_blank" class="project-link">
+                Visit <i class="fas fa-arrow-up-right-from-square fa-xs"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-card-header">
+              <span class="project-name">Buyer Agent</span>
+              <span class="project-badge project-badge--wip">In Progress</span>
+            </div>
+            <p class="project-desc">An agentic commerce prototype exploring AI-driven purchasing on behalf of consumers — with configurable spend guardrails, merchant trust signals, and transparent decision logs.</p>
+            <div class="project-footer">
+              <div class="pill-group">
+                <span class="pill">AI / Agents</span>
+                <span class="pill">Commerce</span>
+                <span class="pill">Next.js</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-card-header">
+              <span class="project-name">This Site</span>
+              <span class="project-badge project-badge--live">Live</span>
+            </div>
+            <p class="project-desc">Built and deployed this personal site from scratch — design, HTML/CSS, Cloudflare Pages hosting, custom domain. Intentionally minimal; ships fast and stays fast.</p>
+            <div class="project-footer">
+              <div class="pill-group">
+                <span class="pill">HTML / CSS</span>
+                <span class="pill">Cloudflare Pages</span>
+              </div>
+              <a href="https://github.com/mandarkashikar/mandarkashikar.com" target="_blank" class="project-link">
+                GitHub <i class="fas fa-arrow-up-right-from-square fa-xs"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
       </section>
 
     </div>
