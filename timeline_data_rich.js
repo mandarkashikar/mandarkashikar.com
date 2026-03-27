@@ -1,17 +1,38 @@
 const timelineDataRich = [
     {
-        id: 'usbank-2022',
-        year: '2022 - Present',
-        role: 'Senior Product Manager – Web',
-        company: 'Elavon Payments / Talech POS / U.S. Bank',
-        location: 'Palo Alto, US / Toronto, Canada',
-        context: 'Point-of-Sale startup acquired by US Bank in 2019',
-        summary: 'Leading discovery, prioritization, and development of core POS features on merchant web platform and customer microsite.',
+        id: 'elavon-2025',
+        year: 'Jan 2025 - Present',
+        role: 'Lead Product Manager – Retail Omnicommerce',
+        company: 'Elavon Payments / U.S. Bank',
+        location: 'Toronto, Canada',
+        context: 'Elavon is a top-5 global payments processor and subsidiary of U.S. Bank.',
+        summary: 'Leading omni-channel commerce product strategy for SMBs — unifying online and in-store selling across payments, web platforms, and digital checkout.',
         responsibilities: [
-            'Managing 2 scrum teams with 15+ full-stack developers working on front-end design, backend logic, and API integrations',
-            'Leading product roadmap and development of POS growth features including online ordering, gifts, loyalty, and invoices',
-            'Strategizing and managing migration of 50,000-100,000+ existing merchants to revamped merchant platform',
-            'Conducting go-to-market activities including stakeholder education, case monitoring, and development of parity and enhancement features'
+            'Defining and driving the product roadmap for retail omnicommerce solutions serving small and medium-sized businesses',
+            'Leading cross-functional teams across engineering, design, and go-to-market to deliver unified commerce experiences',
+            'Collaborating with Elavon and U.S. Bank leadership on strategic product direction, competitive positioning, and partner integrations',
+            'Owning end-to-end product delivery from discovery through launch for omni-channel payments and commerce features'
+        ],
+        achievements: [
+            'Driving omnicommerce strategy that unifies in-store POS and ecommerce for SMB merchants',
+            'Leading product development across payments, digital checkout, and web platform capabilities'
+        ],
+        projects: [],
+        skills: ['Product Strategy', 'Omni-channel Commerce', 'Payments', 'SMB Products', 'Roadmap Planning', 'Go-to-Market', 'Cross-functional Leadership']
+    },
+    {
+        id: 'usbank-2022',
+        year: '2022 - Jan 2025',
+        role: 'Senior Product Manager – Web',
+        company: 'Talech POS / U.S. Bank',
+        location: 'Palo Alto, US / Toronto, Canada',
+        context: 'Point-of-Sale startup acquired by U.S. Bank in 2019.',
+        summary: 'Led discovery, prioritization, and development of core POS features on merchant web platform and customer microsite.',
+        responsibilities: [
+            'Managed 2 scrum teams with 15+ full-stack developers working on front-end design, backend logic, and API integrations',
+            'Led product roadmap and development of POS growth features including online ordering, gifts, loyalty, and invoices',
+            'Strategized and managed migration of 50,000–100,000+ existing merchants to revamped merchant platform',
+            'Conducted go-to-market activities including stakeholder education, case monitoring, and development of parity and enhancement features'
         ],
         achievements: [
             'Drove annual transaction volume of ~$200M by implementing secure payment integrations (hosted fields, Checkout.js, lightbox, hosted page)',
