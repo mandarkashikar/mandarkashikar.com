@@ -22,23 +22,26 @@
     applyTheme(next);
   });
 
-  /* ── Hamburger menu ────────────────────── */
-  const hamburgerBtn = document.getElementById('hamburger-btn');
-  const hamburgerIcon = document.getElementById('hamburger-icon');
+  /* ── Mobile menu (logo as trigger) ─────── */
+  const logoBtn = document.getElementById('logo-btn');
   const mobileMenu = document.getElementById('mobile-menu');
 
   function closeMenu() {
+    if (!mobileMenu) return;
     mobileMenu.classList.remove('open');
     mobileMenu.setAttribute('aria-hidden', 'true');
-    hamburgerBtn.setAttribute('aria-expanded', 'false');
-    hamburgerIcon.className = 'fas fa-bars';
+    logoBtn && logoBtn.setAttribute('aria-expanded', 'false');
+    logoBtn && logoBtn.classList.remove('menu-open');
   }
 
-  hamburgerBtn && hamburgerBtn.addEventListener('click', () => {
+  logoBtn && logoBtn.addEventListener('click', e => {
+    // On desktop, logo is a regular home link — only intercept on mobile
+    if (window.innerWidth > 480) return;
+    e.preventDefault();
     const isOpen = mobileMenu.classList.toggle('open');
     mobileMenu.setAttribute('aria-hidden', String(!isOpen));
-    hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
-    hamburgerIcon.className = isOpen ? 'fas fa-xmark' : 'fas fa-bars';
+    logoBtn.setAttribute('aria-expanded', String(isOpen));
+    logoBtn.classList.toggle('menu-open', isOpen);
   });
 
   // Close menu when a nav link is tapped
@@ -49,7 +52,7 @@
   // Close menu on outside tap
   document.addEventListener('click', e => {
     if (mobileMenu && mobileMenu.classList.contains('open')) {
-      if (!mobileMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+      if (!mobileMenu.contains(e.target) && !logoBtn.contains(e.target)) {
         closeMenu();
       }
     }

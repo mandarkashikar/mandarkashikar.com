@@ -130,14 +130,33 @@ ul { list-style: none; }
   text-decoration: none;
 }
 
-/* hamburger: hidden on desktop */
-.hamburger-btn { display: none; }
-
 @media (max-width: 480px) {
   .header-nav { display: none; }
-  /* hide desktop social icons, show hamburger */
-  .header-right .nav-icon:not(.theme-btn):not(.hamburger-btn) { display: none; }
-  .hamburger-btn { display: inline-flex; }
+  .header-right .nav-icon:not(.theme-btn) { display: none; }
+
+  /* MK becomes the menu trigger */
+  .logo {
+    position: relative;
+    padding: 6px 10px;
+    border-radius: var(--radius-sm);
+    transition: background .15s, color .15s;
+  }
+  .logo.menu-open {
+    background: var(--surface);
+    color: var(--accent);
+  }
+  /* subtle dot indicator */
+  .logo.menu-open::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
 }
 
 /* ── Mobile menu ── */
