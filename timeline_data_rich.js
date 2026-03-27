@@ -6,19 +6,48 @@ const timelineDataRich = [
         company: 'Elavon Payments / U.S. Bank',
         location: 'Toronto, Canada',
         context: 'Elavon is a top-5 global payments processor and subsidiary of U.S. Bank.',
-        summary: 'Leading omni-channel commerce product strategy for SMBs — unifying online and in-store selling across payments, web platforms, and digital checkout.',
+        summary: 'Leading omni-channel commerce product strategy for SMBs — shipped Elavon Business Solutions eCommerce, a deep Wix integration, and a Wix payments plugin. Currently launching Retail Omnicommerce (March 2026).',
         responsibilities: [
             'Defining and driving the product roadmap for retail omnicommerce solutions serving small and medium-sized businesses',
             'Leading cross-functional teams across engineering, design, and go-to-market to deliver unified commerce experiences',
-            'Collaborating with Elavon and U.S. Bank leadership on strategic product direction, competitive positioning, and partner integrations',
-            'Owning end-to-end product delivery from discovery through launch for omni-channel payments and commerce features'
+            'Owning end-to-end product delivery from discovery through launch for omni-channel payments and commerce features',
+            'Building and managing strategic partnerships with platform partners including Wix'
         ],
         achievements: [
-            'Driving omnicommerce strategy that unifies in-store POS and ecommerce for SMB merchants',
-            'Leading product development across payments, digital checkout, and web platform capabilities'
+            'Launched Elavon Business Solutions eCommerce — an end-to-end solution combining Wix\'s commerce platform with Elavon payments',
+            'Launched Wix–Elavon Payments plugin, enabling existing Wix merchants to accept Elavon payments with a seamless integration',
+            'Launching Elavon Business Solutions Retail Omnicommerce in March 2026 — unifying in-store and online selling for SMB merchants'
         ],
-        projects: [],
-        skills: ['Product Strategy', 'Omni-channel Commerce', 'Payments', 'SMB Products', 'Roadmap Planning', 'Go-to-Market', 'Cross-functional Leadership']
+        projects: [
+            {
+                title: 'Elavon Business Solutions eCommerce',
+                star: {
+                    situation: 'SMB merchants needed a simple, integrated way to sell online without stitching together disparate tools.',
+                    task: 'Build and launch an end-to-end ecommerce solution combining a best-in-class commerce platform with Elavon payments.',
+                    action: 'Led deep product integration with Wix — aligning engineering, design, partnerships, and go-to-market across both organizations to ship a unified merchant experience.',
+                    result: 'Launched Elavon Business Solutions eCommerce. Live at elavon.com/industries/ecommerce.html.'
+                }
+            },
+            {
+                title: 'Wix–Elavon Payments Plugin',
+                star: {
+                    situation: 'Existing Wix merchants who wanted to use Elavon as their payment processor had no native integration.',
+                    task: 'Build a payments plugin for the Wix ecosystem that enables seamless Elavon payment acceptance.',
+                    action: 'Defined plugin requirements, drove partner alignment with Wix, and led end-to-end delivery across product and engineering teams.',
+                    result: 'Launched the Wix–Elavon Payments plugin, expanding Elavon\'s reach to the existing Wix merchant base.'
+                }
+            },
+            {
+                title: 'Elavon Business Solutions Retail Omnicommerce',
+                star: {
+                    situation: 'SMB retailers needed a unified solution for both in-store and online selling — most solutions forced them to manage two separate systems.',
+                    task: 'Launch an omnicommerce product that bridges physical retail and ecommerce under one platform.',
+                    action: 'Leading cross-functional product development and go-to-market planning for a full omnicommerce solution.',
+                    result: 'Launching March 2026.'
+                }
+            }
+        ],
+        skills: ['Product Strategy', 'Omni-channel Commerce', 'Payments', 'SMB Products', 'Platform Partnerships', 'API Integrations', 'Go-to-Market', 'Cross-functional Leadership']
     },
     {
         id: 'usbank-2022',
