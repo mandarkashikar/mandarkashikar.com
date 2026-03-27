@@ -1,134 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mandar | Resume</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mandar Kashikar — Product Manager</title>
+  <meta name="description" content="Lead Product Manager specializing in omni-channel commerce and payments for SMBs.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <header>
-        <div class="container header-content">
-            <div class="header-left">
-                <h1 class="site-title">Mandar Kashikar</h1>
-            </div>
-            <div class="header-right">
-                <a href="mailto:mandarkashikar1@gmail.com" class="social-icon"><i class="fas fa-envelope"></i></a>
-                <a href="http://linkedin.com/in/mandarkashikar" target="_blank" class="social-icon"><i
-                        class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/mandarkashikar" target="_blank" class="social-icon"><i
-                        class="fab fa-github"></i></a>
-                <div class="theme-toggle-container">
-                    <i class="fas fa-sun theme-icon"></i>
-                    <label class="theme-switch" aria-label="Toggle Dark Mode">
-                        <input type="checkbox" id="theme-toggle">
-                        <span class="slider round"></span>
-                    </label>
-                    <i class="fas fa-moon theme-icon"></i>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <main class="container">
-        <!-- About Section -->
-        <section id="about" class="profile-section">
-            <div class="profile-image-container">
-                <img src="profile.jpg" alt="Mandar Kashikar" class="profile-image">
-            </div>
-            <div class="profile-info">
-                <div class="profile-header">
-                    <p class="role">Lead Product Manager | Retail SMBs</p>
-                    <a href="https://drive.google.com/file/d/1pVIH2_JIrzbLMbx5y9ybk6Nkv3vjWYpg/view?usp=sharing"
-                        target="_blank" class="resume-button">Download Resume <i
-                            class="fas fa-external-link-alt"></i></a>
-                </div>
-                <div class="bio">
-                    <p>At Elavon / U.S. Bank, I build Omni-commerce solutions that unify online and in-store selling for
-                        SMBs. My expertise spans payments, web platforms, digital checkout, and cross-functional
-                        delivery.</p>
-                    <p>In my spare time, I help my wife run <a href="https://studioocea.com"
-                            target="_blank">Studio Ocea</a>, an omni-channel art brand. This experience grounds my
-                        product thinking in real merchant pain points and operations.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="top-skills" class="skills-section-top">
-            <h2 class="section-heading">Core Competencies</h2>
-            <div class="skills-container-top">
-                <span class="skill-pill">Product Strategy & Roadmap</span>
-                <span class="skill-pill">Omni-channel Commerce</span>
-                <span class="skill-pill">Payments & POS Systems</span>
-                <span class="skill-pill">SMB Solutions</span>
-                <span class="skill-pill">API Integrations</span>
-                <span class="skill-pill">Cross-functional Leadership</span>
-                <span class="skill-pill">Go-to-Market Strategy</span>
-                <span class="skill-pill">Data Analytics</span>
-                <span class="skill-pill">Agile Methodologies</span>
-            </div>
-        </section>
-
-        <!-- Experience Section -->
-        <section id="timeline" class="news-section">
-            <h2 class="section-heading">Experience</h2>
-            <ul class="news-list" id="timeline-list">
-                <!-- Timeline items will be populated by script.js -->
-            </ul>
-        </section>
-
-    </main>
-
-    <!-- Deep Dive Modal -->
-    <div id="project-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-
-            <div class="modal-header-sticky">
-                <h2 id="modal-title">Role Title</h2>
-                <div id="modal-subtitle">Company Name | Date</div>
-            </div>
-
-            <div class="modal-body-scroll">
-                <!-- Section: Overview -->
-                <div class="modal-section">
-                    <h3>Overview</h3>
-                    <p id="modal-description">Description goes here...</p>
-                    <ul id="modal-achievements" class="achievements-list"></ul>
-                </div>
-
-                <!-- Section: Key Projects -->
-                <div class="modal-section">
-                    <h3>Key Projects & STAR Stories</h3>
-                    <div id="modal-projects" class="projects-grid">
-                        <!-- Dynamic Project Cards -->
-                    </div>
-                </div>
-
-                <!-- Section: Skills -->
-                <div class="modal-section" class="skills-section">
-                    <h3>Skills & Tools</h3>
-                    <div id="modal-skills" class="skills-chips">
-                        <!-- Dynamic Skills -->
-                    </div>
-                </div>
-            </div>
-        </div>
+  <!-- ───── Header ───── -->
+  <header class="site-header">
+    <div class="container">
+      <a href="#" class="logo">MK</a>
+      <div class="header-right">
+        <a href="mailto:mandarkashikar1@gmail.com" class="nav-icon" title="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://linkedin.com/in/mandarkashikar" target="_blank" class="nav-icon" title="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com/mandarkashikar" target="_blank" class="nav-icon" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <button class="nav-icon theme-btn" id="theme-toggle" title="Toggle theme">
+          <i class="fas fa-circle-half-stroke"></i>
+        </button>
+      </div>
     </div>
+  </header>
 
-    <script src="timeline_data.js"></script>
-    <script src="timeline_data_rich.js"></script>
-    <script src="script.js"></script>
+  <!-- ───── Main ───── -->
+  <main>
+    <div class="container">
+
+      <!-- Hero -->
+      <section class="hero">
+        <div class="hero-photo-wrap">
+          <img src="profile.jpg" alt="Mandar Kashikar" class="hero-photo">
+        </div>
+        <div class="hero-body">
+          <h1 class="hero-name">Mandar Kashikar</h1>
+          <p class="hero-title">Lead Product Manager &mdash; Retail Omnicommerce &amp; Payments</p>
+          <p class="hero-bio">
+            At Elavon / U.S. Bank, I build omni-channel commerce solutions that unify online and in-store selling for SMBs.
+            Outside work, I co-run <a href="https://studioocea.com" target="_blank">Studio Ocea</a> with my wife —
+            an art brand that keeps my product instincts grounded in real merchant pain.
+          </p>
+          <div class="hero-actions">
+            <a href="https://drive.google.com/file/d/1pVIH2_JIrzbLMbx5y9ybk6Nkv3vjWYpg/view?usp=sharing"
+               target="_blank" class="btn-solid">
+              Resume <i class="fas fa-arrow-up-right-from-square fa-xs"></i>
+            </a>
+            <a href="mailto:mandarkashikar1@gmail.com" class="btn-outline">Contact</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section class="section">
+        <h2 class="section-label">Core Skills</h2>
+        <div class="pill-group">
+          <span class="pill">Product Strategy &amp; Roadmap</span>
+          <span class="pill">Omni-channel Commerce</span>
+          <span class="pill">Payments &amp; POS Systems</span>
+          <span class="pill">SMB Solutions</span>
+          <span class="pill">API Integrations</span>
+          <span class="pill">Cross-functional Leadership</span>
+          <span class="pill">Go-to-Market Strategy</span>
+          <span class="pill">Data Analytics</span>
+          <span class="pill">Agile / Scrum</span>
+        </div>
+      </section>
+
+      <!-- Experience -->
+      <section class="section">
+        <h2 class="section-label">Experience</h2>
+        <ul class="exp-list" id="exp-list">
+          <!-- Populated by script.js from timelineDataRich -->
+        </ul>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ───── Footer ───── -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>Mandar Kashikar &middot; Toronto &middot;
+        <a href="mailto:mandarkashikar1@gmail.com">mandarkashikar1@gmail.com</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- ───── Detail Modal ───── -->
+  <div class="modal-bg" id="modal-bg" aria-hidden="true">
+    <div class="modal" id="modal" role="dialog" aria-modal="true">
+
+      <button class="modal-close" id="modal-close" aria-label="Close">
+        <i class="fas fa-xmark"></i>
+      </button>
+
+      <div class="modal-header">
+        <h2 id="m-role"></h2>
+        <p id="m-meta"></p>
+      </div>
+
+      <div class="modal-scroll">
+        <p class="m-summary" id="m-summary"></p>
+
+        <div class="m-block" id="m-resp-block">
+          <h3>What I Did</h3>
+          <ul id="m-resp"></ul>
+        </div>
+
+        <div class="m-block" id="m-proj-block">
+          <h3>Key Projects</h3>
+          <div id="m-projects"></div>
+        </div>
+
+        <div class="m-block" id="m-skills-block">
+          <h3>Skills &amp; Tools</h3>
+          <div class="pill-group" id="m-skills"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="timeline_data_rich.js"></script>
+  <script src="script.js"></script>
 </body>
-
 </html>

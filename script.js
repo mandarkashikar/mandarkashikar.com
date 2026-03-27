@@ -1,206 +1,137 @@
-document.addEventListener('DOMContentLoaded', () => {
+/* ──────────────────────────────────────────
+   mandark.dev — main script
+────────────────────────────────────────── */
+(function () {
+  'use strict';
 
-    const modal = document.getElementById('project-modal');
-    const closeBtn = document.querySelector('.close-modal');
-    const timelineList = document.getElementById('timeline-list');
+  /* ── Theme ─────────────────────────────── */
+  const root = document.documentElement;
+  const themeBtn = document.getElementById('theme-toggle');
+  const saved = localStorage.getItem('theme');
 
-    // Dynamically generate timeline items
-    timelineData.forEach(item => {
+  function applyTheme(t) {
+    root.setAttribute('data-theme', t);
+    localStorage.setItem('theme', t);
+  }
+
+  // Default: light unless saved as dark
+  applyTheme(saved === 'dark' ? 'dark' : 'light');
+
+  themeBtn && themeBtn.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+  });
+
+  /* ── Build experience list ─────────────── */
+  const list = document.getElementById('exp-list');
+
+  if (list && typeof timelineDataRich !== 'undefined') {
+    timelineDataRich.forEach(item => {
+      const li = document.createElement('li');
+      li.className = 'exp-item';
+      li.setAttribute('data-id', item.id);
+      li.innerHTML = `
+        <span class="exp-year">${item.year}</span>
+        <div class="exp-body">
+          <div class="exp-role">${item.role}</div>
+          <div class="exp-co">${item.company}</div>
+          <div class="exp-summary">${item.summary}</div>
+          <span class="exp-arrow">View details <i class="fas fa-arrow-right fa-xs"></i></span>
+        </div>
+      `;
+      li.addEventListener('click', () => openModal(item));
+      list.appendChild(li);
+    });
+  }
+
+  /* ── Modal ─────────────────────────────── */
+  const bg       = document.getElementById('modal-bg');
+  const modal    = document.getElementById('modal');
+  const closeBtn = document.getElementById('modal-close');
+
+  function openModal(data) {
+    document.getElementById('m-role').textContent    = data.role;
+    document.getElementById('m-meta').textContent    = `${data.company} · ${data.year}`;
+    document.getElementById('m-summary').textContent = data.summary || '';
+
+    /* Responsibilities */
+    const respBlock = document.getElementById('m-resp-block');
+    const respList  = document.getElementById('m-resp');
+    const bullets   = data.responsibilities || data.achievements || [];
+    respList.innerHTML = '';
+    if (bullets.length) {
+      bullets.forEach(b => {
         const li = document.createElement('li');
-        li.className = 'news-item';
-        li.setAttribute('data-project', item.id);
-
-        // Create the 3-column layout structure
-
-        let detailsHtml = `<div class="details">
-            <span class="role">${item.role}</span>
-            <span class="content-text">${item.content.replace(/<span class="highlight-link">.*?<\/span>/g, item.role).replace(item.role, '')}</span>`;
-
-        if (item.bullets && item.bullets.length > 0) {
-            detailsHtml += `<ul class="timeline-bullets">`;
-            item.bullets.forEach(bullet => {
-                detailsHtml += `<li>${bullet}</li>`;
-            });
-            detailsHtml += `</ul>`;
-        }
-        detailsHtml += `</div>`;
-
-        // Refined rendering using the new explicit fields
-        // We'll prefer the cleanest output
-
-        li.innerHTML = `
-            <span class="date">${item.year}</span>
-            <span class="company">${item.company}</span>
-            <div class="details">
-                <span class="role">${item.role}</span>
-                ${!item.bullets ? `<span class="content-text">${item.desc}</span>` : ''} 
-                ${item.bullets ? `<ul class="timeline-bullets">${item.bullets.map(b => `<li>${b}</li>`).join('')}</ul>` : ''}
-            </div>
-        `;
-
-        // Refined rendering to avoid duplicating content if we just want title/bullets
-        // Using the new explicit fields
-        li.innerHTML = `
-            <span class="date">${item.year}</span>
-            <span class="company">${item.company}</span>
-            <div class="details">
-                <span class="role">${item.role}</span>
-                ${!item.bullets ? `<span class="content-text">${item.desc}</span>` : ''} 
-                ${item.bullets ? `<ul class="timeline-bullets">${item.bullets.map(b => `<li>${b}</li>`).join('')}</ul>` : ''}
-            </div>
-        `;
-
-        timelineList.appendChild(li);
-
-        // Add click event listener to the new item
-        li.addEventListener('click', (e) => {
-            // Prevent triggering if clicking a link inside the item
-            if (e.target.tagName === 'A' || e.target.closest('a')) {
-                return;
-            }
-
-            const projectId = li.getAttribute('data-project');
-            const selectedItem = timelineData.find(d => d.id === projectId);
-
-            if (selectedItem) {
-                // Check if rich data is available
-                if (selectedItem.richId && typeof timelineDataRich !== 'undefined') {
-                    const richItem = timelineDataRich.find(r => r.id === selectedItem.richId);
-                    if (richItem) {
-                        openRichModal(richItem);
-                        return;
-                    }
-                }
-
-                // Fallback: If no rich data, check for external link
-                if (selectedItem.link) {
-                    window.open(selectedItem.link, '_blank');
-                    return;
-                }
-
-                // Fallback: Default simple modal logic (or alert)
-                // Since we replaced the modal HTML, we should use openRichModal with a simple object
-                openRichModal({
-                    role: selectedItem.title,
-                    company: '',
-                    year: selectedItem.year,
-                    summary: selectedItem.desc,
-                    responsibilities: selectedItem.bullets || [],
-                    projects: [],
-                    skills: []
-                });
-            }
-        });
-    });
-
-    function openRichModal(data) {
-        // Header
-        document.getElementById('modal-title').textContent = data.role;
-        document.getElementById('modal-subtitle').textContent = data.company ? `${data.company} | ${data.year}` : data.year;
-
-        // Overview
-        document.getElementById('modal-description').textContent = data.summary || '';
-
-        const achievementsList = document.getElementById('modal-achievements');
-        achievementsList.innerHTML = '';
-
-        const bullets = data.responsibilities && data.responsibilities.length > 0 ? data.responsibilities : (data.achievements || []);
-
-        if (bullets.length > 0) {
-            bullets.forEach(item => {
-                const li = document.createElement('li');
-                li.textContent = item;
-                achievementsList.appendChild(li);
-            });
-        }
-
-        // Projects (STAR Stories)
-        const projectsGrid = document.getElementById('modal-projects');
-        const projectsSection = projectsGrid.parentElement.parentElement; // Need to verify DOM path if hiding sections
-
-        projectsGrid.innerHTML = '';
-
-        if (data.projects && data.projects.length > 0) {
-            // projectsSection.style.display = 'block'; // Ensure section is visible
-            data.projects.forEach(project => {
-                const card = document.createElement('div');
-                card.className = 'project-card';
-
-                let starContent = '';
-                if (project.star) {
-                    starContent = `
-                        <div class="star-grid">
-                            <div class="star-item"><strong>Situation</strong> ${project.star.situation}</div>
-                            ${project.star.task ? `<div class="star-item"><strong>Task</strong> ${project.star.task}</div>` : ''}
-                            <div class="star-item"><strong>Action</strong> ${project.star.action}</div>
-                            <div class="star-item"><strong>Result</strong> ${project.star.result}</div>
-                        </div>
-                    `;
-                }
-
-                card.innerHTML = `
-                    <h4>${project.title}</h4>
-                    ${starContent}
-                `;
-                projectsGrid.appendChild(card);
-            });
-        } else {
-            // Optional: Hide section if empty
-            // projectsSection.style.display = 'none';
-        }
-
-        // Skills
-        const skillsContainer = document.getElementById('modal-skills');
-
-        skillsContainer.innerHTML = '';
-
-        if (data.skills && data.skills.length > 0) {
-            data.skills.forEach(skill => {
-                const chip = document.createElement('span');
-                chip.className = 'skill-chip';
-                chip.textContent = skill;
-                skillsContainer.appendChild(chip);
-            });
-        }
-
-        modal.style.display = 'block';
-        document.body.style.overflow = 'hidden'; // Disable scroll
+        li.textContent = b;
+        respList.appendChild(li);
+      });
+      respBlock.style.display = 'block';
+    } else {
+      respBlock.style.display = 'none';
     }
 
-    // Close Modal Logic
-    if (closeBtn) {
-        closeBtn.addEventListener('click', () => {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        });
-    }
-
-    window.addEventListener('click', (e) => {
-        if (e.target == modal) {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
+    /* Projects */
+    const projBlock = document.getElementById('m-proj-block');
+    const projWrap  = document.getElementById('m-projects');
+    projWrap.innerHTML = '';
+    if (data.projects && data.projects.length) {
+      data.projects.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'proj-card';
+        let starHtml = '';
+        if (p.star) {
+          const rows = [
+            { k: 'Situation', v: p.star.situation },
+            { k: 'Task',      v: p.star.task },
+            { k: 'Action',    v: p.star.action },
+            { k: 'Result',    v: p.star.result },
+          ].filter(r => r.v);
+          starHtml = `<div class="star-row">${rows.map(r =>
+            `<div class="star-item"><strong>${r.k}</strong>${r.v}</div>`
+          ).join('')}</div>`;
         }
-    });
-
-    // Theme Toggle Logic
-    const themeToggle = document.getElementById('theme-toggle');
-    const savedTheme = localStorage.getItem('theme');
-
-    // Default to dark mode logic
-    if (savedTheme !== 'light') {
-        document.body.classList.add('dark-mode');
-        if (themeToggle) themeToggle.checked = true;
+        card.innerHTML = `<h4>${p.title}</h4>${starHtml}`;
+        projWrap.appendChild(card);
+      });
+      projBlock.style.display = 'block';
+    } else {
+      projBlock.style.display = 'none';
     }
 
-    if (themeToggle) {
-        themeToggle.addEventListener('change', (e) => {
-            if (e.target.checked) {
-                document.body.classList.add('dark-mode');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                document.body.classList.remove('dark-mode');
-                localStorage.setItem('theme', 'light');
-            }
-        });
+    /* Skills */
+    const skillsBlock = document.getElementById('m-skills-block');
+    const skillsWrap  = document.getElementById('m-skills');
+    skillsWrap.innerHTML = '';
+    if (data.skills && data.skills.length) {
+      data.skills.forEach(s => {
+        const span = document.createElement('span');
+        span.className = 'pill';
+        span.textContent = s;
+        skillsWrap.appendChild(span);
+      });
+      skillsBlock.style.display = 'block';
+    } else {
+      skillsBlock.style.display = 'none';
     }
-});
+
+    bg.classList.add('open');
+    bg.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    bg.classList.remove('open');
+    bg.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  closeBtn && closeBtn.addEventListener('click', closeModal);
+
+  bg && bg.addEventListener('click', e => {
+    if (e.target === bg) closeModal();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
+})();

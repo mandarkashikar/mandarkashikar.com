@@ -1,1 +1,35 @@
+# macOS
 .DS_Store
+.AppleDouble
+.LSOverride
+
+# Secrets & credentials — NEVER commit these
+.env
+.env.*
+*.env
+*.token
+*.secret
+*.key
+*.pem
+*.p12
+*.pfx
+*_rsa
+*_ed25519
+id_rsa
+id_ed25519
+.secrets
+secrets.json
+credentials.json
+config.local.*
+*.local
+
+# Node (if ever added)
+node_modules/
+npm-debug.log*
+.npm
+
+# Build output (if ever added)
+dist/
+build/
+.next/
+out/
