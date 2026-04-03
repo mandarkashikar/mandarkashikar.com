@@ -1,35 +1,41 @@
-# macOS
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
 .DS_Store
-.AppleDouble
-.LSOverride
-
-# Secrets & credentials — NEVER commit these
-.env
-.env.*
-*.env
-*.token
-*.secret
-*.key
 *.pem
-*.p12
-*.pfx
-*_rsa
-*_ed25519
-id_rsa
-id_ed25519
-.secrets
-secrets.json
-credentials.json
-config.local.*
-*.local
 
-# Node (if ever added)
-node_modules/
+# debug
 npm-debug.log*
-.npm
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
 
-# Build output (if ever added)
-dist/
-build/
-.next/
-out/
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
