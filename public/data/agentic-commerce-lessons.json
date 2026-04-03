@@ -1,0 +1,655 @@
+{
+  "title": "Decoding Agentic Commerce",
+  "description": "A 90-day learning program for product managers exploring the future of AI-powered shopping",
+  "startDate": "2026-03-12",
+  "lessons": [
+    {
+      "day": 1,
+      "date": "2026-03-12",
+      "title": "Agentic Commerce Basics",
+      "readingTime": 8,
+      "concept": [
+        "An agentic commerce system is an AI agent that understands shopping intent, reasons about product fit, and facilitates purchases with human oversight",
+        "Unlike traditional search (keyword matching) or recommendations (collaborative filtering), agents *understand context* — price sensitivity, timing constraints, brand preferences, dietary restrictions",
+        "Agents use a loop: observe user constraints → search products → reason about tradeoffs → propose options → human confirms or refines",
+        "The agent doesn't just find products; it *explains why* a product fits. Transparency builds trust.",
+        "Agents are slower than instant recommendations but higher quality and more trustworthy for high-stakes purchases",
+        "For SMB merchants, agentic commerce is a competitive moat against Amazon because SMBs can't compete on catalog size, but they *can* compete on personalization and service",
+        "The infrastructure: LLM + tools (APIs to product DB, pricing, inventory, customer history) + guardrails (safety checks, human handoff rules)"
+      ],
+      "whyItMatters": [
+        "**Conversion & AOV**: Agents reduce friction by pre-vetting options, leading to higher purchase confidence and larger orders. Studies on ecommerce show that personalized recommendations increase AOV 10-25%.",
+        "**Customer lifetime value**: When an agent remembers user preferences and constraints, customers feel understood. This drives repeat purchases and loyalty — critical for SMB retention.",
+        "**Competitive differentiation**: Big e-commerce players (Amazon, Walmart) are moving toward agents. SMB merchants who adopt agents first (even on a smaller scale) can compete on service quality rather than scale."
+      ],
+      "quiz": [
+        {
+          "type": "mcq",
+          "question": "What is the key difference between an agentic commerce system and traditional product recommendations?",
+          "options": [
+            "Agents use keyword search, recommendations use browsing history",
+            "Agents understand context and reason about fit; recommendations passively suggest based on patterns",
+            "Agents are faster than recommendations",
+            "Agents only work for premium products"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "mcq",
+          "question": "For an SMB retailer, what is the main competitive advantage of agentic commerce?",
+          "options": [
+            "Larger product catalog than Amazon",
+            "Ability to compete on personalization and service rather than scale",
+            "Lower costs than traditional e-commerce platforms",
+            "Automatic customer acquisition"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "mcq",
+          "question": "What core loop does an agentic commerce system follow?",
+          "options": [
+            "Browse → Click → Pay",
+            "Search → Filter → Sort",
+            "Observe constraints → Search → Reason → Propose → Confirm",
+            "Train → Test → Deploy"
+          ],
+          "correct": 2
+        },
+        {
+          "type": "short-answer",
+          "question": "Why is transparency in agent recommendations important for user trust?"
+        },
+        {
+          "type": "short-answer",
+          "question": "How might an agent's ability to remember user preferences impact repeat purchase rates?"
+        }
+      ],
+      "answers": {
+        "mcq": [
+          "Agents understand *context* (budget, preferences, constraints) and actively reason about which products fit. Traditional recommendations passively suggest items based on collaborative filtering or browsing patterns, without understanding the 'why.'",
+          "SMBs can't compete on catalog size or logistics efficiency like Amazon, but they *can* offer personalized service. Agents that understand each customer's unique needs create differentiation.",
+          "Observe constraints → Search products → Reason about tradeoffs → Propose options → Human confirms. This human-in-the-loop approach keeps users in control.",
+          "If an agent simply recommends without explaining reasoning, users don't trust it (black box problem). When an agent says 'I chose this because it's in your budget, has 4.8★ reviews, and ships by Friday,' users understand the logic and trust the recommendation.",
+          "If an agent remembers that you prefer organic, gluten-free, and prefer Indian brands, repeat purchases feel effortless. You're more likely to return because the experience was personalized, not generic. This drives CLV."
+        ]
+      }
+    },
+    {
+      "day": 2,
+      "date": "2026-03-13",
+      "title": "Agent vs Automation vs Chatbot",
+      "readingTime": 7,
+      "concept": [
+        "**Agent**: Observes context, makes decisions, adapts behavior. Learns from interactions. Can handle nuance and ambiguity. Expensive (LLM calls per interaction).",
+        "**Automation**: Follows fixed, predetermined rules. No learning or adaptation. Reliable and cheap but brittle — breaks when edge cases appear.",
+        "**Chatbot**: Responds to user queries reactively. Doesn't proactively help. Conversational but limited to Q&A, not decision-making.",
+        "Choose **agents** when: the problem has ambiguity, user constraints vary wildly, personalization matters, stakes are high ($$$ or data). Example: 'Find a laptop for a data scientist with a $2K budget who travels a lot.'",
+        "Choose **automation** when: the problem is rule-based and stable. Example: 'If cart > $100, apply 10% discount.' No ambiguity, pure logic.",
+        "Choose **chatbots** when: you need conversational support but not autonomous decision-making. Example: FAQ answering, order status checks.",
+        "In practice, hybrid systems use all three: agents for complex decisions, automation for known flows, chatbots for support. Think of agents as the 'brain,' automation as the 'reflexes,' chatbots as the 'voice.'"
+      ],
+      "whyItMatters": [
+        "**Cost trade-off**: Agents are 10-100x more expensive per interaction than automation. If you over-agent, your margins die. If you under-agent, you lose conversion.",
+        "**User expectations**: Customers expect personalization ('you remember what I like') but also reliability ('this always works'). You need the right mix.",
+        "**Operational burden**: Agents can fail in weird ways (hallucinate, confabulate). Automation is dumb but reliable. Chatbots are safe because they don't decide. As a PM, you need to choose your risk profile."
+      ],
+      "quiz": [
+        {
+          "type": "mcq",
+          "question": "When should you use an agent instead of automation?",
+          "options": [
+            "When you need to apply a simple discount rule",
+            "When the problem involves ambiguity and personalization matters",
+            "When you want the cheapest solution",
+            "When you want the fastest response time"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "mcq",
+          "question": "What is the main risk of over-relying on agents for simple tasks?",
+          "options": [
+            "Users get bored",
+            "Cost per interaction skyrockets",
+            "The system becomes too smart",
+            "Agents refuse to work on weekends"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "mcq",
+          "question": "Which system is best for 'If order > $100, give 10% discount'?",
+          "options": [
+            "Agent",
+            "Chatbot",
+            "Automation",
+            "All three equally"
+          ],
+          "correct": 2
+        },
+        {
+          "type": "short-answer",
+          "question": "Describe a scenario where a hybrid system (agent + automation + chatbot) would outperform using just one."
+        },
+        {
+          "type": "short-answer",
+          "question": "Why might a chatbot be 'safer' than an agent for customer support?"
+        }
+      ],
+      "answers": {
+        "mcq": [
+          "Agents are best when the problem is nuanced and personalization matters. Simple rule-based tasks should use automation.",
+          "LLM calls cost money (~$0.01-0.10 per call). Overusing agents on simple tasks burns margin. Stick to automation for known rules.",
+          "This is pure rule-based logic. Automation is perfect here — cheap, fast, reliable.",
+          "Example: A user asks 'Find me running shoes.' Agent understands they want athletic footwear and their history (marathoner, prefers Nike). Automation applies member discount. Chatbot handles follow-ups ('Do you have size 10?' 'What colors?'). Each system does what it's best at.",
+          "Chatbots are reactive responders — they answer questions but don't make autonomous decisions. If a chatbot hallucinates, it's just wrong information, not a purchase decision. Agents, by contrast, can make bad purchase recommendations if they confabulate. Chatbots are safer because the user is still in control."
+        ]
+      }
+    },
+    {
+      "day": 3,
+      "date": "2026-03-14",
+      "title": "LLM + Tools Architecture",
+      "readingTime": 9,
+      "concept": [
+        "An LLM alone (without tools) is a prediction machine — it generates the next likely token based on patterns in training data. It doesn't have real-time information or the ability to take actions.",
+        "Tools are APIs or functions the agent can call to interact with the world. Examples: search product DB, get pricing, check inventory, fetch user history, process payment.",
+        "The agent loop: LLM reads context + tools list → LLM reasons and says 'I should call search_products with query=laptop' → system calls that tool → tool returns results → LLM reads results → LLM reasons next step → repeat until LLM says 'I'm done, here's my answer'",
+        "Tool design is critical. If your product search API is slow or returns bad results, the agent output is garbage. 'Garbage in, garbage out.' The agent is only as good as its tools.",
+        "Each tool call has a cost (latency + infrastructure cost). Minimize tool calls by designing smart tools. Example: instead of calling 'get_product(id)' 100 times, call 'search_products_by_criteria()' once.",
+        "Tool integration requires guardrails: What if a tool times out? What if it returns invalid data? You need fallback behavior.",
+        "Reliability comes from well-designed tools, not smarter prompts. Don't try to 'prompt engineer' away bad data. Fix the data source."
+      ],
+      "whyItMatters": [
+        "**Latency**: Each tool call adds 50-500ms. If an agent needs 5 tool calls, response time is 250ms-2.5s. For e-commerce, this is acceptable; for real-time bidding, it's too slow.",
+        "**Cost**: LLM calls + tool calls both cost money. A search-recommendation loop might cost $0.01-0.05 per request. Scale to 1M requests/day and you're burning $10K-50K/day. Tool efficiency directly impacts unit economics.",
+        "**Data quality**: If your product DB is stale, has bad descriptions, or wrong prices, the agent will recommend stale/bad products. As a PM, you own tool quality, not just the agent's intelligence."
+      ],
+      "quiz": [
+        {
+          "type": "mcq",
+          "question": "Why can't an LLM alone (without tools) provide real-time product recommendations?",
+          "options": [
+            "LLMs are too dumb",
+            "LLMs generate predictions based on training data patterns, but have no access to real-time information like current prices or inventory",
+            "Tools are more accurate than LLMs",
+            "Real-time data requires human intervention"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "mcq",
+          "question": "What happens if your product search tool is slow (e.g., 2 second latency)?",
+          "options": [
+            "The agent becomes smarter",
+            "The agent's response time becomes unacceptably slow (5-10 second waits), harming UX",
+            "Prices become more accurate",
+            "Nothing, latency doesn't matter"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "mcq",
+          "question": "If you have a choice between a 'smarter prompt' or 'better product data,' which should a PM prioritize?",
+          "options": [
+            "Always smarter prompt",
+            "Always better data",
+            "Smarter prompt first",
+            "Data quality — it's the foundation"
+          ],
+          "correct": 3
+        },
+        {
+          "type": "short-answer",
+          "question": "Design a tool stack for a grocery delivery agent. What tools would you include?"
+        },
+        {
+          "type": "short-answer",
+          "question": "Why is 'minimize tool calls' a good design principle?"
+        }
+      ],
+      "answers": {
+        "mcq": [
+          "LLMs are pattern-matching machines trained on historical data. They don't browse the web, check real-time inventory, or fetch live prices. To give real-time recommendations, they need tools.",
+          "If each tool call takes 2s and the agent makes 5 calls, response time = 10s, which is a bad UX. Tool latency directly impacts end-user latency.",
+          "As a PM, you should prioritize data quality. A bad prompt + great data usually beats a great prompt + bad data. The agent can't fix bad data with clever prompting.",
+          "Example tools: search_products_by_dietary_restriction(), check_inventory_realtime(), get_product_reviews(), check_delivery_time_to_zipcode(), apply_loyalty_discount(). These are the APIs your agent calls.",
+          "Each tool call = latency + cost. If you call 'get_product(id)' 100 times, that's 100 API calls. Better to call 'search_products_by_criteria(dietary=vegan, budget=50)' once and get 20 results. Fewer calls = faster response, lower cost."
+        ]
+      }
+    },
+    {
+      "day": 4,
+      "date": "2026-03-15",
+      "title": "Memory, Context & State",
+      "readingTime": 8,
+      "concept": [
+        "**Context** (short-term): What happened in this conversation. Example: user said 'I have a $100 budget,' agent needs to remember that for the next 10 exchanges.",
+        "**State** (session): Persistent data about the user's current shopping session. Example: items added to cart, filters applied, conversation history.",
+        "**Memory** (long-term): Historical information about the user across sessions. Example: 'This user always buys organic,' 'They prefer Nike,' 'Allergic to shellfish.'",
+        "Memory is a double-edged sword: it enables personalization (higher conversion) but creates data privacy and security risks. More memory = more breach exposure.",
+        "In-context learning: You can give the agent context by putting it in the prompt. Example: 'User preferences: organic, vegan, budget $50.' The LLM reads this and reasons better. This is cheap (text in prompt) but limited by context window size (~4K-100K tokens).",
+        "Vector databases (embeddings) allow long-term memory at scale. Instead of storing 10 years of history, you store embeddings of user preferences and retrieve only relevant ones. Semantic search: 'Find past purchases similar to what they're searching for now.'",
+        "Privacy guardrails: Decide what to remember and what to forget. Example: remember purchase patterns, but forget credit card numbers. This requires careful system design."
+      ],
+      "whyItMatters": [
+        "**Personalization at scale**: Memory is how you personalize 1M+ users. Without memory, every user gets generic recommendations. With memory, you're treating each user as an individual.",
+        "**Compliance & privacy**: GDPR, CCPA, and other privacy laws mandate that you can delete user data. If memory is baked into every decision, you can't anonymize without retraining. You need architecture that treats memory as separate, deletable, and auditable.",
+        "**Cold start problem**: New users have no memory. How do you personalize for them? Strategy: use short-term context (what they say this session) + cohort defaults (similar users' patterns) + light exploration (show variety, observe reactions)."
+      ],
+      "quiz": [
+        {
+          "type": "mcq",
+          "question": "What's the difference between 'context' and 'memory' in an agentic system?",
+          "options": [
+            "They're the same thing",
+            "Context is conversation-level (this session); memory is user-level (across sessions)",
+            "Memory is faster than context",
+            "Context is only for chatbots"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "mcq",
+          "question": "Why might an agent need both in-context learning AND a vector database?",
+          "options": [
+            "Redundancy/backup",
+            "In-context learning is fast but limited by token window; vector DB allows semantic search over long-term memory at scale",
+            "In-context learning is cheaper",
+            "They're mutually exclusive"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "mcq",
+          "question": "Under GDPR, if a user asks 'delete my data,' what must you do?",
+          "options": [
+            "Keep the data but anonymize the name",
+            "Delete all data about them, including memory, preferences, and history",
+            "Keep it for 'business purposes'",
+            "Ask them to opt out instead"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "short-answer",
+          "question": "How would you personalize recommendations for a brand-new user with zero purchase history?"
+        },
+        {
+          "type": "short-answer",
+          "question": "What data should an agent remember vs. forget for privacy/security?"
+        }
+      ],
+      "answers": {
+        "mcq": [
+          "Context = conversation-level facts the agent needs to remember right now. Memory = historical facts about the user that persist across sessions.",
+          "In-context learning (putting facts in the prompt) is fast but limited — a prompt can only hold ~4K-100K tokens. Vector DBs let you store years of data and retrieve only relevant pieces via semantic search ('Find products similar to ones you've liked').",
+          "GDPR's 'right to be forgotten' means you must delete all personal data when a user requests it. You can't keep memory 'for business purposes' if the user says delete.",
+          "Strategy: Use short-term context (what they say: 'I'm lactose intolerant, budget $30'). Use cohort defaults (show products popular with similar demographics). Light exploration: show variety and observe which categories they click on. Gather data quickly, then start personalizing.",
+          "Remember: purchase history, preferences ('vegan'), constraints ('nut allergy'). Forget: payment methods, passwords, IP addresses (for legal reasons). Store sensitive data separately (payment) from preference data (personalization). This way, you can delete payment data without losing personalization memory."
+        ]
+      }
+    },
+    {
+      "day": 5,
+      "date": "2026-03-16",
+      "title": "Human-in-the-Loop Patterns",
+      "readingTime": 8,
+      "concept": [
+        "Human-in-the-loop: The agent proposes, but the human decides. Agent never acts autonomously.",
+        "Use HITL when: stakes are high (money, data), agent confidence is low (<60%), or the decision is irreversible. Example: proposing a $500 laptop purchase — let the user confirm.",
+        "Friction trade-off: HITL adds a click/confirmation step. For low-stakes decisions (product color), this kills conversion. For high-stakes (checkout), it builds trust.",
+        "Confidence-aware HITL: The agent includes its confidence score. Example: 'I'm 95% sure this fits your needs' vs. 'I'm 40% sure.' Use agent confidence to decide whether to auto-approve low-stakes or require confirmation.",
+        "Escalation patterns: If agent is stuck (ambiguous user input), escalate to a human support agent (live chat, email). Don't let the agent make a bad guess.",
+        "Feedback loops: When a user approves/rejects an agent recommendation, use that feedback to improve. Example: user rejects laptop A but buys laptop B → agent learns 'this user prefers brand X over brand Y.'",
+        "Transparent logging: HITL systems must log *why* the agent made its recommendation. If the user later disputes the decision ('Why did you recommend this?'), you have the reasoning."
+      ],
+      "whyItMatters": [
+        "**Trust & liability**: If an agent makes a bad recommendation and the user loses money, who's liable? With HITL, you can say 'the user approved it,' reducing your legal risk. This matters for financial or medical products.",
+        "**Conversion optimization**: HITL adds friction, but it's intentional friction. A user who actively confirms a purchase (vs. accidentally clicking 'buy') has higher satisfaction and lower return rates.",
+        "**Feedback & improvement**: HITL creates a feedback loop. Every rejection teaches the agent. Over time, your agent gets smarter on *your* specific customer base, not just the general population."
+      ],
+      "quiz": [
+        {
+          "type": "mcq",
+          "question": "When should you use human-in-the-loop (agent proposes, human confirms)?",
+          "options": [
+            "For all decisions, to be safe",
+            "For high-stakes decisions or when agent confidence is low",
+            "Never — fully autonomous is better",
+            "Only for chatbots"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "mcq",
+          "question": "What's a downside of HITL for low-stakes decisions (e.g., choosing a product color)?",
+          "options": [
+            "It's too accurate",
+            "It adds confirmation friction, which can harm conversion",
+            "Users love clicking extra buttons",
+            "It makes the agent too smart"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "mcq",
+          "question": "If an agent is 90% confident in a recommendation, should you require user confirmation?",
+          "options": [
+            "Yes, always confirm",
+            "No, auto-approve if confidence is high enough",
+            "Depends on stakes (high-stakes = confirm, low-stakes = auto-approve)",
+            "Ask the user every time"
+          ],
+          "correct": 2
+        },
+        {
+          "type": "short-answer",
+          "question": "Design a HITL workflow for a financial product recommendation (e.g., suggesting a mortgage)."
+        },
+        {
+          "type": "short-answer",
+          "question": "How could user rejections of agent recommendations be used to improve the agent over time?"
+        }
+      ],
+      "answers": {
+        "mcq": [
+          "HITL is for high-stakes (money, irreversible decisions) or when the agent is uncertain. For low-stakes, auto-approve to reduce friction.",
+          "If every product decision requires confirmation ('Are you sure about this blue shirt?'), users get annoyed and abandon. Confirmation should be rare and justified (high cost or importance).",
+          "Confidence-based HITL: If agent is 90%+ confident and it's a low-stakes decision, auto-approve. If agent is <70% confident or it's a high-stakes decision, require confirmation.",
+          "Example: Agent analyzes user's credit score, debt-to-income, and says 'I recommend a $300K mortgage at 6.5%.' User sees: (1) Agent's reasoning (credit analysis, rate comparison), (2) Risk disclosure ('monthly payment: $1,900'), (3) Confirmation button, (4) Option to chat with human advisor.",
+          "Log every rejection with the recommendation and the user's choice. Over time, analyze: 'Agent recommended product A, user bought product B.' This pattern teaches the agent. If 80% of users reject the agent's recommendation and buy something else, retrain the agent to recommend that something else instead."
+        ]
+      }
+    },
+    {
+      "day": 6,
+      "date": "2026-03-17",
+      "title": "Reliability & Fallback Design",
+      "readingTime": 8,
+      "concept": [
+        "Agents fail silently and mysteriously. An LLM might hallucinate, a tool might time out, a user might give ambiguous input. Your job as PM is to assume failure will happen and design graceful degradation.",
+        "Never show the user a broken experience. If the agent fails, fall back to a simpler system that *works*. Example: if agent times out, show simple search results instead of 'Agent is thinking...'",
+        "Tool timeouts: Set reasonable limits (e.g., 10 seconds max for all tool calls). If tools take too long, timeout and fall back to cached/default results.",
+        "Hallucination handling: If an LLM invents a product or price, the tool should catch it. Example: agent says 'recommend product ID 99999,' but that product doesn't exist. The tool rejects it, and the agent gets an error. Agent must handle the error gracefully.",
+        "Ambiguous input: If a user says 'I want something nice,' the agent should ask for clarification rather than guessing. Example: 'I'm not sure what you mean by 'nice.' Do you mean affordable, premium quality, trending, or popular?'",
+        "Monitoring & alerting: Log agent decisions, tool calls, timeouts, and rejections. If rejection rate spikes (users are saying 'no' a lot), alert the team. You have a data quality or model issue.",
+        "Graceful degradation: Design the fallback path. Example: (1) Try agentic recommendation, (2) If fails, show top products by rating, (3) If that fails, show search results, (4) If that fails, show 'Browse by category.'"
+      ],
+      "whyItMatters": [
+        "**Reliability > intelligence**: A dumb system that always works beats a smart system that fails. Users prefer a simple 'browse by category' to a broken AI that doesn't respond.",
+        "**Cost of failure**: If an agent makes a bad recommendation and the user returns it, you lose margin (restocking, shipping back, customer satisfaction). A simple fall back cost nothing in comparison.",
+        "**Trust**: Users will forgive a failed agent if you gracefully fall back. They won't forgive an agent that breaks silently (user doesn't realize the recommendation is broken and buys the wrong thing)."
+      ],
+      "quiz": [
+        {
+          "type": "mcq",
+          "question": "What's the best fallback when an agent times out?",
+          "options": [
+            "Show 'Agent is thinking...' until it responds",
+            "Show cached results or simple search results instead",
+            "Tell the user 'Please try again later'",
+            "Guess and make a recommendation anyway"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "mcq",
+          "question": "If an agent hallucinates a product (recommends something that doesn't exist), how should you handle it?",
+          "options": [
+            "Show it to the user anyway (it's creative)",
+            "Catch it at the tool layer and return an error to the agent, forcing the agent to recover",
+            "Ignore it and hope the user doesn't notice",
+            "Blame the user for the ambiguous input"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "mcq",
+          "question": "What does 'graceful degradation' mean in the context of agentic systems?",
+          "options": [
+            "The system works less well over time",
+            "If the agent fails, fall back to a simpler but working system (search, browsing, etc.)",
+            "Degrade the user's experience intentionally",
+            "It means the same thing as 'reliability'"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "short-answer",
+          "question": "Design a graceful degradation path for an agent-powered product recommendation."
+        },
+        {
+          "type": "short-answer",
+          "question": "What metrics would you monitor to detect when an agent is failing?"
+        }
+      ],
+      "answers": {
+        "mcq": [
+          "Show something useful (cached results, top-rated products, search). Never leave the user hanging with 'thinking...' Don't make users wait for a broken agent.",
+          "At the tool layer, validate that the product ID exists, the price is reasonable, etc. If validation fails, return an error to the agent. The agent then says 'I couldn't find that product, here are alternatives.'",
+          "Graceful degradation = if primary system fails, fall back to secondary system. Example: agent fails → show top-rated products → show search → show category browse.",
+          "Path: (1) Agent analyzes user input + preferences → recommends top 3 products with reasoning. (2) If agent times out (>10s), show top products by rating in that category. (3) If that fails, show search results. (4) If search is broken, show 'Browse by category' (pure navigation, always works). Each step is simpler and more reliable than the one before.",
+          "Metrics: (1) Agent timeout rate (% of requests that timeout), (2) User rejection rate (% of recommendations rejected), (3) Tool call failures (% of API calls that fail), (4) Fallback rate (% of requests that had to use fallback), (5) Hallucination rate (% of responses with fictional products). Alert when any metric spikes."
+        ]
+      }
+    },
+    {
+      "day": 7,
+      "date": "2026-03-18",
+      "title": "Evaluation Basics (Quality Metrics)",
+      "readingTime": 8,
+      "concept": [
+        "You can't improve what you don't measure. For agentic systems, measure: accuracy, clarity, trust, and conversion.",
+        "**Accuracy**: Did the agent recommend a product that the user actually wanted? Measure: (1) User bought it → accurate, (2) User rejected it and bought something else → inaccurate.",
+        "**Clarity**: Did the agent explain its reasoning well? Measure: (1) User understands the recommendation (survey), (2) User can explain why this product fits them.",
+        "**Trust**: Does the user believe the agent is acting in their interest? Measure: (1) Would you recommend this agent to a friend? (2) Do you trust the agent's recommendations? (NPS-style survey).",
+        "**Conversion**: Did the recommendation drive a purchase? Measure: (1) Recommendation acceptance rate (% of users who buy what the agent recommended), (2) AOV impact (average order value with agent vs. without).",
+        "A/B testing: Compare agent recommendations vs. human recommendations or simple search. Measure which drives higher conversion and customer satisfaction.",
+        "Confidence vs. accuracy trade-off: An agent that's 90% confident and 95% accurate is great. An agent that's 90% confident but only 60% accurate is terrible (overconfident). Track this 2x2."
+      ],
+      "whyItMatters": [
+        "**Data-driven decisions**: Without metrics, you're guessing. You don't know if your agent is actually helping. Metrics tell you the truth.",
+        "**Continuous improvement**: Metrics identify problems. 'Users are rejecting 40% of recommendations' → investigate why → improve. Metrics drive product iteration.",
+        "**ROI calculation**: You can calculate the ROI of building an agent. Example: agent increases AOV by 5% → $X incremental revenue per month → did the agent build cost pay for itself?"
+      ],
+      "quiz": [
+        {
+          "type": "mcq",
+          "question": "What's the most important metric for an agentic commerce system?",
+          "options": [
+            "How smart the AI is",
+            "Recommendation accuracy (did users buy what the agent recommended)",
+            "How many API calls the agent makes",
+            "How fast the agent responds"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "mcq",
+          "question": "You have two agents: Agent A is 90% confident and 85% accurate. Agent B is 80% confident and 90% accurate. Which is better?",
+          "options": [
+            "Agent A (higher confidence)",
+            "Agent B (higher accuracy despite lower confidence)",
+            "They're equally good",
+            "Can't determine without more data"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "mcq",
+          "question": "How would you measure if an agent actually improved conversion?",
+          "options": [
+            "Ask the agent if it thinks it improved conversion",
+            "A/B test agent recommendations vs. no agent (or simple search). Compare purchase rates.",
+            "Count how many times the agent was called",
+            "Just assume it improved"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "short-answer",
+          "question": "Design a metric to measure 'clarity' of agent explanations."
+        },
+        {
+          "type": "short-answer",
+          "question": "A/B test reveals that agent recommendations have a 25% acceptance rate, while simple search has a 20% acceptance rate. Is the agent worth building?"
+        }
+      ],
+      "answers": {
+        "mcq": [
+          "Recommendation accuracy (did users actually buy what the agent suggested) is the key metric. Smart AI means nothing if users don't buy.",
+          "Agent B is better. Accuracy > confidence. An agent that's overconfident but inaccurate will make bad recommendations with certainty. An agent that's modest but accurate is trustworthy.",
+          "A/B testing is the gold standard. Split traffic: 50% get agent recommendations, 50% get simple search (or no recommendation). Measure purchase rate, AOV, return rate. Compare.",
+          "Measure clarity: (1) After seeing the recommendation, ask the user 'Do you understand why this product was recommended?' (yes/no), (2) Ask 'Can you explain in your own words why it fits your needs?' and score the answer (0-3). (3) Track explanations with highest engagement (users reading the explanation text) vs. ones they skip. High engagement = clarity works.",
+          "Yes, it's worth it. 25% vs. 20% = 25% relative lift in acceptance rate. If your checkout rate is also higher (users who buy through agent have lower return rate), the ROI is even better. But you need to monitor confidence vs. accuracy — if the agent is recommending 100% of the time with high confidence, that 25% acceptance rate might hide a poor accuracy problem."
+        ]
+      }
+    },
+    {
+      "day": 8,
+      "date": "2026-03-19",
+      "title": "Prompting Patterns for Commerce Agents",
+      "readingTime": 8,
+      "concept": [
+        "A good prompt teaches the agent what to do without being brittle. The goal is *role clarity* and *constraint specification.*",
+        "**Role clarity**: Tell the agent what role it plays. Example: 'You are a personal shopping assistant for an outdoor retailer. Your goal is to find the best product for the customer, considering price, quality, and availability.'",
+        "**Constraint specification**: Tell the agent what it can and can't do. Example: 'You must never recommend products you're unsure about. If you're <80% confident, say 'I'm not sure' and ask for clarification.'",
+        "**Specific prompts beat generic**: Instead of 'Find a good laptop,' say 'Find a laptop for a programmer with a $2K budget, who values portability (works from coffee shops), prefers Linux, and has a 1-year warranty requirement.'",
+        "**Few-shot examples**: Give 2-3 examples of good agent behavior. Example: User: 'I want something for hiking.' Agent: 'I'd like to clarify — are you looking for (A) hiking boots, (B) a backpack, (C) a jacket, or (D) something else?' This teaches the agent to ask clarifying questions.",
+        "**Avoid hallucination**: Tell the agent 'If a product is not in our database, you must say so. You must never invent products or prices.' Make the rules explicit.",
+        "**Reasoning transparency**: Ask the agent to 'think step by step.' Example: 'First, identify the user's constraints. Second, search for products. Third, reason about fit. Finally, explain your recommendation.' Step-by-step thinking reduces hallucination."
+      ],
+      "whyItMatters": [
+        "**Prompt quality > model quality**: A mediocre model with a great prompt can outperform a smart model with a bad prompt. Prompting is a strategic lever for PMs.",
+        "**Consistency**: A good prompt makes agent behavior consistent. Different users get similar-quality explanations, similar reasoning paths, similar confidence levels.",
+        "**Reducing hallucination**: Many hallucinations come from under-constrained prompts. An agent that's told 'make a recommendation' might invent a product. An agent that's told 'only recommend products in our database' won't."
+      ],
+      "quiz": [
+        {
+          "type": "mcq",
+          "question": "What's more important for agent quality: a smarter model or a better prompt?",
+          "options": [
+            "Always a smarter model",
+            "Always a better prompt",
+            "Both matter, but prompt quality is surprisingly high-leverage",
+            "They're equally important"
+          ],
+          "correct": 2
+        },
+        {
+          "type": "mcq",
+          "question": "Why should you use 'few-shot examples' (examples of good behavior) in a prompt?",
+          "options": [
+            "To waste tokens",
+            "To teach the agent patterns of good behavior",
+            "Because it's always required",
+            "To make the prompt longer"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "mcq",
+          "question": "If an agent is inventing products (hallucinating), what's the first thing you should do?",
+          "options": [
+            "Buy a smarter model",
+            "Add explicit constraints to the prompt: 'Only recommend products in our database. Never invent products.'",
+            "Give up",
+            "Ask the user to be more specific"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "short-answer",
+          "question": "Write a role clarity statement for an agent that sells artisan coffee."
+        },
+        {
+          "type": "short-answer",
+          "question": "Design a few-shot example that teaches an agent to ask clarifying questions."
+        }
+      ],
+      "answers": {
+        "mcq": [
+          "Prompt quality is surprisingly high-leverage. A specific, constraint-aware prompt can make a mid-tier model outperform a smart model with a vague prompt. Many teams focus on model upgrades when prompt refinement would be faster and cheaper.",
+          "Few-shot examples teach the agent through demonstration. Instead of saying 'be helpful,' you show what helpful looks like. The agent learns patterns from examples.",
+          "Explicit constraints in the prompt prevent hallucination. Tell the agent 'only use products in our database' and it won't invent products. Prompting is the first line of defense.",
+          "Example: 'You are a barista-level coffee advisor for specialty coffee lovers. Your goal is to match customers with coffees based on their taste preferences (fruity, earthy, acidic), brewing method (pour-over, espresso, cold brew), and budget. You know our 50-coffee inventory deeply and can explain flavor profiles, origins, and brewing best practices.'",
+          "Example: User says 'I want something smooth.' Agent responds: 'I'd love to help! When you say 'smooth,' do you mean: (A) Low acidity (like a Brazilian or Sumatran blend), (B) Full-bodied and mellow (like a dark roast), (C) Creamy/buttery (like a washed Ethiopian), or (D) something else? Also, how do you usually brew coffee (espresso, pour-over, French press)?'"
+        ]
+      }
+    },
+    {
+      "day": 9,
+      "date": "2026-03-20",
+      "title": "Multi-Agent Orchestration Basics",
+      "readingTime": 9,
+      "concept": [
+        "A single agent trying to do everything (product discovery, Q&A, checkout support, fraud detection) is overloaded. Specialized multi-agent systems perform better.",
+        "**Agent specialization**: One agent for discovery ('Find products'), one for Q&A ('Answer questions about products'), one for checkout ('Process the purchase'), one for support ('Handle returns').",
+        "**Coordination via shared state**: Agents don't directly talk; they read/write a shared context. Example: Discovery agent finds 3 products → writes them to shared state → Q&A agent reads state and answers questions about those 3 → Checkout agent reads state and processes purchase.",
+        "**Handoff patterns**: When does agent A hand off to agent B? Example: Discovery agent says 'User has 2 options, both good. Which would you like to buy?' User picks one → Checkout agent takes over.",
+        "**Error isolation**: If one agent fails, others keep working. Example: Q&A agent times out → skip it, go straight to checkout. This is more robust than a monolithic agent.",
+        "**Monitoring complexity**: With N agents, you need to monitor N loggers, N metrics, N error paths. Operational overhead increases. Start with 1-2 agents, scale to 3-4 only when justified.",
+        "**Common multi-agent pattern for commerce**: (1) Discovery agent (search + filter), (2) Reasoning agent (explain fit to user constraints), (3) Checkout agent (process purchase), (4) Support agent (handle issues post-purchase)."
+      ],
+      "whyItMatters": [
+        "**Reliability**: Specialized agents are more reliable because they do one thing well. A discovery agent that *only* searches can be optimized for search speed. A reasoning agent that *only* explains can be optimized for clarity.",
+        "**Cost efficiency**: A discovery agent uses small, fast LLM calls (search query → results). A reasoning agent uses smarter, slower LLM calls (reason about fit). You can use different models for each (cheap for discovery, expensive for reasoning).",
+        "**Maintainability**: Monolithic agents become unwieldy (1000-line prompts). Multi-agent systems are modular. You can update the discovery agent without affecting reasoning."
+      ],
+      "quiz": [
+        {
+          "type": "mcq",
+          "question": "Why would you use multiple specialized agents instead of one big agent?",
+          "options": [
+            "Multiple agents are always better",
+            "Specialization improves reliability, cost efficiency, and maintainability",
+            "One big agent is simpler, so avoid multiple agents",
+            "Multiple agents are required by law"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "mcq",
+          "question": "How do specialized agents communicate in a multi-agent system?",
+          "options": [
+            "Direct LLM-to-LLM conversation",
+            "Through shared state (context, memory, data stores) that each agent reads/writes",
+            "Via text messages",
+            "They don't communicate"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "mcq",
+          "question": "If a Discovery agent fails (times out), what should happen in a well-designed multi-agent system?",
+          "options": [
+            "The entire system crashes",
+            "Other agents (Reasoning, Checkout) continue working; system gracefully degrades",
+            "The user is blamed",
+            "Retry the Discovery agent forever"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "short-answer",
+          "question": "Design a multi-agent system for a grocery delivery service. What agents would you have and what would each do?"
+        },
+        {
+          "type": "short-answer",
+          "question": "What are the costs of moving from 1 agent to 3 agents? (Hint: think about operations and debugging.)"
+        }
+      ],
+      "answers": {
+        "mcq": [
+          "Specialization wins: each agent does one job well. Discovery is fast search, Reasoning is thoughtful analysis, Checkout is efficient transactions. You avoid the overloaded monolith problem.",
+          "Agents are independent processes that read/write shared state. Example: Discovery agent queries product DB, stores results in shared context → Reasoning agent reads those results and analyzes them → Checkout agent reads the chosen product and processes payment.",
+          "Error isolation: if Discovery times out, skip it and show cached results. Reasoning and Checkout still work. The system degrades gracefully rather than crashing entirely.",
+          "Example: (1) Discovery Agent - searches product DB by dietary filters (vegan, organic, etc.), returns top 10. (2) Inventory Agent - checks real-time stock + delivery time to user's zipcode. (3) Checkout Agent - handles payment and order confirmation. (4) Support Agent - processes returns/refunds. Each agent specializes.",
+          "Costs: (1) Operational complexity — 3x the logs, 3x the metrics, harder debugging (which agent failed?). (2) Integration costs — agents need shared state, handoff rules, error handling between them. (3) Testing — testing N agents is harder than testing 1. Benefit: better reliability and cost. Trade-off: only scale to 3+ agents when 1 agent is the bottleneck."
+        ]
+      }
+    }
+  ]
+}
