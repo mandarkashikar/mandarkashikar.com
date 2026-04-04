@@ -11,13 +11,23 @@ interface Lesson {
 
 export default function BlogIndex() {
   const [lessons, setLessons] = useState<Lesson[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch('/data/agentic-commerce-lessons.json')
-      .then((res) => res.json())
-      .then((data) => {
+    const fetchLessons = async () => {
+      try {
+        const res = await fetch('/data/agentic-commerce-lessons.json');
+        if (!res.ok) throw new Error('Failed to load lessons');
+        const data = await res.json();
         setLessons(data.lessons);
-      });
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Error loading lessons');
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchLessons();
   }, []);
 
   return (
@@ -46,9 +56,33 @@ export default function BlogIndex() {
             </p>
           </div>
 
+          {/* Loading State */}
+          {loading && (
+            <div className="space-y-3">
+              {[...Array(5)].map((_, i) => (
+                <div key={i} className="p-4 border border-gray-200 dark:border-gray-800 rounded-lg animate-pulse">
+                  <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-1/4 mb-2"></div>
+                  <div className="h-6 bg-gray-300 dark:bg-gray-700 rounded w-3/4 mb-3"></div>
+                  <div className="flex gap-4">
+                    <div className="h-3 bg-gray-300 dark:bg-gray-700 rounded w-1/6"></div>
+                    <div className="h-3 bg-gray-300 dark:bg-gray-700 rounded w-1/6"></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Error State */}
+          {error && (
+            <div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
+              <p className="text-red-800 dark:text-red-200">Error: {error}</p>
+            </div>
+          )}
+
           {/* Lessons Grid */}
-          <div className="space-y-3">
-            {lessons.map((lesson) => (
+          {!loading && !error && (
+            <div className="space-y-3">
+              {lessons.map((lesson) => (
               <Link
                 key={lesson.day}
                 href={`/blog/${lesson.day}`}
@@ -68,8 +102,9 @@ export default function BlogIndex() {
                   <div className="ml-4 text-gray-400 dark:text-gray-600">→</div>
                 </div>
               </Link>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
 
           {/* Progress */}
           <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800">

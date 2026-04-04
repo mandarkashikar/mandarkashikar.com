@@ -1,7 +1,10 @@
+import { GetStaticProps, GetStaticPaths } from 'next';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
+import fs from 'fs';
+import path from 'path';
 
 interface Quiz {
   type: string;
@@ -28,31 +31,62 @@ interface LessonsData {
   lessons: Lesson[];
 }
 
-export default function BlogLesson() {
-  const router = useRouter();
-  const { day } = router.query;
-  const [lesson, setLesson] = useState<Lesson | null>(null);
-  const [allLessons, setAllLessons] = useState<Lesson[]>([]);
-  const [expandedAnswers, setExpandedAnswers] = useState<number[]>([]);
-  const [selectedAnswers, setSelectedAnswers] = useState<(number | null)[]>([]);
+interface Props {
+  lesson: Lesson;
+  allLessons: Lesson[];
+}
 
-  useEffect(() => {
-    fetch('/data/agentic-commerce-lessons.json')
-      .then((res) => res.json())
-      .then((data: LessonsData) => {
-        setAllLessons(data.lessons);
-        if (day) {
-          const found = data.lessons.find((l) => l.day === parseInt(day as string));
-          setLesson(found || null);
-          if (found) {
-            setSelectedAnswers(new Array(found.quiz.length).fill(null));
-          }
-        }
-      });
-  }, [day]);
+export const getStaticPaths: GetStaticPaths = async () => {
+  const filePath = path.join(process.cwd(), 'public', 'data', 'agentic-commerce-lessons.json');
+  const fileContents = fs.readFileSync(filePath, 'utf8');
+  const data: LessonsData = JSON.parse(fileContents);
+
+  const paths = data.lessons.map((lesson) => ({
+    params: { day: lesson.day.toString() },
+  }));
+
+  return {
+    paths,
+    fallback: true,
+  };
+};
+
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
+  const filePath = path.join(process.cwd(), 'public', 'data', 'agentic-commerce-lessons.json');
+  const fileContents = fs.readFileSync(filePath, 'utf8');
+  const data: LessonsData = JSON.parse(fileContents);
+
+  const lesson = data.lessons.find((l) => l.day === parseInt(params?.day as string));
 
   if (!lesson) {
-    return <div>Loading...</div>;
+    return { notFound: true };
+  }
+
+  return {
+    props: {
+      lesson,
+      allLessons: data.lessons,
+    },
+    revalidate: 3600,
+  };
+};
+
+export default function BlogLesson({ lesson, allLessons }: Props) {
+  const router = useRouter();
+  const [expandedAnswers, setExpandedAnswers] = useState<number[]>([]);
+  const [selectedAnswers, setSelectedAnswers] = useState<(number | null)[]>(
+    lesson ? new Array(lesson.quiz.length).fill(null) : []
+  );
+
+  if (router.isFallback || !lesson) {
+    return (
+      <div className="min-h-screen bg-white dark:bg-black flex items-center justify-center">
+        <div className="text-center">
+          <div className="h-8 bg-gray-300 dark:bg-gray-700 rounded w-48 mx-auto mb-4 animate-pulse"></div>
+          <div className="h-12 bg-gray-300 dark:bg-gray-700 rounded w-96 mx-auto animate-pulse"></div>
+        </div>
+      </div>
+    );
   }
 
   const currentIndex = allLessons.findIndex((l) => l.day === lesson.day);
@@ -95,21 +129,31 @@ export default function BlogLesson() {
     <>
       <Head>
         <title>{`Day ${lesson.day}/90: ${lesson.title}`} — Decoding Agentic Commerce</title>
-        <meta name="description" content={`${lesson.title} — a lesson from the 90-day Decoding Agentic Commerce learning program`} />
+        <meta
+          name="description"
+          content={`${lesson.title} — a lesson from the 90-day Decoding Agentic Commerce learning program`}
+        />
       </Head>
       <div className="min-h-screen bg-white dark:bg-black transition-colors">
         {/* Header */}
         <header className="border-b border-gray-200 dark:border-gray-800">
           <div className="mx-auto max-w-3xl px-6 py-8">
-            <Link href="/blog" className="mb-8 inline-block text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white">
+            <Link
+              href="/blog"
+              className="mb-8 inline-block text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white"
+            >
               ← All lessons
             </Link>
             <div className="mb-4">
-              <span className="text-sm font-medium text-gray-500 dark:text-gray-500">Day {lesson.day} of 90</span>
+              <span className="text-sm font-medium text-gray-500 dark:text-gray-500">
+                Day {lesson.day} of 90
+              </span>
             </div>
             <h1 className="text-4xl font-bold text-black dark:text-white mb-4">{lesson.title}</h1>
             <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
-              <time dateTime={lesson.date}>{new Date(lesson.date).toLocaleDateString()}</time>
+              <time dateTime={lesson.date}>
+                {new Date(lesson.date).toLocaleDateString()}
+              </time>
               <span>{lesson.readingTime} min read</span>
             </div>
           </div>
@@ -134,7 +178,9 @@ export default function BlogLesson() {
 
           {/* Why It Matters Section */}
           <section className="mb-12">
-            <h2 className="text-2xl font-bold text-black dark:text-white mb-6">Why It Matters for PMs</h2>
+            <h2 className="text-2xl font-bold text-black dark:text-white mb-6">
+              Why It Matters for PMs
+            </h2>
             <div className="space-y-4">
               {lesson.whyItMatters.map((reason, idx) => (
                 <div
@@ -156,13 +202,20 @@ export default function BlogLesson() {
 
           {/* Quiz Section */}
           <section className="mb-12">
-            <h2 className="text-2xl font-bold text-black dark:text-white mb-6">Test Your Understanding</h2>
+            <h2 className="text-2xl font-bold text-black dark:text-white mb-6">
+              Test Your Understanding
+            </h2>
             <div className="space-y-8">
               {lesson.quiz.map((question, idx) => (
-                <div key={idx} className="border border-gray-200 dark:border-gray-800 rounded-lg p-6">
+                <div
+                  key={idx}
+                  className="border border-gray-200 dark:border-gray-800 rounded-lg p-6"
+                >
                   <div className="mb-4">
                     <p className="font-semibold text-black dark:text-white mb-2">
-                      {question.type === 'mcq' ? `Question ${idx + 1} (Multiple Choice)` : `Question ${idx + 1} (Short Answer)`}
+                      {question.type === 'mcq'
+                        ? `Question ${idx + 1} (Multiple Choice)`
+                        : `Question ${idx + 1} (Short Answer)`}
                     </p>
                     <p className="text-gray-700 dark:text-gray-300">{question.question}</p>
                   </div>
