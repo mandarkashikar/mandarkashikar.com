@@ -1,7 +1,6 @@
 'use client'
 
-import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 
 const timelineDataRich = [
@@ -49,6 +48,32 @@ const timelineDataRich = [
 
 export default function Home() {
   const [selectedExp, setSelectedExp] = useState<typeof timelineDataRich[0] | null>(null)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [isDark, setIsDark] = useState(false)
+
+  useEffect(() => {
+    // Check for saved theme or system preference
+    const saved = localStorage.getItem('theme')
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isDarkMode = saved === 'dark' || (!saved && prefersDark)
+    setIsDark(isDarkMode)
+    applyTheme(isDarkMode)
+  }, [])
+
+  const applyTheme = (dark: boolean) => {
+    if (dark) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    localStorage.setItem('theme', dark ? 'dark' : 'light')
+  }
+
+  const toggleTheme = () => {
+    const newTheme = !isDark
+    setIsDark(newTheme)
+    applyTheme(newTheme)
+  }
 
   const projects = [
     {
@@ -85,9 +110,24 @@ export default function Home() {
       {/* Header */}
       <header className="border-b border-gray-200 dark:border-gray-800 sticky top-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur">
         <div className="mx-auto max-w-5xl px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="text-2xl font-bold hover:opacity-70 transition-opacity">
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="text-2xl font-bold hover:opacity-70 transition-opacity md:hidden relative w-8 h-8 flex items-center justify-center"
+            aria-label="Menu"
+          >
+            MK
+            <span
+              className={`absolute w-1.5 h-1.5 bg-current rounded-full transition-all ${
+                mobileMenuOpen ? 'top-0' : 'bottom-0'
+              }`}
+            ></span>
+          </button>
+
+          <Link href="/" className="hidden md:block text-2xl font-bold hover:opacity-70 transition-opacity">
             MK
           </Link>
+
+          {/* Desktop Nav */}
           <nav className="hidden md:flex gap-8">
             <a href="#experience" className="text-sm hover:text-gray-600 dark:hover:text-gray-400 transition">
               Experience
@@ -99,10 +139,12 @@ export default function Home() {
               Blog
             </a>
           </nav>
+
+          {/* Desktop Icons + Theme Toggle */}
           <div className="flex gap-4 items-center">
             <a
               href="mailto:mandaropenclaw@gmail.com"
-              className="text-sm hover:opacity-70 transition-opacity"
+              className="text-lg hover:opacity-70 transition-opacity"
               title="Email"
             >
               ✉️
@@ -111,37 +153,74 @@ export default function Home() {
               href="https://linkedin.com/in/mandarkashikar"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm hover:opacity-70 transition-opacity"
+              className="text-lg hover:opacity-70 transition-opacity flex items-center justify-center w-6 h-6"
               title="LinkedIn"
             >
-              in
+              <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+              </svg>
             </a>
             <a
               href="https://github.com/mandarkashikar"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm hover:opacity-70 transition-opacity"
+              className="text-lg hover:opacity-70 transition-opacity flex items-center justify-center w-6 h-6"
               title="GitHub"
             >
-              gh
+              <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+              </svg>
             </a>
+            <button
+              onClick={toggleTheme}
+              className="text-lg hover:opacity-70 transition-opacity"
+              title={isDark ? 'Light mode' : 'Dark mode'}
+            >
+              {isDark ? '☀️' : '🌙'}
+            </button>
           </div>
         </div>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-black">
+            <nav className="flex flex-col gap-0">
+              <a
+                href="#experience"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-6 py-3 text-sm hover:bg-gray-100 dark:hover:bg-gray-900 border-b border-gray-200 dark:border-gray-800"
+              >
+                Experience
+              </a>
+              <a
+                href="#projects"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-6 py-3 text-sm hover:bg-gray-100 dark:hover:bg-gray-900 border-b border-gray-200 dark:border-gray-800"
+              >
+                Projects
+              </a>
+              <a
+                href="/blog"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-6 py-3 text-sm hover:bg-gray-100 dark:hover:bg-gray-900"
+              >
+                Blog
+              </a>
+            </nav>
+          </div>
+        )}
       </header>
 
       <main className="mx-auto max-w-5xl px-6 py-12 md:py-20">
         {/* Hero Section */}
         <section className="mb-24 flex flex-col md:flex-row gap-12 items-center">
           <div className="flex-shrink-0">
-            <div className="relative w-48 h-48 rounded-lg overflow-hidden border-2 border-gray-200 dark:border-gray-800">
-              <Image
-                src="/profile.jpg"
-                alt="Mandar Kashikar"
-                fill
-                className="object-cover"
-                priority
-              />
+            <div className="relative w-48 h-48 rounded-lg overflow-hidden border-2 border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
+              <span className="text-6xl">📸</span>
             </div>
+            <p className="text-center text-xs text-gray-500 dark:text-gray-500 mt-2">
+              (Add profile.jpg to /public)
+            </p>
           </div>
           <div className="flex-1">
             <h1 className="text-5xl md:text-6xl font-bold mb-4">Mandar Kashikar</h1>
@@ -150,8 +229,11 @@ export default function Home() {
             </p>
             <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
               At Elavon / U.S. Bank, I build omni-channel commerce solutions that unify online and in-store selling for
-              SMBs. Outside work, I co-run <a href="https://studioocea.com" className="hover:underline font-semibold">Studio Ocea</a> with my wife — an art brand that keeps my
-              product instincts grounded in real merchant pain.
+              SMBs. Outside work, I co-run{' '}
+              <a href="https://studioocea.com" className="hover:underline font-semibold">
+                Studio Ocea
+              </a>{' '}
+              with my wife — an art brand that keeps my product instincts grounded in real merchant pain.
             </p>
             <div className="flex gap-4 flex-wrap">
               <a
