@@ -12,6 +12,31 @@ const timelineDataRich = [
     company: 'Elavon Payments / U.S. Bank',
     location: 'Toronto, Canada',
     summary: 'Leading omni-channel commerce product strategy for SMBs — shipped Elavon Business Solutions eCommerce, a deep Wix integration, and a Wix payments plugin. Currently launching Retail Omnicommerce (March 2026).',
+    achievements: [
+      'Launched Elavon Business Solutions eCommerce — an end-to-end solution combining Wix\'s commerce platform with Elavon payments',
+      'Launched the Wix–Elavon Payments plugin, enabling existing Wix merchants to accept Elavon payments natively',
+      'Launching Elavon Business Solutions Retail Omnicommerce in March 2026 — unifying in-store and online selling for SMB merchants'
+    ],
+    projects: [
+      {
+        title: 'Elavon Business Solutions eCommerce',
+        star: {
+          situation: 'SMB merchants needed a simple, integrated way to sell online without stitching together disparate tools.',
+          task: 'Build and launch an end-to-end ecommerce solution combining a best-in-class commerce platform with Elavon payments.',
+          action: 'Led a deep product integration with Wix — aligning engineering, design, partnerships, and go-to-market across both organizations to ship a unified merchant experience.',
+          result: 'Launched Elavon Business Solutions eCommerce. Live at elavon.com/industries/ecommerce.html.'
+        }
+      },
+      {
+        title: 'Wix–Elavon Payments Plugin',
+        star: {
+          situation: 'Existing Wix merchants who wanted to use Elavon as their payment processor had no native integration.',
+          task: 'Build a payments plugin for the Wix ecosystem enabling seamless Elavon payment acceptance.',
+          action: 'Defined plugin requirements, drove partner alignment with Wix, and led end-to-end delivery across product and engineering teams.',
+          result: 'Launched the Wix–Elavon Payments plugin, expanding Elavon\'s reach to the existing Wix merchant base.'
+        }
+      }
+    ]
   },
   {
     id: 'usbank-2022',
@@ -20,6 +45,32 @@ const timelineDataRich = [
     company: 'Talech POS / U.S. Bank',
     location: 'Toronto, Canada',
     summary: 'Led product strategy and delivery for the merchant web platform — drove $200M in annual transaction volume, migrated 50,000+ merchants, and identified a $20M revenue opportunity.',
+    achievements: [
+      'Drove ~$200M in annual transaction volume through secure payment integrations (hosted fields, Checkout.js, lightbox, hosted page)',
+      'Increased user engagement by 10% via a data-driven redesign of web reporting features',
+      'Migrated 50,000+ merchants to the revamped platform with zero major incidents using in-app notifications and journey optimization',
+      'Identified a $20M annual revenue opportunity through customer interviews, competitor analysis, and market research'
+    ],
+    projects: [
+      {
+        title: 'Merchant Platform Migration',
+        star: {
+          situation: '50,000–100,000 merchants needed to move to a revamped platform without disruption to their daily operations.',
+          task: 'Drive adoption and ensure zero downtime during migration.',
+          action: 'Designed an in-app notification system, optimized the merchant onboarding journey, and ran a phased rollout with rapid bug resolution loops.',
+          result: 'Successfully migrated 50,000+ merchants with high adoption rates and no major incidents.'
+        }
+      },
+      {
+        title: '$20M Revenue Opportunity Discovery',
+        star: {
+          situation: 'Talech\'s product suite had an untapped segment with unmet marketing and growth needs.',
+          task: 'Validate whether a new marketing product could generate meaningful revenue.',
+          action: 'Conducted customer interviews, ran competitor analysis, and built a market sizing model. Presented findings and business case to leadership.',
+          result: 'Identified a $20M annual revenue opportunity that shaped the product roadmap.'
+        }
+      }
+    ]
   },
   {
     id: 'trinet-2021',
@@ -28,6 +79,23 @@ const timelineDataRich = [
     company: 'TriNet Inc.',
     location: 'San Jose, CA',
     summary: 'Led discovery, pilot launches, and expansion of new benefits products — generated $6M in volume growth and improved sales conversion by 3–6%.',
+    achievements: [
+      'Generated $6M in volume growth in 6 months through the IOM pilot launch (120 clients, NPS 9.0)',
+      'Improved sales conversion by 3–6% through National Rates expansion — generating $4.8M in additional revenue',
+      'IOM product was called out on TriNet\'s Q1 2022 earnings call',
+      'Created a reusable end-to-end testing template adopted by future product teams'
+    ],
+    projects: [
+      {
+        title: 'Integrated Open Market (IOM)',
+        star: {
+          situation: '15–20% of TriNet\'s sales pipeline was being rejected by the pricing/risk team on benefits, causing lost SAAS revenue.',
+          task: 'Redesign the offering to remove friction and drive real conversion.',
+          action: 'Ran deep discovery — analyzed Salesforce win/loss data, interviewed clients and sales reps, and identified core pain points. Designed an integrated solution and led engineering implementation.',
+          result: '120 clients and $7.5M in volume growth. NPS of 9.0. Called out on the Q1 2022 earnings call.'
+        }
+      }
+    ]
   },
   {
     id: 'ey-2019',
@@ -35,7 +103,24 @@ const timelineDataRich = [
     role: 'Senior Consultant – Strategy and Analytics',
     company: 'Ernst & Young / EY Parthenon',
     location: 'Arlington, VA',
-    summary: 'Led data and analytics workstreams for Fortune 500 clients — identified $270M+ in combined savings opportunities and delivered insights shaping policy and operations.',
+    summary: 'Led data and analytics workstreams for Fortune 500 clients — identified $270M+ in combined savings opportunities.',
+    achievements: [
+      'Identified $130M in restructuring savings for a healthcare spin-off ($30M immediately actionable)',
+      'Quantified $140M annual attrition cost for a major healthcare provider — led to a $500K+ follow-on engagement',
+      'Analyzed 8,000+ employee responses for the Gates Foundation, influencing return-to-work policy across 10 global offices',
+      'Created a repeatable labor strategy offering that generated $10M+ in follow-on EY Parthenon revenue'
+    ],
+    projects: [
+      {
+        title: 'Conifer Health Solutions – Labor Strategy',
+        star: {
+          situation: 'An $18B healthcare company preparing to spin off needed a future-state labor model.',
+          task: 'Build an accurate picture of workforce costs and model restructuring scenarios.',
+          action: 'Led the data and modeling workstream. Designed surveys, built a simulation model, and created a Power BI dashboard.',
+          result: 'Identified $130M in raw savings opportunities, $30M actionable within 6 months.'
+        }
+      }
+    ]
   },
   {
     id: 'mpower-2018',
@@ -43,7 +128,24 @@ const timelineDataRich = [
     role: 'Growth Strategy Intern',
     company: 'MPOWER Financing',
     location: 'Washington, DC',
-    summary: 'Built two customer acquisition programs from scratch — generated $2.2M in loan volume through a redesigned referral program and reached 1M+ potential customers through a scholarship launch.',
+    summary: 'Built two customer acquisition programs from scratch — generated $2.2M in loan volume.',
+    achievements: [
+      'Grew the referral channel 120% in 50 days, generating $2.2M in loan volume',
+      'Launched a scholarship program that attracted 750 applications at $0.40 CPC (vs. $8 industry benchmark)',
+      'Increased website traffic by 20% through the scholarship campaign with 172 backlinks',
+      'Uncovered key customer insights on APR priorities and decision-makers'
+    ],
+    projects: [
+      {
+        title: 'Customer Referral Program Redesign',
+        star: {
+          situation: 'Referral had the best funnel conversion but the program was broken — long reward timelines, unreliable fulfillment.',
+          task: 'Redesign from scratch and create measurable impact.',
+          action: 'Researched behavioral economics and gamification. Analyzed 7 competitor referral programs. Designed and launched MVP.',
+          result: '105 new referrals in the first run vs. 88 in MPOWER\'s entire prior history. 120% channel growth in 50 days.'
+        }
+      }
+    ]
   },
 ]
 
@@ -53,7 +155,6 @@ export default function Home() {
   const [isDark, setIsDark] = useState(false)
 
   useEffect(() => {
-    // Check for saved theme or system preference
     const saved = localStorage.getItem('theme')
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
     const isDarkMode = saved === 'dark' || (!saved && prefersDark)
@@ -78,13 +179,22 @@ export default function Home() {
 
   const projects = [
     {
+      name: 'PM Office Hours Simulator (Lenny\'s)',
+      status: 'Build Challenge',
+      statusColor: 'bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200',
+      description:
+        'Interactive video-call experience with multi-agent debate. Aggregates Lenny Rachitsky\'s archive (349 posts, 291 transcripts) + other PM voices for immersive learning.',
+      tags: ['AI / Agents', 'PM Learning', 'Next.js'],
+      link: 'https://github.com/mandarkashikar/lenny-office-hours',
+    },
+    {
       name: 'Buyer Agent ("Surprise Buy")',
       status: 'In Progress',
       statusColor: 'bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200',
       description:
         'An agentic commerce prototype exploring AI-driven purchasing on behalf of consumers — with configurable spend guardrails, merchant trust signals, and transparent decision logs.',
       tags: ['AI / Agents', 'Commerce', 'Next.js'],
-      link: 'https://github.com/mandarkashikar',
+      link: 'https://github.com/mandarkashikar/buyer-agent-pay-prototype',
     },
     {
       name: 'Studio Ocea',
@@ -305,6 +415,84 @@ export default function Home() {
             ))}
           </div>
         </section>
+
+        {/* Experience Modal */}
+        {selectedExp && (
+          <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 md:p-0">
+            <div className="bg-white dark:bg-black border border-gray-200 dark:border-gray-800 rounded-lg max-h-[90vh] overflow-y-auto max-w-2xl w-full">
+              <div className="sticky top-0 bg-white dark:bg-black border-b border-gray-200 dark:border-gray-800 p-6 flex justify-between items-start">
+                <div>
+                  <h2 className="text-2xl font-bold">{selectedExp.role}</h2>
+                  <p className="text-gray-600 dark:text-gray-400">
+                    {selectedExp.company} • {selectedExp.year}
+                  </p>
+                </div>
+                <button
+                  onClick={() => setSelectedExp(null)}
+                  className="text-2xl hover:opacity-70 transition-opacity"
+                >
+                  ✕
+                </button>
+              </div>
+
+              <div className="p-6 space-y-6">
+                {/* Achievements */}
+                {selectedExp.achievements && selectedExp.achievements.length > 0 && (
+                  <div>
+                    <h3 className="font-semibold text-lg mb-3">Achievements</h3>
+                    <ul className="space-y-2">
+                      {selectedExp.achievements.map((achievement, idx) => (
+                        <li key={idx} className="text-gray-700 dark:text-gray-300 flex gap-3">
+                          <span className="text-gray-400">•</span>
+                          <span>{achievement}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {/* Projects */}
+                {selectedExp.projects && selectedExp.projects.length > 0 && (
+                  <div>
+                    <h3 className="font-semibold text-lg mb-3">Key Projects</h3>
+                    <div className="space-y-4">
+                      {selectedExp.projects.map((project, idx) => (
+                        <div
+                          key={idx}
+                          className="border border-gray-200 dark:border-gray-800 rounded-lg p-4 bg-gray-50 dark:bg-gray-900/50"
+                        >
+                          <h4 className="font-semibold mb-3">{project.title}</h4>
+                          <div className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                            {project.star.situation && (
+                              <div>
+                                <strong className="text-gray-900 dark:text-white">Situation:</strong> {project.star.situation}
+                              </div>
+                            )}
+                            {project.star.task && (
+                              <div>
+                                <strong className="text-gray-900 dark:text-white">Task:</strong> {project.star.task}
+                              </div>
+                            )}
+                            {project.star.action && (
+                              <div>
+                                <strong className="text-gray-900 dark:text-white">Action:</strong> {project.star.action}
+                              </div>
+                            )}
+                            {project.star.result && (
+                              <div>
+                                <strong className="text-gray-900 dark:text-white">Result:</strong> {project.star.result}
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Projects */}
         <section className="mb-24" id="projects">
