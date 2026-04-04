@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const timelineDataRich = [
   {
@@ -215,12 +216,15 @@ export default function Home() {
         {/* Hero Section */}
         <section className="mb-24 flex flex-col md:flex-row gap-12 items-center">
           <div className="flex-shrink-0">
-            <div className="relative w-48 h-48 rounded-lg overflow-hidden border-2 border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
-              <span className="text-6xl">📸</span>
+            <div className="relative w-48 h-48 rounded-lg overflow-hidden border-2 border-gray-200 dark:border-gray-800">
+              <Image
+                src="/profile.jpg"
+                alt="Mandar Kashikar"
+                fill
+                className="object-cover"
+                priority
+              />
             </div>
-            <p className="text-center text-xs text-gray-500 dark:text-gray-500 mt-2">
-              (Add profile.jpg to /public)
-            </p>
           </div>
           <div className="flex-1">
             <h1 className="text-5xl md:text-6xl font-bold mb-4">Mandar Kashikar</h1>
