@@ -650,6 +650,918 @@
           "Costs: (1) Operational complexity — 3x the logs, 3x the metrics, harder debugging (which agent failed?). (2) Integration costs — agents need shared state, handoff rules, error handling between them. (3) Testing — testing N agents is harder than testing 1. Benefit: better reliability and cost. Trade-off: only scale to 3+ agents when 1 agent is the bottleneck."
         ]
       }
+    },
+    {
+      "day": 10,
+      "date": "2026-03-21",
+      "title": "Real vs Hype Framework",
+      "readingTime": 7,
+      "concept": [
+        "Core concept: Real vs Hype Framework is essential for SMB merchants",
+        "Detailed explanation bullet 2",
+        "Detailed explanation bullet 3",
+        "Merchant implication and use case",
+        "Technical consideration for implementation",
+        "SMB-specific constraint or opportunity"
+      ],
+      "whyItMatters": [
+        "Operational impact: improves merchant efficiency and conversion",
+        "Competitive advantage: differentiates vs large platforms",
+        "Execution: balance complexity with merchant value"
+      ],
+      "quiz": [
+        {
+          "type": "mcq",
+          "question": "What is the key insight for Real vs Hype Framework?",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "mcq",
+          "question": "How does this impact SMB merchants most?",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "correct": 2
+        },
+        {
+          "type": "short-answer",
+          "question": "What would you prioritize as a PM building this?"
+        },
+        {
+          "type": "short-answer",
+          "question": "What are the key success metrics?"
+        }
+      ],
+      "answers": {
+        "mcq": [
+          "This is critical because it directly improves merchant ROI and customer experience.",
+          "SMB merchants benefit most from straightforward, low-friction implementations that dont require heavy infrastructure."
+        ]
+      }
+    },
+    {
+      "day": 11,
+      "date": "2026-03-22",
+      "title": "Intent Capture",
+      "readingTime": 7,
+      "concept": [
+        "Core concept: Intent Capture is essential for SMB merchants",
+        "Detailed explanation bullet 2",
+        "Detailed explanation bullet 3",
+        "Merchant implication and use case",
+        "Technical consideration for implementation",
+        "SMB-specific constraint or opportunity"
+      ],
+      "whyItMatters": [
+        "Operational impact: improves merchant efficiency and conversion",
+        "Competitive advantage: differentiates vs large platforms",
+        "Execution: balance complexity with merchant value"
+      ],
+      "quiz": [
+        {
+          "type": "mcq",
+          "question": "What is the key insight for Intent Capture?",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "mcq",
+          "question": "How does this impact SMB merchants most?",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "correct": 2
+        },
+        {
+          "type": "short-answer",
+          "question": "What would you prioritize as a PM building this?"
+        },
+        {
+          "type": "short-answer",
+          "question": "What are the key success metrics?"
+        }
+      ],
+      "answers": {
+        "mcq": [
+          "This is critical because it directly improves merchant ROI and customer experience.",
+          "SMB merchants benefit most from straightforward, low-friction implementations that dont require heavy infrastructure."
+        ]
+      }
+    },
+    {
+      "day": 12,
+      "date": "2026-03-23",
+      "title": "Product Retrieval (Search & RAG)",
+      "readingTime": 7,
+      "concept": [
+        "Core concept: Product Retrieval (Search & RAG) is essential for SMB merchants",
+        "Detailed explanation bullet 2",
+        "Detailed explanation bullet 3",
+        "Merchant implication and use case",
+        "Technical consideration for implementation",
+        "SMB-specific constraint or opportunity"
+      ],
+      "whyItMatters": [
+        "Operational impact: improves merchant efficiency and conversion",
+        "Competitive advantage: differentiates vs large platforms",
+        "Execution: balance complexity with merchant value"
+      ],
+      "quiz": [
+        {
+          "type": "mcq",
+          "question": "What is the key insight for Product Retrieval (Search & RAG)?",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "mcq",
+          "question": "How does this impact SMB merchants most?",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "correct": 2
+        },
+        {
+          "type": "short-answer",
+          "question": "What would you prioritize as a PM building this?"
+        },
+        {
+          "type": "short-answer",
+          "question": "What are the key success metrics?"
+        }
+      ],
+      "answers": {
+        "mcq": [
+          "This is critical because it directly improves merchant ROI and customer experience.",
+          "SMB merchants benefit most from straightforward, low-friction implementations that dont require heavy infrastructure."
+        ]
+      }
+    },
+    {
+      "day": 13,
+      "date": "2026-03-24",
+      "title": "Recommendation Strategies",
+      "readingTime": 7,
+      "concept": [
+        "Core concept: Recommendation Strategies is essential for SMB merchants",
+        "Detailed explanation bullet 2",
+        "Detailed explanation bullet 3",
+        "Merchant implication and use case",
+        "Technical consideration for implementation",
+        "SMB-specific constraint or opportunity"
+      ],
+      "whyItMatters": [
+        "Operational impact: improves merchant efficiency and conversion",
+        "Competitive advantage: differentiates vs large platforms",
+        "Execution: balance complexity with merchant value"
+      ],
+      "quiz": [
+        {
+          "type": "mcq",
+          "question": "What is the key insight for Recommendation Strategies?",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "mcq",
+          "question": "How does this impact SMB merchants most?",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "correct": 2
+        },
+        {
+          "type": "short-answer",
+          "question": "What would you prioritize as a PM building this?"
+        },
+        {
+          "type": "short-answer",
+          "question": "What are the key success metrics?"
+        }
+      ],
+      "answers": {
+        "mcq": [
+          "This is critical because it directly improves merchant ROI and customer experience.",
+          "SMB merchants benefit most from straightforward, low-friction implementations that dont require heavy infrastructure."
+        ]
+      }
+    },
+    {
+      "day": 14,
+      "date": "2026-03-25",
+      "title": "Merchandising in Agent Flows",
+      "readingTime": 7,
+      "concept": [
+        "Core concept: Merchandising in Agent Flows is essential for SMB merchants",
+        "Detailed explanation bullet 2",
+        "Detailed explanation bullet 3",
+        "Merchant implication and use case",
+        "Technical consideration for implementation",
+        "SMB-specific constraint or opportunity"
+      ],
+      "whyItMatters": [
+        "Operational impact: improves merchant efficiency and conversion",
+        "Competitive advantage: differentiates vs large platforms",
+        "Execution: balance complexity with merchant value"
+      ],
+      "quiz": [
+        {
+          "type": "mcq",
+          "question": "What is the key insight for Merchandising in Agent Flows?",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "mcq",
+          "question": "How does this impact SMB merchants most?",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "correct": 2
+        },
+        {
+          "type": "short-answer",
+          "question": "What would you prioritize as a PM building this?"
+        },
+        {
+          "type": "short-answer",
+          "question": "What are the key success metrics?"
+        }
+      ],
+      "answers": {
+        "mcq": [
+          "This is critical because it directly improves merchant ROI and customer experience.",
+          "SMB merchants benefit most from straightforward, low-friction implementations that dont require heavy infrastructure."
+        ]
+      }
+    },
+    {
+      "day": 15,
+      "date": "2026-03-26",
+      "title": "Personalization Constraints",
+      "readingTime": 7,
+      "concept": [
+        "Core concept: Personalization Constraints is essential for SMB merchants",
+        "Detailed explanation bullet 2",
+        "Detailed explanation bullet 3",
+        "Merchant implication and use case",
+        "Technical consideration for implementation",
+        "SMB-specific constraint or opportunity"
+      ],
+      "whyItMatters": [
+        "Operational impact: improves merchant efficiency and conversion",
+        "Competitive advantage: differentiates vs large platforms",
+        "Execution: balance complexity with merchant value"
+      ],
+      "quiz": [
+        {
+          "type": "mcq",
+          "question": "What is the key insight for Personalization Constraints?",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "mcq",
+          "question": "How does this impact SMB merchants most?",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "correct": 2
+        },
+        {
+          "type": "short-answer",
+          "question": "What would you prioritize as a PM building this?"
+        },
+        {
+          "type": "short-answer",
+          "question": "What are the key success metrics?"
+        }
+      ],
+      "answers": {
+        "mcq": [
+          "This is critical because it directly improves merchant ROI and customer experience.",
+          "SMB merchants benefit most from straightforward, low-friction implementations that dont require heavy infrastructure."
+        ]
+      }
+    },
+    {
+      "day": 16,
+      "date": "2026-03-27",
+      "title": "Price & Promo Reasoning",
+      "readingTime": 7,
+      "concept": [
+        "Core concept: Price & Promo Reasoning is essential for SMB merchants",
+        "Detailed explanation bullet 2",
+        "Detailed explanation bullet 3",
+        "Merchant implication and use case",
+        "Technical consideration for implementation",
+        "SMB-specific constraint or opportunity"
+      ],
+      "whyItMatters": [
+        "Operational impact: improves merchant efficiency and conversion",
+        "Competitive advantage: differentiates vs large platforms",
+        "Execution: balance complexity with merchant value"
+      ],
+      "quiz": [
+        {
+          "type": "mcq",
+          "question": "What is the key insight for Price & Promo Reasoning?",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "mcq",
+          "question": "How does this impact SMB merchants most?",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "correct": 2
+        },
+        {
+          "type": "short-answer",
+          "question": "What would you prioritize as a PM building this?"
+        },
+        {
+          "type": "short-answer",
+          "question": "What are the key success metrics?"
+        }
+      ],
+      "answers": {
+        "mcq": [
+          "This is critical because it directly improves merchant ROI and customer experience.",
+          "SMB merchants benefit most from straightforward, low-friction implementations that dont require heavy infrastructure."
+        ]
+      }
+    },
+    {
+      "day": 17,
+      "date": "2026-03-28",
+      "title": "Bundle & Upsell Logic",
+      "readingTime": 7,
+      "concept": [
+        "Core concept: Bundle & Upsell Logic is essential for SMB merchants",
+        "Detailed explanation bullet 2",
+        "Detailed explanation bullet 3",
+        "Merchant implication and use case",
+        "Technical consideration for implementation",
+        "SMB-specific constraint or opportunity"
+      ],
+      "whyItMatters": [
+        "Operational impact: improves merchant efficiency and conversion",
+        "Competitive advantage: differentiates vs large platforms",
+        "Execution: balance complexity with merchant value"
+      ],
+      "quiz": [
+        {
+          "type": "mcq",
+          "question": "What is the key insight for Bundle & Upsell Logic?",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "mcq",
+          "question": "How does this impact SMB merchants most?",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "correct": 2
+        },
+        {
+          "type": "short-answer",
+          "question": "What would you prioritize as a PM building this?"
+        },
+        {
+          "type": "short-answer",
+          "question": "What are the key success metrics?"
+        }
+      ],
+      "answers": {
+        "mcq": [
+          "This is critical because it directly improves merchant ROI and customer experience.",
+          "SMB merchants benefit most from straightforward, low-friction implementations that dont require heavy infrastructure."
+        ]
+      }
+    },
+    {
+      "day": 18,
+      "date": "2026-03-29",
+      "title": "Checkout Handoff Patterns",
+      "readingTime": 7,
+      "concept": [
+        "Core concept: Checkout Handoff Patterns is essential for SMB merchants",
+        "Detailed explanation bullet 2",
+        "Detailed explanation bullet 3",
+        "Merchant implication and use case",
+        "Technical consideration for implementation",
+        "SMB-specific constraint or opportunity"
+      ],
+      "whyItMatters": [
+        "Operational impact: improves merchant efficiency and conversion",
+        "Competitive advantage: differentiates vs large platforms",
+        "Execution: balance complexity with merchant value"
+      ],
+      "quiz": [
+        {
+          "type": "mcq",
+          "question": "What is the key insight for Checkout Handoff Patterns?",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "mcq",
+          "question": "How does this impact SMB merchants most?",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "correct": 2
+        },
+        {
+          "type": "short-answer",
+          "question": "What would you prioritize as a PM building this?"
+        },
+        {
+          "type": "short-answer",
+          "question": "What are the key success metrics?"
+        }
+      ],
+      "answers": {
+        "mcq": [
+          "This is critical because it directly improves merchant ROI and customer experience.",
+          "SMB merchants benefit most from straightforward, low-friction implementations that dont require heavy infrastructure."
+        ]
+      }
+    },
+    {
+      "day": 19,
+      "date": "2026-03-30",
+      "title": "Cart Recovery via Agents",
+      "readingTime": 7,
+      "concept": [
+        "Core concept: Cart Recovery via Agents is essential for SMB merchants",
+        "Detailed explanation bullet 2",
+        "Detailed explanation bullet 3",
+        "Merchant implication and use case",
+        "Technical consideration for implementation",
+        "SMB-specific constraint or opportunity"
+      ],
+      "whyItMatters": [
+        "Operational impact: improves merchant efficiency and conversion",
+        "Competitive advantage: differentiates vs large platforms",
+        "Execution: balance complexity with merchant value"
+      ],
+      "quiz": [
+        {
+          "type": "mcq",
+          "question": "What is the key insight for Cart Recovery via Agents?",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "mcq",
+          "question": "How does this impact SMB merchants most?",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "correct": 2
+        },
+        {
+          "type": "short-answer",
+          "question": "What would you prioritize as a PM building this?"
+        },
+        {
+          "type": "short-answer",
+          "question": "What are the key success metrics?"
+        }
+      ],
+      "answers": {
+        "mcq": [
+          "This is critical because it directly improves merchant ROI and customer experience.",
+          "SMB merchants benefit most from straightforward, low-friction implementations that dont require heavy infrastructure."
+        ]
+      }
+    },
+    {
+      "day": 20,
+      "date": "2026-03-31",
+      "title": "Conversion KPI Instrumentation",
+      "readingTime": 7,
+      "concept": [
+        "Core concept: Conversion KPI Instrumentation is essential for SMB merchants",
+        "Detailed explanation bullet 2",
+        "Detailed explanation bullet 3",
+        "Merchant implication and use case",
+        "Technical consideration for implementation",
+        "SMB-specific constraint or opportunity"
+      ],
+      "whyItMatters": [
+        "Operational impact: improves merchant efficiency and conversion",
+        "Competitive advantage: differentiates vs large platforms",
+        "Execution: balance complexity with merchant value"
+      ],
+      "quiz": [
+        {
+          "type": "mcq",
+          "question": "What is the key insight for Conversion KPI Instrumentation?",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "mcq",
+          "question": "How does this impact SMB merchants most?",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "correct": 2
+        },
+        {
+          "type": "short-answer",
+          "question": "What would you prioritize as a PM building this?"
+        },
+        {
+          "type": "short-answer",
+          "question": "What are the key success metrics?"
+        }
+      ],
+      "answers": {
+        "mcq": [
+          "This is critical because it directly improves merchant ROI and customer experience.",
+          "SMB merchants benefit most from straightforward, low-friction implementations that dont require heavy infrastructure."
+        ]
+      }
+    },
+    {
+      "day": 21,
+      "date": "2026-04-01",
+      "title": "Catalog Readiness",
+      "readingTime": 7,
+      "concept": [
+        "Core concept: Catalog Readiness is essential for SMB merchants",
+        "Detailed explanation bullet 2",
+        "Detailed explanation bullet 3",
+        "Merchant implication and use case",
+        "Technical consideration for implementation",
+        "SMB-specific constraint or opportunity"
+      ],
+      "whyItMatters": [
+        "Operational impact: improves merchant efficiency and conversion",
+        "Competitive advantage: differentiates vs large platforms",
+        "Execution: balance complexity with merchant value"
+      ],
+      "quiz": [
+        {
+          "type": "mcq",
+          "question": "What is the key insight for Catalog Readiness?",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "mcq",
+          "question": "How does this impact SMB merchants most?",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "correct": 2
+        },
+        {
+          "type": "short-answer",
+          "question": "What would you prioritize as a PM building this?"
+        },
+        {
+          "type": "short-answer",
+          "question": "What are the key success metrics?"
+        }
+      ],
+      "answers": {
+        "mcq": [
+          "This is critical because it directly improves merchant ROI and customer experience.",
+          "SMB merchants benefit most from straightforward, low-friction implementations that dont require heavy infrastructure."
+        ]
+      }
+    },
+    {
+      "day": 22,
+      "date": "2026-04-02",
+      "title": "Inventory & Availability Sync",
+      "readingTime": 7,
+      "concept": [
+        "Core concept: Inventory & Availability Sync is essential for SMB merchants",
+        "Detailed explanation bullet 2",
+        "Detailed explanation bullet 3",
+        "Merchant implication and use case",
+        "Technical consideration for implementation",
+        "SMB-specific constraint or opportunity"
+      ],
+      "whyItMatters": [
+        "Operational impact: improves merchant efficiency and conversion",
+        "Competitive advantage: differentiates vs large platforms",
+        "Execution: balance complexity with merchant value"
+      ],
+      "quiz": [
+        {
+          "type": "mcq",
+          "question": "What is the key insight for Inventory & Availability Sync?",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "mcq",
+          "question": "How does this impact SMB merchants most?",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "correct": 2
+        },
+        {
+          "type": "short-answer",
+          "question": "What would you prioritize as a PM building this?"
+        },
+        {
+          "type": "short-answer",
+          "question": "What are the key success metrics?"
+        }
+      ],
+      "answers": {
+        "mcq": [
+          "This is critical because it directly improves merchant ROI and customer experience.",
+          "SMB merchants benefit most from straightforward, low-friction implementations that dont require heavy infrastructure."
+        ]
+      }
+    },
+    {
+      "day": 23,
+      "date": "2026-04-03",
+      "title": "Order Orchestration Basics",
+      "readingTime": 7,
+      "concept": [
+        "Core concept: Order Orchestration Basics is essential for SMB merchants",
+        "Detailed explanation bullet 2",
+        "Detailed explanation bullet 3",
+        "Merchant implication and use case",
+        "Technical consideration for implementation",
+        "SMB-specific constraint or opportunity"
+      ],
+      "whyItMatters": [
+        "Operational impact: improves merchant efficiency and conversion",
+        "Competitive advantage: differentiates vs large platforms",
+        "Execution: balance complexity with merchant value"
+      ],
+      "quiz": [
+        {
+          "type": "mcq",
+          "question": "What is the key insight for Order Orchestration Basics?",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "mcq",
+          "question": "How does this impact SMB merchants most?",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "correct": 2
+        },
+        {
+          "type": "short-answer",
+          "question": "What would you prioritize as a PM building this?"
+        },
+        {
+          "type": "short-answer",
+          "question": "What are the key success metrics?"
+        }
+      ],
+      "answers": {
+        "mcq": [
+          "This is critical because it directly improves merchant ROI and customer experience.",
+          "SMB merchants benefit most from straightforward, low-friction implementations that dont require heavy infrastructure."
+        ]
+      }
+    },
+    {
+      "day": 24,
+      "date": "2026-04-04",
+      "title": "Shipping Promise Logic",
+      "readingTime": 7,
+      "concept": [
+        "Core concept: Shipping Promise Logic is essential for SMB merchants",
+        "Detailed explanation bullet 2",
+        "Detailed explanation bullet 3",
+        "Merchant implication and use case",
+        "Technical consideration for implementation",
+        "SMB-specific constraint or opportunity"
+      ],
+      "whyItMatters": [
+        "Operational impact: improves merchant efficiency and conversion",
+        "Competitive advantage: differentiates vs large platforms",
+        "Execution: balance complexity with merchant value"
+      ],
+      "quiz": [
+        {
+          "type": "mcq",
+          "question": "What is the key insight for Shipping Promise Logic?",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "mcq",
+          "question": "How does this impact SMB merchants most?",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "correct": 2
+        },
+        {
+          "type": "short-answer",
+          "question": "What would you prioritize as a PM building this?"
+        },
+        {
+          "type": "short-answer",
+          "question": "What are the key success metrics?"
+        }
+      ],
+      "answers": {
+        "mcq": [
+          "This is critical because it directly improves merchant ROI and customer experience.",
+          "SMB merchants benefit most from straightforward, low-friction implementations that dont require heavy infrastructure."
+        ]
+      }
+    },
+    {
+      "day": 25,
+      "date": "2026-04-05",
+      "title": "Returns Policy Reasoning",
+      "readingTime": 7,
+      "concept": [
+        "Core concept: Returns Policy Reasoning is essential for SMB merchants",
+        "Detailed explanation bullet 2",
+        "Detailed explanation bullet 3",
+        "Merchant implication and use case",
+        "Technical consideration for implementation",
+        "SMB-specific constraint or opportunity"
+      ],
+      "whyItMatters": [
+        "Operational impact: improves merchant efficiency and conversion",
+        "Competitive advantage: differentiates vs large platforms",
+        "Execution: balance complexity with merchant value"
+      ],
+      "quiz": [
+        {
+          "type": "mcq",
+          "question": "What is the key insight for Returns Policy Reasoning?",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "correct": 1
+        },
+        {
+          "type": "mcq",
+          "question": "How does this impact SMB merchants most?",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "correct": 2
+        },
+        {
+          "type": "short-answer",
+          "question": "What would you prioritize as a PM building this?"
+        },
+        {
+          "type": "short-answer",
+          "question": "What are the key success metrics?"
+        }
+      ],
+      "answers": {
+        "mcq": [
+          "This is critical because it directly improves merchant ROI and customer experience.",
+          "SMB merchants benefit most from straightforward, low-friction implementations that dont require heavy infrastructure."
+        ]
+      }
     }
   ]
 }
