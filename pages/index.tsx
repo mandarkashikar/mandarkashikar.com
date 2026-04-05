@@ -254,7 +254,7 @@ export default function Home() {
           {/* Desktop Icons + Theme Toggle */}
           <div className="flex gap-4 items-center">
             <a
-              href="mailto:mandaropenclaw@gmail.com"
+              href="mailto:mandarkashikar1@gmail.com"
               className="text-lg hover:opacity-70 transition-opacity"
               title="Email"
             >
@@ -359,7 +359,7 @@ export default function Home() {
                 Resume ↗
               </a>
               <a
-                href="mailto:mandaropenclaw@gmail.com"
+                href="mailto:mandarkashikar1@gmail.com"
                 className="px-6 py-3 border border-gray-300 dark:border-gray-700 rounded-lg font-semibold hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors"
               >
                 Contact
