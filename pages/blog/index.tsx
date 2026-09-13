@@ -1,4 +1,6 @@
-import { useEffect, useState } from 'react';
+import { GetStaticProps } from 'next';
+import path from 'path';
+import fs from 'fs';
 import Link from 'next/link';
 import Head from 'next/head';
 
@@ -9,27 +11,11 @@ interface Lesson {
   readingTime: number;
 }
 
-export default function BlogIndex() {
-  const [lessons, setLessons] = useState<Lesson[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+interface Props {
+  lessons: Lesson[];
+}
 
-  useEffect(() => {
-    const fetchLessons = async () => {
-      try {
-        const res = await fetch('/data/agentic-commerce-lessons.json');
-        if (!res.ok) throw new Error('Failed to load lessons');
-        const data = await res.json();
-        setLessons(data.lessons);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Error loading lessons');
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchLessons();
-  }, []);
-
+export default function BlogIndex({ lessons }: Props) {
   return (
     <>
       <Head>
@@ -56,60 +42,35 @@ export default function BlogIndex() {
             </p>
           </div>
 
-          {/* Loading State */}
-          {loading && (
-            <div className="space-y-3">
-              {[...Array(5)].map((_, i) => (
-                <div key={i} className="p-4 border border-gray-200 dark:border-gray-800 rounded-lg animate-pulse">
-                  <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-1/4 mb-2"></div>
-                  <div className="h-6 bg-gray-300 dark:bg-gray-700 rounded w-3/4 mb-3"></div>
-                  <div className="flex gap-4">
-                    <div className="h-3 bg-gray-300 dark:bg-gray-700 rounded w-1/6"></div>
-                    <div className="h-3 bg-gray-300 dark:bg-gray-700 rounded w-1/6"></div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {/* Error State */}
-          {error && (
-            <div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
-              <p className="text-red-800 dark:text-red-200">Error: {error}</p>
-            </div>
-          )}
-
           {/* Lessons Grid */}
-          {!loading && !error && (
-            <div className="space-y-3">
-              {lessons.map((lesson) => (
-              <Link
-                key={lesson.day}
-                href={`/blog/${lesson.day}`}
-                className="block p-4 border border-gray-200 dark:border-gray-800 rounded-lg hover:border-gray-400 dark:hover:border-gray-600 transition-all hover:bg-gray-50 dark:hover:bg-gray-900/50"
-              >
-                <div className="flex items-start justify-between">
-                  <div className="flex-1">
-                    <div className="flex items-baseline gap-3 mb-2">
-                      <span className="text-sm font-medium text-gray-500 dark:text-gray-500">Day {lesson.day}/90</span>
-                      <h3 className="text-lg font-semibold text-black dark:text-white">{lesson.title}</h3>
-                    </div>
-                    <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
-                      <time dateTime={lesson.date}>{new Date(lesson.date).toLocaleDateString()}</time>
-                      <span>{lesson.readingTime} min read</span>
-                    </div>
+          <div className="space-y-3">
+            {lessons.map((lesson) => (
+            <Link
+              key={lesson.day}
+              href={`/blog/${lesson.day}`}
+              className="block p-4 border border-gray-200 dark:border-gray-800 rounded-lg hover:border-gray-400 dark:hover:border-gray-600 transition-all hover:bg-gray-50 dark:hover:bg-gray-900/50"
+            >
+              <div className="flex items-start justify-between">
+                <div className="flex-1">
+                  <div className="flex items-baseline gap-3 mb-2">
+                    <span className="text-sm font-medium text-gray-500 dark:text-gray-500">Day {lesson.day}/90</span>
+                    <h3 className="text-lg font-semibold text-black dark:text-white">{lesson.title}</h3>
                   </div>
-                  <div className="ml-4 text-gray-400 dark:text-gray-600">→</div>
+                  <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
+                    <time dateTime={lesson.date}>{new Date(lesson.date).toLocaleDateString()}</time>
+                    <span>{lesson.readingTime} min read</span>
+                  </div>
                 </div>
-              </Link>
-              ))}
-            </div>
-          )}
+                <div className="ml-4 text-gray-400 dark:text-gray-600">→</div>
+              </div>
+            </Link>
+            ))}
+          </div>
 
           {/* Progress */}
           <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800">
             <p className="text-sm text-gray-600 dark:text-gray-400">
-              Showing {lessons.length} of 90 lessons. New lessons published daily at 3 PM ET.
+              Showing {lessons.length} of 90 lessons.
             </p>
           </div>
         </main>
@@ -117,3 +78,15 @@ export default function BlogIndex() {
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const filePath = path.join(process.cwd(), 'public', 'data', 'agentic-commerce-lessons.json');
+  const fileContents = fs.readFileSync(filePath, 'utf8');
+  const data = JSON.parse(fileContents);
+
+  return {
+    props: {
+      lessons: data.lessons,
+    },
+  };
+};

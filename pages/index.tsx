@@ -11,11 +11,11 @@ const timelineDataRich = [
     role: 'Lead Product Manager – Retail Omnicommerce',
     company: 'Elavon Payments / U.S. Bank',
     location: 'Toronto, Canada',
-    summary: 'Leading omni-channel commerce product strategy for SMBs — shipped Elavon Business Solutions eCommerce, a deep Wix integration, and a Wix payments plugin. Currently launching Retail Omnicommerce (March 2026).',
+    summary: 'Leading omni-channel commerce product strategy for SMBs — shipped Elavon Business Solutions eCommerce, a deep Wix integration, a Wix payments plugin, and Retail Omnicommerce.',
     achievements: [
       'Launched Elavon Business Solutions eCommerce — an end-to-end solution combining Wix\'s commerce platform with Elavon payments',
       'Launched the Wix–Elavon Payments plugin, enabling existing Wix merchants to accept Elavon payments natively',
-      'Launching Elavon Business Solutions Retail Omnicommerce in March 2026 — unifying in-store and online selling for SMB merchants'
+      'Launched Elavon Business Solutions Retail Omnicommerce — unifying in-store and online selling for SMB merchants'
     ],
     projects: [
       {
@@ -194,7 +194,7 @@ export default function Home() {
       description:
         'An agentic commerce prototype exploring AI-driven purchasing on behalf of consumers — with configurable spend guardrails, merchant trust signals, and transparent decision logs.',
       tags: ['AI / Agents', 'Commerce', 'Next.js'],
-      link: 'https://github.com/mandarkashikar/buyer-agent-pay-prototype',
+      link: null,
     },
     {
       name: 'Studio Ocea',
@@ -517,14 +517,16 @@ export default function Home() {
                     </span>
                   ))}
                 </div>
-                <a
-                  href={project.link}
-                  target={project.link.startsWith('http') ? '_blank' : undefined}
-                  rel={project.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="inline-block text-sm font-semibold hover:underline"
-                >
-                  {project.link.startsWith('/') ? 'Explore' : 'View'} →
-                </a>
+                {project.link && (
+                  <a
+                    href={project.link}
+                    target={project.link.startsWith('http') ? '_blank' : undefined}
+                    rel={project.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    className="inline-block text-sm font-semibold hover:underline"
+                  >
+                    {project.link.startsWith('/') ? 'Explore' : 'View'} →
+                  </a>
+                )}
               </div>
             ))}
           </div>
