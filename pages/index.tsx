@@ -8,7 +8,7 @@ const timelineDataRich = [
   {
     id: 'elavon-2025',
     year: 'Jan 2025 – Present',
-    role: 'Lead Product Manager – Retail Omnicommerce',
+    role: 'Senior Product Manager, Vertical Lead – Retail SMB Commerce',
     company: 'Elavon Payments / U.S. Bank',
     location: 'Toronto, Canada',
     summary: 'Leading omni-channel commerce product strategy for SMBs — shipped Elavon Business Solutions eCommerce, a deep Wix integration, a Wix payments plugin, and Retail Omnicommerce.',
@@ -341,37 +341,25 @@ export default function Home() {
         {/* Hero Section */}
         <section className="mb-4">
           <div className="p-6 border border-gray-200 dark:border-gray-800 rounded-lg">
-            <div>
-              <div className="flex items-center gap-3 flex-wrap mb-1">
-                <h1 className="text-2xl font-bold">Mandar Kashikar</h1>
-                <div className="flex gap-2">
-                  <a
-                    href="/resume.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-3 py-1 bg-black dark:bg-white text-white dark:text-black text-xs rounded-lg font-semibold hover:opacity-80 transition-opacity"
-                  >
-                    Resume ↗
-                  </a>
-                  <a
-                    href="mailto:mandarkashikar1@gmail.com"
-                    className="px-3 py-1 border border-gray-300 dark:border-gray-700 text-xs rounded-lg font-semibold hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors"
-                  >
-                    Contact
-                  </a>
-                </div>
+            <div className="flex items-center gap-3 flex-wrap mb-3">
+              <h1 className="text-2xl font-bold">Mandar Kashikar</h1>
+              <div className="flex gap-2">
+                <a
+                  href="/resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1 bg-black dark:bg-white text-white dark:text-black text-xs rounded-lg font-semibold hover:opacity-80 transition-opacity"
+                >
+                  Resume ↗
+                </a>
+                <a
+                  href="mailto:mandarkashikar1@gmail.com"
+                  className="px-3 py-1 border border-gray-300 dark:border-gray-700 text-xs rounded-lg font-semibold hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors"
+                >
+                  Contact
+                </a>
               </div>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                Senior Product Manager, Vertical Lead – Retail SMB Commerce
-              </p>
             </div>
-          </div>
-        </section>
-
-        {/* Summary */}
-        <section className="mb-4">
-          <div className="p-6 border border-gray-200 dark:border-gray-800 rounded-lg">
-            <h2 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-3">Summary</h2>
             <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
               Senior Product Manager with 6 years leading technical B2B commerce and payments products, including 4+ years taking them from concept to launch, and 14 years of overall experience across product management, strategy consulting, analytics, and engineering. Most recently took Elavon Business Solutions from concept to launch, combining commerce and payments through integrations spanning account provisioning, SSO, payment processing, and POS hardware. Own product strategy for the Retail SMB segment, lead delivery across 6+ product and engineering teams, and manage a strategic partnership with a ~$1M annual development budget. Actively building with AI and enabling PM work with it.
             </p>
