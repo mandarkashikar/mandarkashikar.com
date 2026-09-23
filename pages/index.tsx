@@ -232,19 +232,25 @@ export default function Home() {
         <div className="mx-auto max-w-5xl px-6 py-4 flex items-center justify-between">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="text-2xl font-bold hover:opacity-70 transition-opacity md:hidden relative w-8 h-8 flex items-center justify-center"
+            className="hover:opacity-70 transition-opacity md:hidden flex items-center gap-2"
             aria-label="Menu"
           >
-            MK
+            <div className="relative w-8 h-8 rounded-full overflow-hidden border border-gray-200 dark:border-gray-800 flex-shrink-0">
+              <Image src="/profile.jpg" alt="Mandar Kashikar" fill className="object-cover" />
+            </div>
+            <span className="text-sm font-bold">MK</span>
             <span
-              className={`absolute w-1.5 h-1.5 bg-current rounded-full transition-all ${
-                mobileMenuOpen ? 'top-0' : 'bottom-0'
+              className={`w-1.5 h-1.5 bg-current rounded-full transition-all ${
+                mobileMenuOpen ? 'mb-1' : 'mt-1'
               }`}
             ></span>
           </button>
 
-          <Link href="/" className="hidden md:block text-2xl font-bold hover:opacity-70 transition-opacity">
-            MK
+          <Link href="/" className="hidden md:flex items-center gap-2 hover:opacity-70 transition-opacity">
+            <div className="relative w-8 h-8 rounded-full overflow-hidden border border-gray-200 dark:border-gray-800 flex-shrink-0">
+              <Image src="/profile.jpg" alt="Mandar Kashikar" fill className="object-cover" />
+            </div>
+            <span className="text-sm font-bold">MK</span>
           </Link>
 
           {/* Desktop Nav */}
@@ -334,19 +340,8 @@ export default function Home() {
       <main className="mx-auto max-w-5xl px-6 py-8 md:py-12">
         {/* Hero Section */}
         <section className="mb-4">
-          <div className="p-6 border border-gray-200 dark:border-gray-800 rounded-lg flex flex-row gap-6 items-start">
-            <div className="flex-shrink-0">
-              <div className="relative w-20 h-20 rounded-full overflow-hidden border border-gray-200 dark:border-gray-800">
-                <Image
-                  src="/profile.jpg"
-                  alt="Mandar Kashikar"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
-            </div>
-            <div className="flex-1">
+          <div className="p-6 border border-gray-200 dark:border-gray-800 rounded-lg">
+            <div>
               <div className="flex items-center gap-3 flex-wrap mb-1">
                 <h1 className="text-2xl font-bold">Mandar Kashikar</h1>
                 <div className="flex gap-2">
@@ -369,33 +364,6 @@ export default function Home() {
               <p className="text-sm text-gray-600 dark:text-gray-400">
                 Senior Product Manager, Vertical Lead – Retail SMB Commerce
               </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Skills */}
-        <section className="mb-4">
-          <div className="p-6 border border-gray-200 dark:border-gray-800 rounded-lg">
-            <h2 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-3">Core Skills</h2>
-            <div className="flex flex-wrap gap-2">
-              {[
-                'Product Strategy & Roadmap',
-                'Omni-channel Commerce',
-                'Payments & POS Systems',
-                'SMB Solutions',
-                'API Integrations',
-                'Cross-functional Leadership',
-                'Go-to-Market Strategy',
-                'Data Analytics',
-                'Agile / Scrum',
-              ].map((skill) => (
-                <span
-                  key={skill}
-                  className="px-3 py-1 bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-full text-xs"
-                >
-                  {skill}
-                </span>
-              ))}
             </div>
           </div>
         </section>
@@ -546,6 +514,33 @@ export default function Home() {
                 )}
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* Skills */}
+        <section className="mb-12">
+          <div className="p-6 border border-gray-200 dark:border-gray-800 rounded-lg">
+            <h2 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-3">Core Skills</h2>
+            <div className="flex flex-wrap gap-2">
+              {[
+                'Product Strategy & Roadmap',
+                'Omni-channel Commerce',
+                'Payments & POS Systems',
+                'SMB Solutions',
+                'API Integrations',
+                'Cross-functional Leadership',
+                'Go-to-Market Strategy',
+                'Data Analytics',
+                'Agile / Scrum',
+              ].map((skill) => (
+                <span
+                  key={skill}
+                  className="px-3 py-1 bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-full text-xs"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
           </div>
         </section>
 
