@@ -179,6 +179,15 @@ export default function Home() {
 
   const projects = [
     {
+      name: 'LinkedIn Slop Filter',
+      status: 'Live',
+      statusColor: 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200',
+      description:
+        'Chrome extension that watches your LinkedIn feed and fades AI-generated filler, thought-leader platitudes, and ads in real time. Classifies posts 0–100% slop using local Ollama (fully private) or Jev (TypeSafe AI). Includes hiring post detection and draggable feed UI.',
+      tags: ['AI / Agents', 'Chrome Extension', 'Open Source'],
+      link: 'https://github.com/mandarkashikar/linkedin-slop-filter',
+    },
+    {
       name: 'PM Office Hours Simulator (Lenny\'s)',
       status: 'Build Challenge',
       statusColor: 'bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200',
