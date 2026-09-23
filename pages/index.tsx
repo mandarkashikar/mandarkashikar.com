@@ -331,11 +331,11 @@ export default function Home() {
         )}
       </header>
 
-      <main className="mx-auto max-w-5xl px-6 py-12 md:py-20">
+      <main className="mx-auto max-w-5xl px-6 py-8 md:py-12">
         {/* Hero Section */}
-        <section className="mb-24 flex flex-col md:flex-row gap-12 items-center">
+        <section className="mb-12 flex flex-row gap-6 items-start">
           <div className="flex-shrink-0">
-            <div className="relative w-48 h-48 rounded-lg overflow-hidden border-2 border-gray-200 dark:border-gray-800">
+            <div className="relative w-20 h-20 rounded-full overflow-hidden border border-gray-200 dark:border-gray-800">
               <Image
                 src="/profile.jpg"
                 alt="Mandar Kashikar"
@@ -346,11 +346,11 @@ export default function Home() {
             </div>
           </div>
           <div className="flex-1">
-            <h1 className="text-5xl md:text-6xl font-bold mb-4">Mandar Kashikar</h1>
-            <p className="text-2xl text-gray-600 dark:text-gray-400 mb-4">
+            <h1 className="text-3xl font-bold mb-1">Mandar Kashikar</h1>
+            <p className="text-base text-gray-600 dark:text-gray-400 mb-3">
               Lead Product Manager — Retail Omnicommerce & Payments
             </p>
-            <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+            <p className="text-sm text-gray-700 dark:text-gray-300 mb-4 leading-relaxed max-w-xl">
               At Elavon / U.S. Bank, I build omni-channel commerce solutions that unify online and in-store selling for
               SMBs. Outside work, I co-run{' '}
               <a href="https://studioocea.com" className="hover:underline font-semibold">
@@ -358,18 +358,18 @@ export default function Home() {
               </a>{' '}
               with my wife — an art brand that keeps my product instincts grounded in real merchant pain.
             </p>
-            <div className="flex gap-4 flex-wrap">
+            <div className="flex gap-3 flex-wrap">
               <a
                 href="https://drive.google.com/file/d/1pVIH2_JIrzbLMbx5y9ybk6Nkv3vjWYpg/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 bg-black dark:bg-white text-white dark:text-black rounded-lg font-semibold hover:opacity-80 transition-opacity"
+                className="px-4 py-2 bg-black dark:bg-white text-white dark:text-black text-sm rounded-lg font-semibold hover:opacity-80 transition-opacity"
               >
                 Resume ↗
               </a>
               <a
                 href="mailto:mandarkashikar1@gmail.com"
-                className="px-6 py-3 border border-gray-300 dark:border-gray-700 rounded-lg font-semibold hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors"
+                className="px-4 py-2 border border-gray-300 dark:border-gray-700 text-sm rounded-lg font-semibold hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors"
               >
                 Contact
               </a>
@@ -378,8 +378,8 @@ export default function Home() {
         </section>
 
         {/* Skills */}
-        <section className="mb-24">
-          <h2 className="text-3xl font-bold mb-8">Core Skills</h2>
+        <section className="mb-12">
+          <h2 className="text-xl font-bold mb-4">Core Skills</h2>
           <div className="flex flex-wrap gap-3">
             {[
               'Product Strategy & Roadmap',
@@ -403,8 +403,8 @@ export default function Home() {
         </section>
 
         {/* Experience */}
-        <section className="mb-24" id="experience">
-          <h2 className="text-3xl font-bold mb-8">Experience</h2>
+        <section className="mb-12" id="experience">
+          <h2 className="text-xl font-bold mb-4">Experience</h2>
           <div className="space-y-4">
             {timelineDataRich.map((exp) => (
               <button
@@ -504,8 +504,8 @@ export default function Home() {
         )}
 
         {/* Projects */}
-        <section className="mb-24" id="projects">
-          <h2 className="text-3xl font-bold mb-8">Projects</h2>
+        <section className="mb-12" id="projects">
+          <h2 className="text-xl font-bold mb-4">Projects</h2>
           <div className="grid md:grid-cols-1 gap-6">
             {projects.map((project) => (
               <div
