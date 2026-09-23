@@ -347,26 +347,28 @@ export default function Home() {
               </div>
             </div>
             <div className="flex-1">
-              <h1 className="text-2xl font-bold mb-1">Mandar Kashikar</h1>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
-                Lead Product Manager — Retail Omnicommerce & Payments
-              </p>
-              <div className="flex gap-3 flex-wrap">
-                <a
-                  href="/resume.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2 bg-black dark:bg-white text-white dark:text-black text-sm rounded-lg font-semibold hover:opacity-80 transition-opacity"
-                >
-                  Resume ↗
-                </a>
-                <a
-                  href="mailto:mandarkashikar1@gmail.com"
-                  className="px-4 py-2 border border-gray-300 dark:border-gray-700 text-sm rounded-lg font-semibold hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors"
-                >
-                  Contact
-                </a>
+              <div className="flex items-center gap-3 flex-wrap mb-1">
+                <h1 className="text-2xl font-bold">Mandar Kashikar</h1>
+                <div className="flex gap-2">
+                  <a
+                    href="/resume.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3 py-1 bg-black dark:bg-white text-white dark:text-black text-xs rounded-lg font-semibold hover:opacity-80 transition-opacity"
+                  >
+                    Resume ↗
+                  </a>
+                  <a
+                    href="mailto:mandarkashikar1@gmail.com"
+                    className="px-3 py-1 border border-gray-300 dark:border-gray-700 text-xs rounded-lg font-semibold hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors"
+                  >
+                    Contact
+                  </a>
+                </div>
               </div>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                Senior Product Manager, Vertical Lead – Retail SMB Commerce
+              </p>
             </div>
           </div>
         </section>
