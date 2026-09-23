@@ -333,72 +333,76 @@ export default function Home() {
 
       <main className="mx-auto max-w-5xl px-6 py-8 md:py-12">
         {/* Hero Section */}
-        <section className="mb-12 flex flex-row gap-6 items-start">
-          <div className="flex-shrink-0">
-            <div className="relative w-20 h-20 rounded-full overflow-hidden border border-gray-200 dark:border-gray-800">
-              <Image
-                src="/profile.jpg"
-                alt="Mandar Kashikar"
-                fill
-                className="object-cover"
-                priority
-              />
+        <section className="mb-4">
+          <div className="p-6 border border-gray-200 dark:border-gray-800 rounded-lg flex flex-row gap-6 items-start">
+            <div className="flex-shrink-0">
+              <div className="relative w-20 h-20 rounded-full overflow-hidden border border-gray-200 dark:border-gray-800">
+                <Image
+                  src="/profile.jpg"
+                  alt="Mandar Kashikar"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
             </div>
-          </div>
-          <div className="flex-1">
-            <h1 className="text-3xl font-bold mb-1">Mandar Kashikar</h1>
-            <p className="text-base text-gray-600 dark:text-gray-400 mb-3">
-              Lead Product Manager — Retail Omnicommerce & Payments
-            </p>
-            <p className="text-sm text-gray-700 dark:text-gray-300 mb-4 leading-relaxed max-w-xl">
-              At Elavon / U.S. Bank, I build omni-channel commerce solutions that unify online and in-store selling for
-              SMBs. Outside work, I co-run{' '}
-              <a href="https://studioocea.com" className="hover:underline font-semibold">
-                Studio Ocea
-              </a>{' '}
-              with my wife — an art brand that keeps my product instincts grounded in real merchant pain.
-            </p>
-            <div className="flex gap-3 flex-wrap">
-              <a
-                href="https://drive.google.com/file/d/1pVIH2_JIrzbLMbx5y9ybk6Nkv3vjWYpg/view?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2 bg-black dark:bg-white text-white dark:text-black text-sm rounded-lg font-semibold hover:opacity-80 transition-opacity"
-              >
-                Resume ↗
-              </a>
-              <a
-                href="mailto:mandarkashikar1@gmail.com"
-                className="px-4 py-2 border border-gray-300 dark:border-gray-700 text-sm rounded-lg font-semibold hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors"
-              >
-                Contact
-              </a>
+            <div className="flex-1">
+              <h1 className="text-2xl font-bold mb-1">Mandar Kashikar</h1>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                Lead Product Manager — Retail Omnicommerce & Payments
+              </p>
+              <p className="text-sm text-gray-700 dark:text-gray-300 mb-4 leading-relaxed max-w-xl">
+                At Elavon / U.S. Bank, I build omni-channel commerce solutions that unify online and in-store selling for
+                SMBs. Outside work, I co-run{' '}
+                <a href="https://studioocea.com" className="hover:underline font-semibold">
+                  Studio Ocea
+                </a>{' '}
+                with my wife — an art brand that keeps my product instincts grounded in real merchant pain.
+              </p>
+              <div className="flex gap-3 flex-wrap">
+                <a
+                  href="https://drive.google.com/file/d/1pVIH2_JIrzbLMbx5y9ybk6Nkv3vjWYpg/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 bg-black dark:bg-white text-white dark:text-black text-sm rounded-lg font-semibold hover:opacity-80 transition-opacity"
+                >
+                  Resume ↗
+                </a>
+                <a
+                  href="mailto:mandarkashikar1@gmail.com"
+                  className="px-4 py-2 border border-gray-300 dark:border-gray-700 text-sm rounded-lg font-semibold hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors"
+                >
+                  Contact
+                </a>
+              </div>
             </div>
           </div>
         </section>
 
         {/* Skills */}
-        <section className="mb-12">
-          <h2 className="text-xl font-bold mb-4">Core Skills</h2>
-          <div className="flex flex-wrap gap-3">
-            {[
-              'Product Strategy & Roadmap',
-              'Omni-channel Commerce',
-              'Payments & POS Systems',
-              'SMB Solutions',
-              'API Integrations',
-              'Cross-functional Leadership',
-              'Go-to-Market Strategy',
-              'Data Analytics',
-              'Agile / Scrum',
-            ].map((skill) => (
-              <span
-                key={skill}
-                className="px-4 py-2 bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-full text-sm"
-              >
-                {skill}
-              </span>
-            ))}
+        <section className="mb-4">
+          <div className="p-6 border border-gray-200 dark:border-gray-800 rounded-lg">
+            <h2 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-3">Core Skills</h2>
+            <div className="flex flex-wrap gap-2">
+              {[
+                'Product Strategy & Roadmap',
+                'Omni-channel Commerce',
+                'Payments & POS Systems',
+                'SMB Solutions',
+                'API Integrations',
+                'Cross-functional Leadership',
+                'Go-to-Market Strategy',
+                'Data Analytics',
+                'Agile / Scrum',
+              ].map((skill) => (
+                <span
+                  key={skill}
+                  className="px-3 py-1 bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-full text-xs"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
           </div>
         </section>
 
