@@ -351,17 +351,9 @@ export default function Home() {
               <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
                 Lead Product Manager — Retail Omnicommerce & Payments
               </p>
-              <p className="text-sm text-gray-700 dark:text-gray-300 mb-4 leading-relaxed max-w-xl">
-                At Elavon / U.S. Bank, I build omni-channel commerce solutions that unify online and in-store selling for
-                SMBs. Outside work, I co-run{' '}
-                <a href="https://studioocea.com" className="hover:underline font-semibold">
-                  Studio Ocea
-                </a>{' '}
-                with my wife — an art brand that keeps my product instincts grounded in real merchant pain.
-              </p>
               <div className="flex gap-3 flex-wrap">
                 <a
-                  href="https://drive.google.com/file/d/1pVIH2_JIrzbLMbx5y9ybk6Nkv3vjWYpg/view?usp=sharing"
+                  href="/resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-4 py-2 bg-black dark:bg-white text-white dark:text-black text-sm rounded-lg font-semibold hover:opacity-80 transition-opacity"
@@ -403,6 +395,16 @@ export default function Home() {
                 </span>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Summary */}
+        <section className="mb-4">
+          <div className="p-6 border border-gray-200 dark:border-gray-800 rounded-lg">
+            <h2 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-3">Summary</h2>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+              Senior Product Manager with 6 years leading technical B2B commerce and payments products, including 4+ years taking them from concept to launch, and 14 years of overall experience across product management, strategy consulting, analytics, and engineering. Most recently took Elavon Business Solutions from concept to launch, combining commerce and payments through integrations spanning account provisioning, SSO, payment processing, and POS hardware. Own product strategy for the Retail SMB segment, lead delivery across 6+ product and engineering teams, and manage a strategic partnership with a ~$1M annual development budget. Actively building with AI and enabling PM work with it.
+            </p>
           </div>
         </section>
 
