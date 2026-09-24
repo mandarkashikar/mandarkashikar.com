@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import Head from 'next/head'
 
 const timelineDataRich = [
   {
@@ -162,6 +163,14 @@ export default function Home() {
     applyTheme(isDarkMode)
   }, [])
 
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setSelectedExp(null)
+    }
+    document.addEventListener('keydown', handleKey)
+    return () => document.removeEventListener('keydown', handleKey)
+  }, [])
+
   const applyTheme = (dark: boolean) => {
     if (dark) {
       document.documentElement.classList.add('dark')
@@ -226,6 +235,21 @@ export default function Home() {
   ]
 
   return (
+    <>
+    <Head>
+      <title>Mandar Kashikar — Senior PM, Commerce & Payments</title>
+      <meta name="description" content="Senior Product Manager with 14 years of experience across commerce, payments, and strategy. Building omni-channel solutions for SMBs at Elavon / U.S. Bank." />
+      <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+      <meta property="og:title" content="Mandar Kashikar — Senior PM, Commerce & Payments" />
+      <meta property="og:description" content="Senior Product Manager building omni-channel commerce solutions at Elavon / U.S. Bank. 14 years across product, strategy, and analytics." />
+      <meta property="og:image" content="https://mandark.dev/profile.jpg" />
+      <meta property="og:url" content="https://mandark.dev" />
+      <meta property="og:type" content="website" />
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:title" content="Mandar Kashikar — Senior PM, Commerce & Payments" />
+      <meta name="twitter:description" content="Senior Product Manager building omni-channel commerce solutions at Elavon / U.S. Bank." />
+      <meta name="twitter:image" content="https://mandark.dev/profile.jpg" />
+    </Head>
     <div className="min-h-screen bg-white dark:bg-black transition-colors text-black dark:text-white">
       {/* Header */}
       <header className="border-b border-gray-200 dark:border-gray-800 sticky top-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur">
@@ -360,9 +384,39 @@ export default function Home() {
                 </a>
               </div>
             </div>
+            <div className="flex flex-wrap gap-x-3 gap-y-1 mb-3 text-xs text-gray-400 dark:text-gray-500">
+              <span>6 yrs in product</span>
+              <span>·</span>
+              <span>$200M+ transaction volume</span>
+              <span>·</span>
+              <span>50K+ merchants migrated</span>
+              <span>·</span>
+              <span>14 yrs total experience</span>
+            </div>
             <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
               Senior Product Manager with 6 years leading technical B2B commerce and payments products, including 4+ years taking them from concept to launch, and 14 years of overall experience across product management, strategy consulting, analytics, and engineering. Most recently took Elavon Business Solutions from concept to launch, combining commerce and payments through integrations spanning account provisioning, SSO, payment processing, and POS hardware. Own product strategy for the Retail SMB segment, lead delivery across 6+ product and engineering teams, and manage a strategic partnership with a ~$1M annual development budget. Actively building with AI and enabling PM work with it.
             </p>
+          </div>
+        </section>
+
+        {/* Now */}
+        <section className="mb-4">
+          <div className="p-6 border border-gray-200 dark:border-gray-800 rounded-lg">
+            <h2 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-3">Now</h2>
+            <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+              <li className="flex gap-2">
+                <span className="text-gray-400 flex-shrink-0">→</span>
+                <span>Building AI tooling for PM workflows at Elavon — custom skills wired into internal Confluence and Jira via MCP</span>
+              </li>
+              <li className="flex gap-2">
+                <span className="text-gray-400 flex-shrink-0">→</span>
+                <span>Running a 90-day <a href="/blog" className="font-semibold hover:underline">Agentic Commerce</a> learning program, exploring how AI agents are reshaping e-commerce for SMBs</span>
+              </li>
+              <li className="flex gap-2">
+                <span className="text-gray-400 flex-shrink-0">→</span>
+                <span>Shipping side projects in AI &amp; commerce: <a href="https://github.com/mandarkashikar/linkedin-slop-filter" target="_blank" rel="noopener noreferrer" className="font-semibold hover:underline">LinkedIn Slop Filter</a>, Buyer Agent</span>
+              </li>
+            </ul>
           </div>
         </section>
 
@@ -381,7 +435,10 @@ export default function Home() {
                     <h3 className="font-semibold text-lg">{exp.role}</h3>
                     <p className="text-gray-600 dark:text-gray-400">{exp.company}</p>
                   </div>
-                  <span className="text-sm text-gray-500 dark:text-gray-500 whitespace-nowrap ml-4">{exp.year}</span>
+                  <div className="flex items-center gap-2 ml-4 flex-shrink-0">
+                    <span className="text-sm text-gray-500 dark:text-gray-500 whitespace-nowrap">{exp.year}</span>
+                    <span className={`text-gray-400 text-xs transition-transform duration-200 ${selectedExp?.id === exp.id ? 'rotate-180' : ''}`}>▼</span>
+                  </div>
                 </div>
                 <p className="text-gray-700 dark:text-gray-300 text-sm">{exp.summary}</p>
               </button>
@@ -555,5 +612,6 @@ export default function Home() {
         </footer>
       </main>
     </div>
+    </>
   )
 }
