@@ -279,11 +279,11 @@ export default function Home() {
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex gap-8">
-            <a href="#experience" className="text-sm hover:text-gray-600 dark:hover:text-gray-400 transition">
-              Experience
-            </a>
             <a href="#projects" className="text-sm hover:text-gray-600 dark:hover:text-gray-400 transition">
               Projects
+            </a>
+            <a href="#experience" className="text-sm hover:text-gray-600 dark:hover:text-gray-400 transition">
+              Experience
             </a>
             <a href="/blog" className="text-sm hover:text-gray-600 dark:hover:text-gray-400 transition">
               Blog
@@ -336,18 +336,18 @@ export default function Home() {
           <div className="md:hidden border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-black">
             <nav className="flex flex-col gap-0">
               <a
-                href="#experience"
-                onClick={() => setMobileMenuOpen(false)}
-                className="px-6 py-3 text-sm hover:bg-gray-100 dark:hover:bg-gray-900 border-b border-gray-200 dark:border-gray-800"
-              >
-                Experience
-              </a>
-              <a
                 href="#projects"
                 onClick={() => setMobileMenuOpen(false)}
                 className="px-6 py-3 text-sm hover:bg-gray-100 dark:hover:bg-gray-900 border-b border-gray-200 dark:border-gray-800"
               >
                 Projects
+              </a>
+              <a
+                href="#experience"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-6 py-3 text-sm hover:bg-gray-100 dark:hover:bg-gray-900 border-b border-gray-200 dark:border-gray-800"
+              >
+                Experience
               </a>
               <a
                 href="/blog"
@@ -385,8 +385,46 @@ export default function Home() {
               </div>
             </div>
             <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-              Senior Product Manager with 6 years leading technical B2B commerce and payments products, including 4+ years taking them from concept to launch, and 14 years of overall experience across product management, strategy consulting, analytics, and engineering. Most recently took Elavon Business Solutions from concept to launch, combining commerce and payments through integrations spanning account provisioning, SSO, payment processing, and POS hardware. Own product strategy for the Retail SMB segment, lead delivery across 6+ product and engineering teams, and manage a strategic partnership with a ~$1M annual development budget. Actively building with AI and enabling PM work with it.
+              Senior Product Manager who stays close to the work — I write strategy, run my own discovery, build the analytics, and ship side projects in code. At Elavon / U.S. Bank, I took Elavon Business Solutions from zero to launch: drove the Wix integration end-to-end, built the analytics pipeline that unified four data sources to isolate where merchants were dropping off, and redesigned the onboarding flow that lifted activation from 40% to 65%. Outside work I build: a Chrome extension that detects AI-generated slop in LinkedIn feeds, an AI-powered PM second brain wired into Confluence and Jira via MCP, and a 90-day program exploring how agents are reshaping e-commerce. 14 years across product management, strategy consulting, analytics, and engineering.
             </p>
+          </div>
+        </section>
+
+        {/* Projects */}
+        <section className="mb-12" id="projects">
+          <h2 className="text-xl font-bold mb-4">Projects</h2>
+          <div className="grid md:grid-cols-1 gap-6">
+            {projects.map((project) => (
+              <div
+                key={project.name}
+                className="border border-gray-200 dark:border-gray-800 rounded-lg p-6 hover:shadow-lg dark:hover:shadow-gray-900/50 transition-shadow"
+              >
+                <div className="flex justify-between items-start mb-3">
+                  <h3 className="font-semibold text-lg">{project.name}</h3>
+                  <span className={`px-3 py-1 rounded-full text-xs font-semibold ${project.statusColor}`}>
+                    {project.status}
+                  </span>
+                </div>
+                <p className="text-gray-600 dark:text-gray-400 mb-4">{project.description}</p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="px-3 py-1 bg-gray-100 dark:bg-gray-900 text-xs rounded-full">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                {project.link && (
+                  <a
+                    href={project.link}
+                    target={project.link.startsWith('http') ? '_blank' : undefined}
+                    rel={project.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    className="inline-block text-sm font-semibold hover:underline"
+                  >
+                    {project.link.startsWith('/') ? 'Explore' : 'View'} →
+                  </a>
+                )}
+              </div>
+            ))}
           </div>
         </section>
 
@@ -493,44 +531,6 @@ export default function Home() {
             </div>
           </div>
         )}
-
-        {/* Projects */}
-        <section className="mb-12" id="projects">
-          <h2 className="text-xl font-bold mb-4">Projects</h2>
-          <div className="grid md:grid-cols-1 gap-6">
-            {projects.map((project) => (
-              <div
-                key={project.name}
-                className="border border-gray-200 dark:border-gray-800 rounded-lg p-6 hover:shadow-lg dark:hover:shadow-gray-900/50 transition-shadow"
-              >
-                <div className="flex justify-between items-start mb-3">
-                  <h3 className="font-semibold text-lg">{project.name}</h3>
-                  <span className={`px-3 py-1 rounded-full text-xs font-semibold ${project.statusColor}`}>
-                    {project.status}
-                  </span>
-                </div>
-                <p className="text-gray-600 dark:text-gray-400 mb-4">{project.description}</p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag) => (
-                    <span key={tag} className="px-3 py-1 bg-gray-100 dark:bg-gray-900 text-xs rounded-full">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                {project.link && (
-                  <a
-                    href={project.link}
-                    target={project.link.startsWith('http') ? '_blank' : undefined}
-                    rel={project.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className="inline-block text-sm font-semibold hover:underline"
-                  >
-                    {project.link.startsWith('/') ? 'Explore' : 'View'} →
-                  </a>
-                )}
-              </div>
-            ))}
-          </div>
-        </section>
 
         {/* Skills */}
         <section className="mb-12">
