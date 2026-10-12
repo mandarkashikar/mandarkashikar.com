@@ -155,12 +155,22 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [isDark, setIsDark] = useState(false)
 
+  function applyTheme(dark: boolean) {
+    if (dark) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    localStorage.setItem('theme', dark ? 'dark' : 'light')
+  }
+
   useEffect(() => {
     const saved = localStorage.getItem('theme')
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
     const isDarkMode = saved === 'dark' || (!saved && prefersDark)
-    setIsDark(isDarkMode)
     applyTheme(isDarkMode)
+    const frame = window.requestAnimationFrame(() => setIsDark(isDarkMode))
+    return () => window.cancelAnimationFrame(frame)
   }, [])
 
   useEffect(() => {
@@ -170,15 +180,6 @@ export default function Home() {
     document.addEventListener('keydown', handleKey)
     return () => document.removeEventListener('keydown', handleKey)
   }, [])
-
-  const applyTheme = (dark: boolean) => {
-    if (dark) {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
-    localStorage.setItem('theme', dark ? 'dark' : 'light')
-  }
 
   const toggleTheme = () => {
     const newTheme = !isDark
@@ -250,337 +251,245 @@ export default function Home() {
       <meta name="twitter:description" content="Senior Product Manager building omni-channel commerce solutions at Elavon / U.S. Bank." />
       <meta name="twitter:image" content="https://mandark.dev/profile.jpg" />
     </Head>
-    <div className="min-h-screen bg-white dark:bg-black transition-colors text-black dark:text-white">
-      {/* Header */}
-      <header className="border-b border-gray-200 dark:border-gray-800 sticky top-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur">
-        <div className="mx-auto max-w-5xl px-6 py-4 flex items-center justify-between">
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="hover:opacity-70 transition-opacity md:hidden flex items-center gap-2"
-            aria-label="Menu"
-          >
-            <div className="relative w-8 h-8 rounded-full overflow-hidden border border-gray-200 dark:border-gray-800 flex-shrink-0">
-              <Image src="/profile.jpg" alt="Mandar Kashikar" fill className="object-cover" />
+    <div className="min-h-screen overflow-x-clip bg-[var(--portfolio-bg)] text-[var(--portfolio-text)] transition-colors">
+      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:rounded-md focus:bg-[var(--portfolio-accent)] focus:px-3 focus:py-2 focus:text-[#14241a]">
+        Skip to content
+      </a>
+
+      <div className="mx-auto max-w-6xl px-6 md:px-10 lg:flex lg:gap-16">
+        <header className="pt-12 pb-10 lg:sticky lg:top-0 lg:w-[40%] lg:self-start lg:py-20">
+          <div className="relative lg:block">
+            <div>
+              <div className="relative mb-6 h-24 w-24 overflow-hidden rounded-xl ring-1 ring-[var(--portfolio-line)]">
+                <Image src="/profile.jpg" alt="Mandar Kashikar" fill priority className="object-cover" />
+              </div>
+              <p className="font-mono text-xs tracking-wide text-[var(--portfolio-accent)]">Senior Product Manager · Super IC</p>
+              <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">Mandar Kashikar</h1>
+              <p className="mt-4 max-w-sm text-base text-[var(--portfolio-muted)]">
+                <span className="text-[var(--portfolio-accent)]" aria-hidden="true">↳ </span>
+                Building commerce, payments, and AI products from messy problem to measurable outcome.
+              </p>
+              <p className="mt-2 text-sm text-[var(--portfolio-faint)]">Toronto, Canada</p>
+              <div className="mt-8 h-px w-24 rounded-full bg-[var(--portfolio-accent)]" aria-hidden="true" />
             </div>
-            <span className="text-sm font-bold">MK</span>
-            <span
-              className={`w-1.5 h-1.5 bg-current rounded-full transition-all ${
-                mobileMenuOpen ? 'mb-1' : 'mt-1'
-              }`}
-            ></span>
-          </button>
 
-          <Link href="/" className="hidden md:flex items-center gap-2 hover:opacity-70 transition-opacity">
-            <div className="relative w-8 h-8 rounded-full overflow-hidden border border-gray-200 dark:border-gray-800 flex-shrink-0">
-              <Image src="/profile.jpg" alt="Mandar Kashikar" fill className="object-cover" />
-            </div>
-            <span className="text-sm font-bold">MK</span>
-          </Link>
-
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex gap-8">
-            <a href="#projects" className="text-sm hover:text-gray-600 dark:hover:text-gray-400 transition">
-              Projects
-            </a>
-            <a href="#experience" className="text-sm hover:text-gray-600 dark:hover:text-gray-400 transition">
-              Experience
-            </a>
-            <a href="/blog" className="text-sm hover:text-gray-600 dark:hover:text-gray-400 transition">
-              Blog
-            </a>
-          </nav>
-
-          {/* Desktop Icons + Theme Toggle */}
-          <div className="flex gap-4 items-center">
-            <a
-              href="mailto:mandarkashikar1@gmail.com"
-              className="text-lg hover:opacity-70 transition-opacity"
-              title="Email"
-            >
-              ✉️
-            </a>
-            <a
-              href="https://linkedin.com/in/mandarkashikar"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-lg hover:opacity-70 transition-opacity flex items-center justify-center w-6 h-6"
-              title="LinkedIn"
-            >
-              <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-              </svg>
-            </a>
-            <a
-              href="https://github.com/mandarkashikar"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-lg hover:opacity-70 transition-opacity flex items-center justify-center w-6 h-6"
-              title="GitHub"
-            >
-              <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-              </svg>
-            </a>
             <button
-              onClick={toggleTheme}
-              className="text-lg hover:opacity-70 transition-opacity"
-              title={isDark ? 'Light mode' : 'Dark mode'}
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="absolute right-0 top-0 rounded-md border border-[var(--portfolio-line)] px-3 py-2 font-mono text-xs text-[var(--portfolio-muted)] lg:hidden"
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-nav"
             >
-              {isDark ? '☀️' : '🌙'}
+              {mobileMenuOpen ? 'Close' : 'Menu'}
             </button>
           </div>
-        </div>
 
-        {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="md:hidden border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-black">
-            <nav className="flex flex-col gap-0">
-              <a
-                href="#projects"
-                onClick={() => setMobileMenuOpen(false)}
-                className="px-6 py-3 text-sm hover:bg-gray-100 dark:hover:bg-gray-900 border-b border-gray-200 dark:border-gray-800"
-              >
-                Projects
-              </a>
-              <a
-                href="#experience"
-                onClick={() => setMobileMenuOpen(false)}
-                className="px-6 py-3 text-sm hover:bg-gray-100 dark:hover:bg-gray-900 border-b border-gray-200 dark:border-gray-800"
-              >
-                Experience
-              </a>
-              <a
-                href="/blog"
-                onClick={() => setMobileMenuOpen(false)}
-                className="px-6 py-3 text-sm hover:bg-gray-100 dark:hover:bg-gray-900"
-              >
-                Blog
-              </a>
-            </nav>
-          </div>
-        )}
-      </header>
-
-      <main className="mx-auto max-w-5xl px-6 py-8 md:py-12">
-        {/* Hero Section */}
-        <section className="mb-4">
-          <div className="p-6 border border-gray-200 dark:border-gray-800 rounded-lg">
-            <div className="flex items-center gap-3 flex-wrap mb-3">
-              <h1 className="text-2xl font-bold">Mandar Kashikar</h1>
-              <div className="flex gap-2">
-                <a
-                  href="/resume.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-3 py-1 bg-black dark:bg-white text-white dark:text-black text-xs rounded-lg font-semibold hover:opacity-80 transition-opacity"
-                >
-                  Resume ↗
-                </a>
-                <a
-                  href="mailto:mandarkashikar1@gmail.com"
-                  className="px-3 py-1 border border-gray-300 dark:border-gray-700 text-xs rounded-lg font-semibold hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors"
-                >
-                  Contact
-                </a>
-              </div>
-            </div>
-            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-              Senior Product Manager who stays close to the work — I write strategy, run my own discovery, build the analytics, and ship side projects in code. At Elavon / U.S. Bank, I took Elavon Business Solutions from zero to launch: drove the Wix integration end-to-end, built the analytics pipeline that unified four data sources to isolate where merchants were dropping off, and redesigned the onboarding flow that lifted activation from 40% to 65%. Outside work I build: a Chrome extension that detects AI-generated slop in LinkedIn feeds, an AI-powered PM second brain wired into Confluence and Jira via MCP, and a 90-day program exploring how agents are reshaping e-commerce. 14 years across product management, strategy consulting, analytics, and engineering.
-            </p>
-          </div>
-        </section>
-
-        {/* Projects */}
-        <section className="mb-12" id="projects">
-          <h2 className="text-xl font-bold mb-4">Projects</h2>
-          <div className="grid md:grid-cols-1 gap-6">
-            {projects.map((project) => (
-              <div
-                key={project.name}
-                className="border border-gray-200 dark:border-gray-800 rounded-lg p-6 hover:shadow-lg dark:hover:shadow-gray-900/50 transition-shadow"
-              >
-                <div className="flex justify-between items-start mb-3">
-                  <h3 className="font-semibold text-lg">{project.name}</h3>
-                  <span className={`px-3 py-1 rounded-full text-xs font-semibold ${project.statusColor}`}>
-                    {project.status}
-                  </span>
-                </div>
-                <p className="text-gray-600 dark:text-gray-400 mb-4">{project.description}</p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag) => (
-                    <span key={tag} className="px-3 py-1 bg-gray-100 dark:bg-gray-900 text-xs rounded-full">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                {project.link && (
-                  <a
-                    href={project.link}
-                    target={project.link.startsWith('http') ? '_blank' : undefined}
-                    rel={project.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className="inline-block text-sm font-semibold hover:underline"
-                  >
-                    {project.link.startsWith('/') ? 'Explore' : 'View'} →
-                  </a>
-                )}
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Experience */}
-        <section className="mb-12" id="experience">
-          <h2 className="text-xl font-bold mb-4">Experience</h2>
-          <div className="space-y-4">
-            {timelineDataRich.map((exp) => (
-              <button
-                key={exp.id}
-                onClick={() => setSelectedExp(selectedExp?.id === exp.id ? null : exp)}
-                className="w-full text-left p-6 border border-gray-200 dark:border-gray-800 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors"
-              >
-                <div className="flex justify-between items-start mb-2">
-                  <div>
-                    <h3 className="font-semibold text-lg">{exp.role}</h3>
-                    <p className="text-gray-600 dark:text-gray-400">{exp.company}</p>
-                  </div>
-                  <div className="flex items-center gap-2 ml-4 flex-shrink-0">
-                    <span className="text-sm text-gray-500 dark:text-gray-500 whitespace-nowrap">{exp.year}</span>
-                    <span className={`text-gray-400 text-xs transition-transform duration-200 ${selectedExp?.id === exp.id ? 'rotate-180' : ''}`}>▼</span>
-                  </div>
-                </div>
-                <p className="text-gray-700 dark:text-gray-300 text-sm">{exp.summary}</p>
-              </button>
-            ))}
-          </div>
-        </section>
-
-        {/* Experience Modal */}
-        {selectedExp && (
-          <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 md:p-0">
-            <div className="bg-white dark:bg-black border border-gray-200 dark:border-gray-800 rounded-lg max-h-[90vh] overflow-y-auto max-w-2xl w-full">
-              <div className="sticky top-0 bg-white dark:bg-black border-b border-gray-200 dark:border-gray-800 p-6 flex justify-between items-start">
-                <div>
-                  <h2 className="text-2xl font-bold">{selectedExp.role}</h2>
-                  <p className="text-gray-600 dark:text-gray-400">
-                    {selectedExp.company} • {selectedExp.year}
-                  </p>
-                </div>
-                <button
-                  onClick={() => setSelectedExp(null)}
-                  className="text-2xl hover:opacity-70 transition-opacity"
-                >
-                  ✕
-                </button>
-              </div>
-
-              <div className="p-6 space-y-6">
-                {/* Achievements */}
-                {selectedExp.achievements && selectedExp.achievements.length > 0 && (
-                  <div>
-                    <h3 className="font-semibold text-lg mb-3">Achievements</h3>
-                    <ul className="space-y-2">
-                      {selectedExp.achievements.map((achievement, idx) => (
-                        <li key={idx} className="text-gray-700 dark:text-gray-300 flex gap-3">
-                          <span className="text-gray-400">•</span>
-                          <span>{achievement}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {/* Projects */}
-                {selectedExp.projects && selectedExp.projects.length > 0 && (
-                  <div>
-                    <h3 className="font-semibold text-lg mb-3">Key Projects</h3>
-                    <div className="space-y-4">
-                      {selectedExp.projects.map((project, idx) => (
-                        <div
-                          key={idx}
-                          className="border border-gray-200 dark:border-gray-800 rounded-lg p-4 bg-gray-50 dark:bg-gray-900/50"
-                        >
-                          <h4 className="font-semibold mb-3">{project.title}</h4>
-                          <div className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
-                            {project.star.situation && (
-                              <div>
-                                <strong className="text-gray-900 dark:text-white">Situation:</strong> {project.star.situation}
-                              </div>
-                            )}
-                            {project.star.task && (
-                              <div>
-                                <strong className="text-gray-900 dark:text-white">Task:</strong> {project.star.task}
-                              </div>
-                            )}
-                            {project.star.action && (
-                              <div>
-                                <strong className="text-gray-900 dark:text-white">Action:</strong> {project.star.action}
-                              </div>
-                            )}
-                            {project.star.result && (
-                              <div>
-                                <strong className="text-gray-900 dark:text-white">Result:</strong> {project.star.result}
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Skills */}
-        <section className="mb-12">
-          <div className="p-6 border border-gray-200 dark:border-gray-800 rounded-lg">
-            <h2 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-3">Core Skills</h2>
-            <div className="flex flex-wrap gap-2">
+          <nav className="mt-8 hidden lg:block" aria-label="Sections">
+            <ul className="space-y-3">
               {[
-                'Product Strategy & Roadmap',
-                'Omni-channel Commerce',
-                'Payments & POS Systems',
-                'SMB Solutions',
-                'API Integrations',
-                'Cross-functional Leadership',
-                'Go-to-Market Strategy',
-                'Data Analytics',
-                'Agile / Scrum',
-              ].map((skill) => (
-                <span
-                  key={skill}
-                  className="px-3 py-1 bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-full text-xs"
-                >
-                  {skill}
-                </span>
+                ['about', 'About'],
+                ['projects', 'Projects'],
+                ['experience', 'Experience'],
+                ['field-notes', 'Field notes'],
+                ['contact', 'Contact'],
+              ].map(([id, label]) => (
+                <li key={id}>
+                  <a href={`#${id}`} className="group inline-flex items-center gap-3 text-sm font-medium text-[var(--portfolio-faint)] transition-colors hover:text-[var(--portfolio-text)]">
+                    <span className="h-px w-6 bg-[var(--portfolio-line)] transition-all group-hover:w-10 group-hover:bg-[var(--portfolio-accent)]" />
+                    {label}
+                  </a>
+                </li>
               ))}
+            </ul>
+          </nav>
+
+          {mobileMenuOpen && (
+            <nav id="mobile-nav" className="mt-7 grid grid-cols-2 gap-2 rounded-lg border border-[var(--portfolio-line)] bg-[var(--portfolio-surface)] p-3 lg:hidden" aria-label="Mobile sections">
+              {[
+                ['about', 'About'],
+                ['projects', 'Projects'],
+                ['experience', 'Experience'],
+                ['field-notes', 'Field notes'],
+                ['contact', 'Contact'],
+              ].map(([id, label]) => (
+                <a key={id} href={`#${id}`} onClick={() => setMobileMenuOpen(false)} className="rounded-md px-3 py-2 text-sm text-[var(--portfolio-muted)] hover:bg-[var(--portfolio-surface-2)] hover:text-[var(--portfolio-text)]">
+                  {label}
+                </a>
+              ))}
+            </nav>
+          )}
+
+          <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3 border-t border-[var(--portfolio-line)] pt-7">
+            <a href="mailto:mandarkashikar1@gmail.com" className="text-sm text-[var(--portfolio-muted)] hover:text-[var(--portfolio-accent)] hover:underline">Email</a>
+            <a href="https://linkedin.com/in/mandarkashikar" target="_blank" rel="noopener noreferrer" className="text-sm text-[var(--portfolio-muted)] hover:text-[var(--portfolio-accent)] hover:underline">LinkedIn</a>
+            <a href="https://github.com/mandarkashikar" target="_blank" rel="noopener noreferrer" className="text-sm text-[var(--portfolio-muted)] hover:text-[var(--portfolio-accent)] hover:underline">GitHub</a>
+            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="text-sm text-[var(--portfolio-muted)] hover:text-[var(--portfolio-accent)] hover:underline">Resume ↓</a>
+            <button onClick={toggleTheme} className="text-sm text-[var(--portfolio-muted)] hover:text-[var(--portfolio-accent)]" title={isDark ? 'Use light mode' : 'Use dark mode'}>
+              {isDark ? 'Light' : 'Dark'}
+            </button>
+          </div>
+        </header>
+
+        <main id="main" className="min-w-0 lg:w-[60%] lg:py-20">
+          <section id="about" className="mb-20 scroll-mt-8">
+            <h2 className="portfolio-section-title"><span />About</h2>
+            <div className="space-y-4 text-lg leading-relaxed text-[var(--portfolio-muted)]">
+              <p>
+                I&apos;m a senior product manager who stays close to the work: I write strategy, run discovery, build the analytics, and use code and AI to make ideas tangible.
+              </p>
+              <p>
+                At Elavon / U.S. Bank, I took Elavon Business Solutions from zero to launch, drove the Wix integration end-to-end, and built the analysis behind an onboarding redesign that lifted merchant activation from 40% to 65%. My background spans product management, strategy consulting, analytics, and engineering.
+              </p>
+              <p>
+                Outside work, I build practical experiments in AI and commerce—from a LinkedIn slop filter to an AI-powered PM second brain and a 90-day field study on agentic commerce.
+              </p>
+            </div>
+
+            <div className="mt-8 rounded-lg border border-[var(--portfolio-line)] bg-[var(--portfolio-surface)] p-5">
+              <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--portfolio-accent)]">How I operate</h3>
+              <ul className="mt-4 space-y-3">
+                {[
+                  'Start with the customer and the evidence, not the roadmap.',
+                  'Move fluidly from strategy to data, prototype, requirements, and launch.',
+                  'Use AI as a working tool—while keeping judgment and accountability human.',
+                ].map((item) => (
+                  <li key={item} className="flex gap-3 text-[15px] text-[var(--portfolio-muted)]">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--portfolio-accent)]" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+
+          <section id="projects" className="mb-20 scroll-mt-8">
+            <h2 className="portfolio-section-title"><span />Projects</h2>
+            <p className="mb-8 text-sm text-[var(--portfolio-muted)]">Things I&apos;ve built to test ideas, sharpen my craft, and learn in public.</p>
+            <ul className="grid auto-rows-fr gap-4 sm:grid-cols-2">
+              {projects.map((project) => {
+                const card = (
+                  <>
+                    <div className="mb-3 flex items-start justify-between gap-3">
+                      <h3 className="font-medium text-[var(--portfolio-text)] transition-colors group-hover:text-[var(--portfolio-accent)]">{project.name}</h3>
+                      <span className="shrink-0 rounded-full border border-[var(--portfolio-line)] px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-[var(--portfolio-faint)]">{project.status}</span>
+                    </div>
+                    <p className="text-sm leading-relaxed text-[var(--portfolio-muted)]">{project.description}</p>
+                    <ul className="mt-4 flex flex-wrap gap-x-2 gap-y-1">
+                      {project.tags.map((tag) => <li key={tag} className="font-mono text-[10px] text-[var(--portfolio-faint)]">{tag}</li>)}
+                    </ul>
+                    <span className="mt-auto inline-flex items-center gap-1 pt-5 text-sm font-medium text-[var(--portfolio-accent)]">
+                      {project.link ? (project.link.startsWith('/') ? 'Explore' : 'View project') : 'In development'}
+                      {project.link && <span className="transition-transform group-hover:translate-x-1">→</span>}
+                    </span>
+                  </>
+                )
+
+                return (
+                  <li key={project.name}>
+                    {project.link ? (
+                      <a href={project.link} target={project.link.startsWith('http') ? '_blank' : undefined} rel={project.link.startsWith('http') ? 'noopener noreferrer' : undefined} className="group flex h-full flex-col rounded-lg border border-[var(--portfolio-line)] bg-[var(--portfolio-surface)] p-5 transition-colors hover:border-[var(--portfolio-accent)] hover:bg-[var(--portfolio-surface-2)]">
+                        {card}
+                      </a>
+                    ) : (
+                      <div className="group flex h-full flex-col rounded-lg border border-[var(--portfolio-line)] bg-[var(--portfolio-surface)] p-5">{card}</div>
+                    )}
+                  </li>
+                )
+              })}
+            </ul>
+          </section>
+
+          <section id="experience" className="mb-20 scroll-mt-8">
+            <h2 className="portfolio-section-title"><span />Experience</h2>
+            <ol className="space-y-10">
+              {timelineDataRich.map((exp) => (
+                <li key={exp.id}>
+                  <div className="flex items-baseline justify-between gap-4">
+                    <h3 className="font-semibold text-[var(--portfolio-text)]">{exp.company}</h3>
+                    <p className="shrink-0 font-mono text-xs text-[var(--portfolio-faint)]">{exp.year}</p>
+                  </div>
+                  <button onClick={() => setSelectedExp(exp)} className="group relative mt-4 w-full border-l border-[var(--portfolio-line)] pl-6 text-left">
+                    <span className="absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-[var(--portfolio-line)] bg-[var(--portfolio-bg)] transition-colors group-hover:border-[var(--portfolio-accent)]" />
+                    <span className="font-medium text-[var(--portfolio-text)] group-hover:text-[var(--portfolio-accent)]">{exp.role}</span>
+                    <span className="mt-2 block text-sm leading-relaxed text-[var(--portfolio-muted)]">{exp.summary}</span>
+                    <span className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-[var(--portfolio-accent)]">View outcomes <span className="transition-transform group-hover:translate-x-1">→</span></span>
+                  </button>
+                </li>
+              ))}
+            </ol>
+
+            <div className="mt-12 border-t border-[var(--portfolio-line)] pt-8">
+              <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--portfolio-faint)]">Focus areas</h3>
+              <ul className="mt-4 flex flex-wrap gap-2">
+                {['0→1 Product Strategy', 'Commerce & Payments', 'Agentic Commerce', 'Customer Discovery', 'API Integrations', 'Product Analytics', 'Go-to-Market', 'AI-enabled PM Craft'].map((skill) => (
+                  <li key={skill} className="rounded-full border border-[var(--portfolio-line)] bg-[var(--portfolio-surface)] px-3 py-1 text-xs text-[var(--portfolio-muted)]">{skill}</li>
+                ))}
+              </ul>
+            </div>
+          </section>
+
+          <section id="field-notes" className="mb-20 scroll-mt-8">
+            <h2 className="portfolio-section-title"><span />Field notes</h2>
+            <Link href="/blog" className="group block rounded-lg border border-[var(--portfolio-line)] bg-[var(--portfolio-surface)] p-6 transition-colors hover:border-[var(--portfolio-accent)] hover:bg-[var(--portfolio-surface-2)]">
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--portfolio-accent)]">90-day learning program</p>
+              <h3 className="mt-3 text-2xl font-semibold tracking-tight">Decoding Agentic Commerce</h3>
+              <p className="mt-3 text-sm leading-relaxed text-[var(--portfolio-muted)]">Daily lessons on AI-powered shopping, agent architecture, trust, payments, and product strategy for small businesses.</p>
+              <span className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-[var(--portfolio-accent)]">Read the field notes <span className="transition-transform group-hover:translate-x-1">→</span></span>
+            </Link>
+          </section>
+
+          <section id="contact" className="mb-16 scroll-mt-8">
+            <h2 className="portfolio-section-title"><span />Contact</h2>
+            <p className="max-w-md text-lg text-[var(--portfolio-muted)]">I&apos;m always interested in ambitious commerce, payments, and AI product problems.</p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a href="mailto:mandarkashikar1@gmail.com" className="rounded-md bg-[var(--portfolio-accent)] px-4 py-2 text-sm font-medium text-[#14241a] hover:opacity-90">Email me</a>
+              <a href="https://linkedin.com/in/mandarkashikar" target="_blank" rel="noopener noreferrer" className="rounded-md border border-[var(--portfolio-line)] px-4 py-2 text-sm font-medium hover:border-[var(--portfolio-accent)] hover:text-[var(--portfolio-accent)]">LinkedIn</a>
+              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="rounded-md border border-[var(--portfolio-line)] px-4 py-2 text-sm font-medium hover:border-[var(--portfolio-accent)] hover:text-[var(--portfolio-accent)]">Download resume</a>
+            </div>
+            <footer className="mt-16 border-t border-[var(--portfolio-line)] pt-6 text-xs text-[var(--portfolio-faint)]">© 2026 Mandar Kashikar. Built with Next.js.</footer>
+          </section>
+        </main>
+      </div>
+
+      {selectedExp && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/70 p-4" role="dialog" aria-modal="true" aria-labelledby="experience-dialog-title" onMouseDown={(event) => { if (event.target === event.currentTarget) setSelectedExp(null) }}>
+          <div className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-lg border border-[var(--portfolio-line)] bg-[var(--portfolio-bg)] shadow-2xl">
+            <div className="sticky top-0 flex items-start justify-between gap-4 border-b border-[var(--portfolio-line)] bg-[var(--portfolio-bg)] p-6">
+              <div>
+                <h2 id="experience-dialog-title" className="text-2xl font-semibold">{selectedExp.role}</h2>
+                <p className="mt-1 text-sm text-[var(--portfolio-muted)]">{selectedExp.company} · {selectedExp.year}</p>
+              </div>
+              <button onClick={() => setSelectedExp(null)} className="rounded-md border border-[var(--portfolio-line)] px-2.5 py-1.5 text-sm text-[var(--portfolio-muted)] hover:border-[var(--portfolio-accent)] hover:text-[var(--portfolio-accent)]" aria-label="Close experience details">Close</button>
+            </div>
+            <div className="space-y-8 p-6">
+              <div>
+                <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--portfolio-accent)]">Selected outcomes</h3>
+                <ul className="mt-4 space-y-3">
+                  {selectedExp.achievements.map((achievement) => (
+                    <li key={achievement} className="flex gap-3 text-sm leading-relaxed text-[var(--portfolio-muted)]"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--portfolio-accent)]" />{achievement}</li>
+                  ))}
+                </ul>
+              </div>
+              {selectedExp.projects.length > 0 && (
+                <div>
+                  <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--portfolio-accent)]">Case studies</h3>
+                  <div className="mt-4 space-y-4">
+                    {selectedExp.projects.map((project) => (
+                      <article key={project.title} className="rounded-lg border border-[var(--portfolio-line)] bg-[var(--portfolio-surface)] p-5">
+                        <h4 className="font-semibold">{project.title}</h4>
+                        <dl className="mt-4 space-y-3 text-sm leading-relaxed text-[var(--portfolio-muted)]">
+                          {Object.entries(project.star).map(([label, value]) => value && (
+                            <div key={label}><dt className="inline font-medium capitalize text-[var(--portfolio-text)]">{label}: </dt><dd className="inline">{value}</dd></div>
+                          ))}
+                        </dl>
+                      </article>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
-        </section>
-
-        {/* Blog CTA */}
-        <section className="border-t border-gray-200 dark:border-gray-800 pt-12">
-          <div className="bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 rounded-lg p-8 text-center">
-            <h2 className="text-3xl font-bold mb-4">Decoding Agentic Commerce</h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
-              A 90-day learning program exploring AI-powered shopping, agent architecture, and product strategy for
-              SMBs.
-            </p>
-            <a
-              href="/blog"
-              className="inline-block px-6 py-3 bg-black dark:bg-white text-white dark:text-black rounded-lg font-semibold hover:opacity-80 transition-opacity"
-            >
-              Read the Blog
-            </a>
-          </div>
-        </section>
-
-        {/* Footer */}
-        <footer className="border-t border-gray-200 dark:border-gray-800 pt-8 mt-12 text-center text-sm text-gray-600 dark:text-gray-400">
-          <p>Built with Next.js, Tailwind CSS, and care. © 2026 Mandar Kashikar.</p>
-        </footer>
-      </main>
+        </div>
+      )}
     </div>
     </>
   )
