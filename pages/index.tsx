@@ -337,7 +337,7 @@ export default function Home() {
                 I&apos;m a senior product manager who stays close to the work: I write strategy, run discovery, build the analytics, and use code and AI to make ideas tangible.
               </p>
               <p>
-                At Elavon / U.S. Bank, I took Elavon Business Solutions from zero to launch, drove the Wix integration end-to-end, and built the analysis behind an onboarding redesign that lifted merchant activation from 40% to 65%. My background spans product management, strategy consulting, analytics, and engineering.
+                At Elavon / U.S. Bank, I took Elavon Business Solutions from zero to launch and drove the Wix integration end-to-end. The platform has reached 1,000 merchants, ~$800K in contracted ARR, and ~$40M in projected annual payment volume. I also built the analysis behind an onboarding redesign that lifted merchant activation from 40% to 65%. My background spans product management, strategy consulting, analytics, and engineering.
               </p>
               <p>
                 Outside work, I build practical experiments in AI and commerce—from a LinkedIn slop filter to an AI-powered PM second brain and a 90-day field study on agentic commerce.
