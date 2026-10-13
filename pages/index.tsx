@@ -44,7 +44,7 @@ const timelineDataRich = [
     year: '2022 – Jan 2025',
     role: 'Senior Product Manager – Web',
     company: 'Talech POS / U.S. Bank',
-    location: 'Toronto, Canada',
+    location: 'Palo Alto, CA / Toronto, Canada',
     summary: 'Led product strategy and delivery for the merchant web platform — drove $200M in annual transaction volume, migrated 50,000+ merchants, and identified a $20M revenue opportunity.',
     achievements: [
       'Drove ~$200M in annual transaction volume through secure payment integrations (hosted fields, Checkout.js, lightbox, hosted page)',
@@ -147,6 +147,124 @@ const timelineDataRich = [
         }
       }
     ]
+  },
+  {
+    id: 'startups-2015',
+    year: '2015 – 2017',
+    role: 'Marketing & Operations Manager',
+    company: 'Retail eCommerce & SMB Consulting Startups',
+    location: 'Pune, India',
+    summary: 'Learned small-business growth from the inside — launching services, winning the first customers, and operating an ecommerce business close to the merchant.',
+    achievements: [
+      'Launched three service offerings and a go-to-market motion that secured the first 13 clients and reached $20K in monthly revenue',
+      'Built partnerships, events, newsletters, and social campaigns that generated 7,000+ interactions and ~100 leads',
+      'Ran a nationwide inventory-clearance campaign for an ecommerce venture that generated $220K in revenue'
+    ],
+    projects: []
+  },
+  {
+    id: 'philips-2012',
+    year: '2012 – 2016',
+    role: 'Assistant Manager – New Product Development',
+    company: 'Philips Medical Devices',
+    location: 'Pune, India',
+    summary: 'Started as an engineer close to the physical product — developing medical-device components, improving supplier systems, and handling quality problems where reliability mattered.',
+    achievements: [
+      'Led process improvements across 35 global suppliers, delivering $600K in annual savings',
+      'Resolved 300+ critical quality issues, including field failures and recalls, across supplier quality and new product development',
+      'Built a predictive defect model that helped reduce recurring supplier defects by 30%'
+    ],
+    projects: []
+  },
+]
+
+const lifeTimeline = [
+  {
+    period: '2008 – 2012',
+    location: 'Pune, India',
+    type: 'Education',
+    title: 'Started with systems and engineering',
+    organization: 'University of Pune · BTech, Industrial Engineering',
+    description: 'Built the analytical and operational foundation that still shapes how I approach products: understand the system, find the constraint, and improve the whole flow.'
+  },
+  {
+    period: '2012 – 2016',
+    location: 'Pune, India',
+    type: 'Engineering',
+    title: 'Learned what product reliability really means',
+    organization: 'Philips Medical Devices',
+    description: 'Worked on new-product development and supplier quality for medical devices, where a design decision or process failure could have real consequences.',
+    experienceId: 'philips-2012'
+  },
+  {
+    period: '2015 – 2017',
+    location: 'Pune, India',
+    type: 'Entrepreneurship',
+    title: 'Got close to the merchant',
+    organization: 'Retail ecommerce & SMB consulting startups',
+    description: 'Moved from engineering into growth and operations—launching services, finding the first customers, and learning firsthand how small businesses sell and survive.',
+    experienceId: 'startups-2015'
+  },
+  {
+    period: '2017 – 2019',
+    location: 'Pune → College Park, Maryland',
+    type: 'Move + Education',
+    title: 'Crossed continents to broaden the toolkit',
+    organization: 'University of Maryland, Robert H. Smith School of Business',
+    description: 'Earned an MBA and MS in Marketing Analytics, connecting engineering instincts with strategy, customer behavior, and data-driven decision-making.'
+  },
+  {
+    period: '2017 – 2019',
+    location: 'College Park, Maryland',
+    type: 'Community',
+    title: 'Made entrepreneurship part of the education',
+    organization: 'Dingman Center for Entrepreneurship',
+    description: 'Served as a Marketing Analytics graduate assistant, Smith Ambassador, and Faculty Fellow Scholar. Designed Smith in the Valley and the Smith–MPOWER Marketing Case Competition, and helped lead the Marketing Association and Entrepreneurship Club.'
+  },
+  {
+    period: '2018',
+    location: 'Washington, DC',
+    type: 'Growth',
+    title: 'Found product work through growth experiments',
+    organization: 'MPOWER Financing',
+    description: 'Built acquisition programs from scratch, including a referral redesign that generated $2.2M in loan volume in two months.',
+    experienceId: 'mpower-2018'
+  },
+  {
+    period: '2019 – 2021',
+    location: 'Arlington, Virginia',
+    type: 'Strategy + Analytics',
+    title: 'Learned to turn ambiguity into executive decisions',
+    organization: 'EY-Parthenon',
+    description: 'Led analytical workstreams for complex organizations, translating messy workforce and culture data into strategies for C-suite and board audiences.',
+    experienceId: 'ey-2019'
+  },
+  {
+    period: '2021 – 2022',
+    location: 'San Jose, California',
+    type: 'Product',
+    title: 'Made the move into product management',
+    organization: 'TriNet',
+    description: 'Led discovery and launches for benefits products, turning rejected demand and customer friction into new products and measurable growth.',
+    experienceId: 'trinet-2021'
+  },
+  {
+    period: '2022 – 2025',
+    location: 'Palo Alto → Toronto',
+    type: 'Commerce + Move',
+    title: 'Commerce and payments became the throughline',
+    organization: 'talech / U.S. Bank',
+    description: 'Led the merchant web platform across California and Canada—shipping payments and commerce capabilities, migrating 50,000+ merchants, and supporting $200M+ in annual transaction volume.',
+    experienceId: 'usbank-2022'
+  },
+  {
+    period: '2025 – Present',
+    location: 'Toronto, Canada',
+    type: '0→1 Product Leadership',
+    title: 'Built Elavon Business Solutions from zero to launch',
+    organization: 'Elavon / U.S. Bank',
+    description: 'Drove the Wix integration and launched a unified commerce-and-payments platform now used by 1,000 merchants, with ~$800K in contracted ARR and ~$40M in projected annual payment volume.',
+    experienceId: 'elavon-2025'
   },
 ]
 
@@ -288,7 +406,7 @@ export default function Home() {
               {[
                 ['about', 'About'],
                 ['projects', 'Projects'],
-                ['experience', 'Experience'],
+                ['timeline', 'Timeline'],
                 ['field-notes', 'Field notes'],
                 ['contact', 'Contact'],
               ].map(([id, label]) => (
@@ -307,7 +425,7 @@ export default function Home() {
               {[
                 ['about', 'About'],
                 ['projects', 'Projects'],
-                ['experience', 'Experience'],
+                ['timeline', 'Timeline'],
                 ['field-notes', 'Field notes'],
                 ['contact', 'Contact'],
               ].map(([id, label]) => (
@@ -337,7 +455,7 @@ export default function Home() {
                 I&apos;m a senior product manager who stays close to the work: I write strategy, run discovery, build the analytics, and use code and AI to make ideas tangible.
               </p>
               <p>
-                At Elavon / U.S. Bank, I took Elavon Business Solutions from zero to launch and drove the Wix integration end-to-end. The platform has reached 1,000 merchants, ~$800K in contracted ARR, and ~$40M in projected annual payment volume. I also built the analysis behind an onboarding redesign that lifted merchant activation from 40% to 65%. My background spans product management, strategy consulting, analytics, and engineering.
+                At Elavon / U.S. Bank, I took Elavon Business Solutions from zero to launch and drove the Wix integration end-to-end. The platform has reached 1,000 merchants, ~$800K in contracted ARR, and ~$40M in projected annual payment volume. After launch, I uncovered the onboarding bottleneck through product data and 50+ merchant interviews, then rebuilt the activation motion—lifting activation from 40% to ~65% and cutting time to first transaction from 40 days to 19. My path to product spans engineering, entrepreneurship, strategy consulting, and analytics.
               </p>
               <p>
                 Outside work, I build practical experiments in AI and commerce—from a LinkedIn slop filter to an AI-powered PM second brain and a 90-day field study on agentic commerce.
@@ -398,23 +516,37 @@ export default function Home() {
             </ul>
           </section>
 
-          <section id="experience" className="mb-20 scroll-mt-8">
-            <h2 className="portfolio-section-title"><span />Experience</h2>
-            <ol className="space-y-10">
-              {timelineDataRich.map((exp) => (
-                <li key={exp.id}>
-                  <div className="flex items-baseline justify-between gap-4">
-                    <h3 className="font-semibold text-[var(--portfolio-text)]">{exp.company}</h3>
-                    <p className="shrink-0 font-mono text-xs text-[var(--portfolio-faint)]">{exp.year}</p>
-                  </div>
-                  <button onClick={() => setSelectedExp(exp)} className="group relative mt-4 w-full border-l border-[var(--portfolio-line)] pl-6 text-left">
-                    <span className="absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-[var(--portfolio-line)] bg-[var(--portfolio-bg)] transition-colors group-hover:border-[var(--portfolio-accent)]" />
-                    <span className="font-medium text-[var(--portfolio-text)] group-hover:text-[var(--portfolio-accent)]">{exp.role}</span>
-                    <span className="mt-2 block text-sm leading-relaxed text-[var(--portfolio-muted)]">{exp.summary}</span>
-                    <span className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-[var(--portfolio-accent)]">View outcomes <span className="transition-transform group-hover:translate-x-1">→</span></span>
-                  </button>
-                </li>
-              ))}
+          <section id="timeline" className="mb-20 scroll-mt-8">
+            <h2 className="portfolio-section-title"><span />Life &amp; career timeline</h2>
+            <p className="mb-10 max-w-xl text-sm leading-relaxed text-[var(--portfolio-muted)]">From engineering in Pune to product leadership in Toronto—the moves, schools, communities, and jobs that shaped how I build.</p>
+            <ol className="relative ml-2 border-l border-[var(--portfolio-line)]">
+              {lifeTimeline.map((item) => {
+                const experience = item.experienceId ? timelineDataRich.find((entry) => entry.id === item.experienceId) : undefined
+                const content = (
+                  <>
+                    <span className="absolute -left-[7px] top-7 h-3 w-3 rounded-full border-2 border-[var(--portfolio-line)] bg-[var(--portfolio-bg)] transition-colors group-hover:border-[var(--portfolio-accent)]" />
+                    <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--portfolio-accent)]">{item.type}</span>
+                    <div className="mt-2 flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-5">
+                      <h3 className="text-lg font-semibold tracking-tight text-[var(--portfolio-text)] group-hover:text-[var(--portfolio-accent)]">{item.title}</h3>
+                      <span className="shrink-0 font-mono text-xs text-[var(--portfolio-faint)]">{item.period}</span>
+                    </div>
+                    <p className="mt-1 text-sm font-medium text-[var(--portfolio-text)]">{item.organization}</p>
+                    <p className="mt-1 font-mono text-xs text-[var(--portfolio-faint)]">{item.location}</p>
+                    <p className="mt-3 text-sm leading-relaxed text-[var(--portfolio-muted)]">{item.description}</p>
+                    {experience && <span className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-[var(--portfolio-accent)]">View outcomes <span className="transition-transform group-hover:translate-x-1">→</span></span>}
+                  </>
+                )
+
+                return (
+                  <li key={`${item.period}-${item.title}`} className="relative pb-10 pl-7 last:pb-0">
+                    {experience ? (
+                      <button onClick={() => setSelectedExp(experience)} className="group block w-full rounded-lg p-4 text-left transition-colors hover:bg-[var(--portfolio-surface)]">{content}</button>
+                    ) : (
+                      <article className="group rounded-lg p-4">{content}</article>
+                    )}
+                  </li>
+                )
+              })}
             </ol>
 
             <div className="mt-12 border-t border-[var(--portfolio-line)] pt-8">
