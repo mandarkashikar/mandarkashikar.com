@@ -180,6 +180,14 @@ const timelineDataRich = [
 
 const lifeTimeline = [
   {
+    period: 'Early years',
+    location: 'Wardha, Maharashtra, India',
+    type: 'Origins',
+    title: 'Born in a small town in Maharashtra',
+    organization: 'Wardha',
+    description: 'My story began in Wardha before Pune became the place where I studied engineering and started my career.'
+  },
+  {
     period: '2008 – 2012',
     location: 'Pune, India',
     type: 'Education',
@@ -518,7 +526,7 @@ export default function Home() {
 
           <section id="timeline" className="mb-20 scroll-mt-8">
             <h2 className="portfolio-section-title"><span />Life &amp; career timeline</h2>
-            <p className="mb-10 max-w-xl text-sm leading-relaxed text-[var(--portfolio-muted)]">From engineering in Pune to product leadership in Toronto—the moves, schools, communities, and jobs that shaped how I build.</p>
+            <p className="mb-10 max-w-xl text-sm leading-relaxed text-[var(--portfolio-muted)]">From a small-town start in Wardha to engineering in Pune and product leadership in Toronto—the moves, schools, communities, and jobs that shaped how I build.</p>
             <ol className="relative ml-2 border-l border-[var(--portfolio-line)]">
               {lifeTimeline.map((item) => {
                 const experience = item.experienceId ? timelineDataRich.find((entry) => entry.id === item.experienceId) : undefined
