@@ -181,7 +181,7 @@ const timelineDataRich = [
 const lifeTimeline = [
   {
     period: 'Early years',
-    location: 'Wardha',
+    location: 'Wardha, Maharashtra, India',
     type: 'Origins',
     title: 'Born in a small town in Maharashtra',
     organization: 'Wardha',
@@ -189,7 +189,7 @@ const lifeTimeline = [
   },
   {
     period: '2008 – 2012',
-    location: 'Pune',
+    location: 'Pune, Maharashtra, India',
     type: 'Education',
     title: 'Started with systems and engineering',
     organization: 'University of Pune · BTech, Industrial Engineering',
@@ -197,7 +197,7 @@ const lifeTimeline = [
   },
   {
     period: '2012 – 2016',
-    location: 'Pune',
+    location: 'Pune, Maharashtra, India',
     type: 'Engineering',
     title: 'Learned what product reliability really means',
     organization: 'Philips Medical Devices',
@@ -206,7 +206,7 @@ const lifeTimeline = [
   },
   {
     period: '2015 – 2017',
-    location: 'Pune',
+    location: 'Pune, Maharashtra, India',
     type: 'Entrepreneurship',
     title: 'Got close to the merchant',
     organization: 'Retail ecommerce & SMB consulting startups',
@@ -215,7 +215,7 @@ const lifeTimeline = [
   },
   {
     period: '2017 – 2019',
-    location: 'Pune → College Park',
+    location: 'Pune, Maharashtra, India → College Park, Maryland, US',
     type: 'Move + Education',
     title: 'Crossed continents to broaden the toolkit',
     organization: 'University of Maryland, Robert H. Smith School of Business',
@@ -223,7 +223,7 @@ const lifeTimeline = [
   },
   {
     period: '2017 – 2019',
-    location: 'College Park',
+    location: 'College Park, Maryland, US',
     type: 'Community',
     title: 'Made entrepreneurship part of the education',
     organization: 'Dingman Center for Entrepreneurship',
@@ -231,7 +231,7 @@ const lifeTimeline = [
   },
   {
     period: '2018',
-    location: 'Washington, DC',
+    location: 'Washington, DC, US',
     type: 'Growth',
     title: 'Found product work through growth experiments',
     organization: 'MPOWER Financing',
@@ -240,7 +240,7 @@ const lifeTimeline = [
   },
   {
     period: '2019 – 2021',
-    location: 'Washington, DC',
+    location: 'Washington, DC, US',
     type: 'Strategy + Analytics',
     title: 'Learned to turn ambiguity into executive decisions',
     organization: 'EY-Parthenon',
@@ -249,7 +249,7 @@ const lifeTimeline = [
   },
   {
     period: '2021 – 2022',
-    location: 'San Francisco',
+    location: 'San Francisco, California, US',
     type: 'Product',
     title: 'Made the move into product management',
     organization: 'TriNet',
@@ -258,7 +258,7 @@ const lifeTimeline = [
   },
   {
     period: '2022 – 2025',
-    location: 'San Francisco → Toronto',
+    location: 'San Francisco, California, US → Toronto, Ontario, Canada',
     type: 'Commerce + Move',
     title: 'Commerce and payments became the throughline',
     organization: 'talech / U.S. Bank',
@@ -267,7 +267,7 @@ const lifeTimeline = [
   },
   {
     period: '2025 – Present',
-    location: 'Toronto',
+    location: 'Toronto, Ontario, Canada',
     type: '0→1 Product Leadership',
     title: 'Built Elavon Business Solutions from zero to launch',
     organization: 'Elavon / U.S. Bank',
