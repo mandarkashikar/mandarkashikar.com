@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import Head from 'next/head'
+import posthog from 'posthog-js'
 
 const timelineDataRich = [
   {
@@ -445,10 +446,10 @@ export default function Home() {
           )}
 
           <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3 border-t border-[var(--portfolio-line)] pt-7">
-            <a href="mailto:mandarkashikar1@gmail.com" className="text-sm text-[var(--portfolio-muted)] hover:text-[var(--portfolio-accent)] hover:underline">Email</a>
-            <a href="https://linkedin.com/in/mandarkashikar" target="_blank" rel="noopener noreferrer" className="text-sm text-[var(--portfolio-muted)] hover:text-[var(--portfolio-accent)] hover:underline">LinkedIn</a>
-            <a href="https://github.com/mandarkashikar" target="_blank" rel="noopener noreferrer" className="text-sm text-[var(--portfolio-muted)] hover:text-[var(--portfolio-accent)] hover:underline">GitHub</a>
-            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="text-sm text-[var(--portfolio-muted)] hover:text-[var(--portfolio-accent)] hover:underline">Resume ↓</a>
+            <a href="mailto:mandarkashikar1@gmail.com" onClick={() => posthog.capture('contact_click', { channel: 'email', location: 'header' })} className="text-sm text-[var(--portfolio-muted)] hover:text-[var(--portfolio-accent)] hover:underline">Email</a>
+            <a href="https://linkedin.com/in/mandarkashikar" target="_blank" rel="noopener noreferrer" onClick={() => posthog.capture('contact_click', { channel: 'linkedin', location: 'header' })} className="text-sm text-[var(--portfolio-muted)] hover:text-[var(--portfolio-accent)] hover:underline">LinkedIn</a>
+            <a href="https://github.com/mandarkashikar" target="_blank" rel="noopener noreferrer" onClick={() => posthog.capture('github_click', { target: 'profile', location: 'header' })} className="text-sm text-[var(--portfolio-muted)] hover:text-[var(--portfolio-accent)] hover:underline">GitHub</a>
+            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" onClick={() => posthog.capture('resume_click', { location: 'header' })} className="text-sm text-[var(--portfolio-muted)] hover:text-[var(--portfolio-accent)] hover:underline">Resume ↓</a>
             <button onClick={toggleTheme} className="text-sm text-[var(--portfolio-muted)] hover:text-[var(--portfolio-accent)]" title={isDark ? 'Use light mode' : 'Use dark mode'}>
               {isDark ? 'Light' : 'Dark'}
             </button>
@@ -512,7 +513,21 @@ export default function Home() {
                 return (
                   <li key={project.name}>
                     {project.link ? (
-                      <a href={project.link} target={project.link.startsWith('http') ? '_blank' : undefined} rel={project.link.startsWith('http') ? 'noopener noreferrer' : undefined} className="group flex h-full flex-col rounded-lg border border-[var(--portfolio-line)] bg-[var(--portfolio-surface)] p-5 transition-colors hover:border-[var(--portfolio-accent)] hover:bg-[var(--portfolio-surface-2)]">
+                      <a
+                        href={project.link}
+                        target={project.link.startsWith('http') ? '_blank' : undefined}
+                        rel={project.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                        onClick={() => {
+                          const destination = project.link!.includes('github.com')
+                            ? 'github'
+                            : project.link!.startsWith('/')
+                              ? 'internal'
+                              : 'external'
+                          posthog.capture('project_click', { project: project.name, status: project.status, destination, link: project.link })
+                          if (destination === 'github') posthog.capture('github_click', { target: 'project_repo', project: project.name, location: 'projects' })
+                        }}
+                        className="group flex h-full flex-col rounded-lg border border-[var(--portfolio-line)] bg-[var(--portfolio-surface)] p-5 transition-colors hover:border-[var(--portfolio-accent)] hover:bg-[var(--portfolio-surface-2)]"
+                      >
                         {card}
                       </a>
                     ) : (
@@ -548,7 +563,7 @@ export default function Home() {
                 return (
                   <li key={`${item.period}-${item.title}`} className="relative pb-10 pl-7 last:pb-0">
                     {experience ? (
-                      <button onClick={() => setSelectedExp(experience)} className="group block w-full rounded-lg p-4 text-left transition-colors hover:bg-[var(--portfolio-surface)]">{content}</button>
+                      <button onClick={() => { posthog.capture('timeline_experience_click', { company: experience.company, role: experience.role }); setSelectedExp(experience) }} className="group block w-full rounded-lg p-4 text-left transition-colors hover:bg-[var(--portfolio-surface)]">{content}</button>
                     ) : (
                       <article className="group rounded-lg p-4">{content}</article>
                     )}
@@ -569,7 +584,7 @@ export default function Home() {
 
           <section id="field-notes" className="mb-20 scroll-mt-8">
             <h2 className="portfolio-section-title"><span />Field notes</h2>
-            <Link href="/blog" className="group block rounded-lg border border-[var(--portfolio-line)] bg-[var(--portfolio-surface)] p-6 transition-colors hover:border-[var(--portfolio-accent)] hover:bg-[var(--portfolio-surface-2)]">
+            <Link href="/blog" onClick={() => posthog.capture('field_notes_click', { location: 'field-notes-section' })} className="group block rounded-lg border border-[var(--portfolio-line)] bg-[var(--portfolio-surface)] p-6 transition-colors hover:border-[var(--portfolio-accent)] hover:bg-[var(--portfolio-surface-2)]">
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--portfolio-accent)]">90-day learning program</p>
               <h3 className="mt-3 text-2xl font-semibold tracking-tight">Decoding Agentic Commerce</h3>
               <p className="mt-3 text-sm leading-relaxed text-[var(--portfolio-muted)]">Daily lessons on AI-powered shopping, agent architecture, trust, payments, and product strategy for small businesses.</p>
@@ -581,9 +596,9 @@ export default function Home() {
             <h2 className="portfolio-section-title"><span />Contact</h2>
             <p className="max-w-md text-lg text-[var(--portfolio-muted)]">I&apos;m always interested in ambitious commerce, payments, and AI product problems.</p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <a href="mailto:mandarkashikar1@gmail.com" className="rounded-md bg-[var(--portfolio-accent)] px-4 py-2 text-sm font-medium text-[#14241a] hover:opacity-90">Email me</a>
-              <a href="https://linkedin.com/in/mandarkashikar" target="_blank" rel="noopener noreferrer" className="rounded-md border border-[var(--portfolio-line)] px-4 py-2 text-sm font-medium hover:border-[var(--portfolio-accent)] hover:text-[var(--portfolio-accent)]">LinkedIn</a>
-              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="rounded-md border border-[var(--portfolio-line)] px-4 py-2 text-sm font-medium hover:border-[var(--portfolio-accent)] hover:text-[var(--portfolio-accent)]">Download resume</a>
+              <a href="mailto:mandarkashikar1@gmail.com" onClick={() => posthog.capture('contact_click', { channel: 'email', location: 'contact' })} className="rounded-md bg-[var(--portfolio-accent)] px-4 py-2 text-sm font-medium text-[#14241a] hover:opacity-90">Email me</a>
+              <a href="https://linkedin.com/in/mandarkashikar" target="_blank" rel="noopener noreferrer" onClick={() => posthog.capture('contact_click', { channel: 'linkedin', location: 'contact' })} className="rounded-md border border-[var(--portfolio-line)] px-4 py-2 text-sm font-medium hover:border-[var(--portfolio-accent)] hover:text-[var(--portfolio-accent)]">LinkedIn</a>
+              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" onClick={() => posthog.capture('resume_click', { location: 'contact' })} className="rounded-md border border-[var(--portfolio-line)] px-4 py-2 text-sm font-medium hover:border-[var(--portfolio-accent)] hover:text-[var(--portfolio-accent)]">Download resume</a>
             </div>
             <footer className="mt-16 border-t border-[var(--portfolio-line)] pt-6 text-xs text-[var(--portfolio-faint)]">© 2026 Mandar Kashikar. Built with Next.js.</footer>
           </section>
